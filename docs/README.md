@@ -1,4 +1,4 @@
-# FresherNote
+# Lax
 
 **Note:** Add link to production site
 
