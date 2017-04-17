@@ -10,12 +10,13 @@ password_digest | string    | not null, indexed, unique
 session_token   | string    | not null, indexed, unique
 
 
-## channels
+## chatrooms
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 name        | string    | not null
-description | text      |
+description | text      | optional
+private     | bool      | default: false
 
 ## messages
 column name | data type | details
@@ -23,10 +24,9 @@ column name | data type | details
 id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users), indexed
 channel_id  | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | text      |
+body        | text      | not null
 
-## subscriptions
+## chatroom_users (subscriptions)
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
