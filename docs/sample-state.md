@@ -14,7 +14,7 @@
       },
 
       2: {
-        name: 'could have been a contender!',
+        name: '',
         private: true
       }
     },

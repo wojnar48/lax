@@ -33,28 +33,22 @@ sufficient CSS styling:
 
 ### Phase 1: Backend setup and Front End User Authentication (2 days)
 
-**Objective:** Functioning rails project with front-end Authentication
+**Objective:** Functioning rails project with front-end Authentication. Users can login/sign with fully functional forms. Users can reach login form from signup page and vice versa.
 
-### Phase 2:
+### Phase 2: Channels Model, Component and Public Channel List (2 days)
 
-**Objective:**
+**Objective:** Users can browse, create, join public channels. The list of public channels is visible in the channels component.
 
-### Phase 3:
+### Phase 3:  Messages Model, and Component, Live Chat (3 days)
 
-**Objective:**
+**Objective:** On entering public channels users can see messages relevant to that channel. Messages are displayed in the main chat display component. Users can add their own messages via the message input form. Live chat features will be implemented using Action Cable.
 
-### Phase 4:
+### Phase 4: DM/Team Messages, DM List (2 day)
 
-**Objective:**
+**Objective:** Users can create Direct Messages (Private Channels) and add members on creation either via search input or from list of registered users. Other users cannot see or join private chats of other users.
 
-### Phase 5:
-
-**Objective:**
-
-### Phase 6:
-
-**Objective:**
 
 ### Bonus Features (TBD)
+- [ ] Add empoticon and giphy assets
 - [ ] Search Messages
 - [ ] Notifications

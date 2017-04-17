@@ -15,7 +15,7 @@
   - DM List (Private Chatroom)
     - Add DM From (on select)
       - DM Search Input
-    - DM User Item
+      - DM User Item
   - DM Item
 
 **MessagesContainer**
