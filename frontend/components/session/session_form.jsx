@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router';
 
 class SessionForm extends Component {
   constructor (props) {
@@ -8,14 +9,34 @@ class SessionForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidUpdate () {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn () {
+    if (this.props.loggedIn) {
+      this.props.router.push('/');
+    }
+  }
+
   handleInput (e) {
     this.setState({
       [e.currentTarget.id]: e.currentTarget.value
     });
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
+    e.preventDefault();
+    const user = this.state;
+    this.props.processForm({ user });
+  }
 
+  altNavLink() {
+    if (this.props.formType === "login") {
+      return <Link to="/signup">sign up instead</Link>;
+    } else {
+      return <Link to="/login">log in instead</Link>;
+    }
   }
 
   render () {
@@ -24,24 +45,30 @@ class SessionForm extends Component {
       'Sign up';
 
     return (
-      <form>
-        <label htmlFor="username"></label>
-        <input
-          id="username"
-          type="text"
-          onChange={ this.handleInput }
-          value={this.state.username} />
+      <section className="auth-form">
+        <form onSubmit={ this.handleSubmit }>
+          <label htmlFor="username"><span>Username</span></label>
+          <input
+            id="username"
+            type="text"
+            onChange={ this.handleInput }
+            value={this.state.username} />
 
-        <input
-          id="password"
-          type="text"
-          onChange={ this.handleInput }
-          value={this.state.password} />
+          <label htmlFor="username"><span>Password</span></label>
+          <input
+            id="password"
+            type="text"
+            onChange={ this.handleInput }
+            value={this.state.password} />
 
-        <input type="submit" value={buttonText}/>
-      </form>
+          <input type="submit" value={buttonText}/>
+        </form>
+        <div>
+          <span>Or { this.altNavLink() }</span>
+        </div>
+      </section>
     );
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);
