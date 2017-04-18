@@ -23,3 +23,5 @@ const SessionReducer = (state = _nullUser, action) => {
       return state;
   }
 };
+
+export default SessionReducer;
