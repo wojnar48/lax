@@ -2,6 +2,13 @@
 
 **Note:** Add link to production site
 
+[Heroku link][heroku]
+
+[Trello link][trello]
+
+[heroku]: https://lax-app.herokuapp.com
+[trello]: https://trello.com/b/fJ8rfaQo/lax
+
 ## Minimum Viable Product
 
 Lax is a web application inspired by Slack built using Ruby on Rails
