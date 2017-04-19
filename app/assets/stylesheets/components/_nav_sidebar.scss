@@ -1,0 +1,56 @@
+
+$light-eggplant: #ab9ba9;
+$dark-eggplant: #4d394b;
+$darkest-eggplant: #220920;
+
+$lightest-gray: #FFFFFF;
+
+.nav-sidebar {
+  position: absolute;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background:$dark-eggplant;
+  color: $light-eggplant;
+  line-height: 1.5rem;
+
+  h1 {
+    color: $lightest-gray;
+  }
+
+  p:hover {
+    color: $lightest-gray;
+  }
+
+  .nav-header {
+    padding-top: 10px;
+    margin: 0 15px;
+    h1 {
+      font-size: 25px;
+    }
+  }
+
+  .public-list {
+    padding-top: 10px;
+    margin: 0 15px;
+    h3 {
+      margin: 5px 0;
+    }
+    ul li {
+      font-size: 14px;
+      font-family: Lato;
+      font-weight: 300i;
+    }
+
+    ul li:before {
+      content: "\f292";
+      font-family: FontAwesome;
+      font-size: 10px;
+      margin-right: 4px;
+    }
+  }
+
+  .nav-header-container:hover {
+    background: #352034;
+  }
+}

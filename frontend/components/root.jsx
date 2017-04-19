@@ -30,7 +30,7 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn } />
 
         </Route>
-        <Route path="/main" component={ NavContainer } >
+        <Route path="/main" component={ NavContainer }>
 
         </Route>
       </Router>

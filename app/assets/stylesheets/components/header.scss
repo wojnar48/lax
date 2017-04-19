@@ -1,0 +1,20 @@
+$lightest-gray: #FFFFFF;
+$almost-gray: #E8E8E8;
+$gray: #C5C5C5;
+$darker-gray: #555459;
+$light-eggplant: #ab9ba9;
+$dark-eggplant: #4d394b;
+
+.header-container {
+  position: abolsute;
+  top: 0;
+  height: 70px;
+  background: $lightest-gray;
+  border-bottom: 1px solid $almost-gray;
+
+  .fa-bug {
+    padding: 10px;
+    font-size: 50px;
+    color: $dark-eggplant;
+  }
+}

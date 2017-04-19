@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NavIndex from './nav_index';
-import { allPublicChannels } from '../../reducers/channel_selectors';
+import { fetchChannels } from '../../actions/channel_actions';
 
-const mapStateToProps = ({ channels }) => {
+const mapStateToProps = ({ session, channels }) => {
   const publicChannels = Object.values(channels);
   return {
+    session,
     publicChannels
   };
 };

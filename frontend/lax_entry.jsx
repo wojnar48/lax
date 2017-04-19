@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.store = store;
-  window.fetchChannels = fetchChannels;
-
   ReactDOM.render(<Root store={ store }/>,
   document.getElementById('root'));
 });
