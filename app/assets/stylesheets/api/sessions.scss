@@ -2,23 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com
 
-
- body, section, div, h1, h2, p,
- form, input, {
-   margin: 0;
-   padding: 0;
-   border: 0;
-   font-size: 100%;
-   font: inherit;
-   vertical-align: baseline;
- }
-
- body {
+main {
    background: #f9f9f9;
    font-family: 'Roboto', sans-serif;
  }
-
-
 
 .auth-form {
   background: #ffffff;

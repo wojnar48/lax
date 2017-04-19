@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import FormContainer from './session/session_form_container';
-// import NavContainer from './nav/nav_container';
+import Main from './main';
 
 const Root = ({ store }) => {
 
@@ -11,7 +11,7 @@ const Root = ({ store }) => {
 
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/');
+      replace('/main');
     }
   }
 
@@ -30,10 +30,10 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn } />
 
         </Route>
+        <Route path="/main" component={ Main } />
       </Router>
     </Provider>
   );
 };
 
-// <Route path="/chat" component={ NavContainer } />
 export default Root;
