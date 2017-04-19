@@ -15,7 +15,7 @@ class SessionForm extends Component {
 
   redirectIfLoggedIn () {
     if (this.props.loggedIn) {
-      this.props.router.push('/');
+      this.props.router.push('/main');
     }
   }
 
@@ -28,7 +28,7 @@ class SessionForm extends Component {
   handleSubmit (e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm({ user });
+    this.props.processForm(this.state);
   }
 
   altNavLink() {
@@ -50,7 +50,7 @@ class SessionForm extends Component {
           <h2>{ buttonText } to Lax</h2>
           <p>Please enter your <strong>username</strong> and
             <strong>password</strong></p>
-          <form>
+          <form onSubmit={ this.handleSubmit }>
             <input
               id="username"
               type="text"
