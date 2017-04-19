@@ -2,10 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com
 
-body {
-  background: #f9f9f9;
-  font-family: 'Roboto', sans-serif;
-}
+
+ body, section, div, h1, h2, p,
+ form, input, {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+ }
+
+ body {
+   background: #f9f9f9;
+   font-family: 'Roboto', sans-serif;
+ }
+
+
 
 .auth-form {
   background: #ffffff;
@@ -15,6 +28,7 @@ body {
   border: 1px solid #555459;
   box-shadow: 0 1px 0 rgba(0,0,0,.25);
   border-radius: 3px;
+  color: #555459
 }
 
 .form-container {
@@ -25,6 +39,10 @@ body {
 
   div {
     margin-bottom: 20px;
+  }
+
+  p {
+    margin: 0;
   }
 
   a {
@@ -74,10 +92,10 @@ body {
     }
   }
 
-  h1 {
+  h2 {
+    margin: 10px;
     font-size: 26px;
     font-weight: bold;
-    color: #555459;
   }
 
   ::-webkit-input-placeholder {

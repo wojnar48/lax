@@ -47,7 +47,9 @@ class SessionForm extends Component {
     return (
       <section className="auth-form">
         <div className="form-container">
-          <h1>{ buttonText } to Lax</h1>
+          <h2>{ buttonText } to Lax</h2>
+          <p>Please enter your <strong>username</strong> and
+            <strong>password</strong></p>
           <form>
             <input
               id="username"
@@ -76,21 +78,3 @@ class SessionForm extends Component {
 }
 
 export default withRouter(SessionForm);
-
-// <form onSubmit={ this.handleSubmit }>
-//   <label htmlFor="username"><span>Username</span></label>
-//   <input
-//     id="username"
-//     type="text"
-//     onChange={ this.handleInput }
-//     value={this.state.username} />
-//
-//   <label htmlFor="username"><span>Password</span></label>
-//   <input
-//     id="password"
-//     type="text"
-//     onChange={ this.handleInput }
-//     value={this.state.password} />
-//
-//   <input type="submit" value={buttonText}/>
-// </form>

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import FormContainer from './session/session_form_container';
+// import NavContainer from './nav/nav_container';
 
 const Root = ({ store }) => {
 
@@ -34,4 +35,5 @@ const Root = ({ store }) => {
   );
 };
 
+// <Route path="/chat" component={ NavContainer } />
 export default Root;
