@@ -11,7 +11,6 @@ class Api::ChatroomsController < ApplicationController
     @chatroom = Chatroom.new(chatroom_params)
 
     if @chatroom.save
-      debugger
       # we want to create a chatroom to user association at the same time
       render 'api/chatrooms/show'
     else
