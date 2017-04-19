@@ -45,11 +45,10 @@ class SessionForm extends Component {
       'Sign up';
 
     return (
-      <section className="auth-form">
-        <div className="form-container">
+      <section className="form-container">
+        <div className="auth-form">
           <h2>{ buttonText } to Lax</h2>
-          <p>Please enter your <strong>username</strong> and
-            <strong>password</strong></p>
+          <p>Please enter your <span>username</span> and <span>password</span></p>
           <form onSubmit={ this.handleSubmit }>
             <input
               id="username"
@@ -67,11 +66,10 @@ class SessionForm extends Component {
 
             <input type="submit" name="commit" value={ buttonText } />
           </form>
-          <div>
-            <span>Or { this.altNavLink() }</span>
+          <div className="alt-link">
+            <p>Or { this.altNavLink() }</p>
           </div>
         </div>
-
       </section>
     );
   }

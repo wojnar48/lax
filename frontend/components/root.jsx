@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import FormContainer from './session/session_form_container';
-import Main from './main';
+import NavContainer from './nav/nav_container';
 
 const Root = ({ store }) => {
 
@@ -30,7 +30,9 @@ const Root = ({ store }) => {
             onEnter={ _redirectIfLoggedIn } />
 
         </Route>
-        <Route path="/main" component={ Main } />
+        <Route path="/main" component={ NavContainer } >
+
+        </Route>
       </Router>
     </Provider>
   );
