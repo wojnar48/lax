@@ -46,29 +46,51 @@ class SessionForm extends Component {
 
     return (
       <section className="auth-form">
-        <form onSubmit={ this.handleSubmit }>
-          <label htmlFor="username"><span>Username</span></label>
-          <input
-            id="username"
-            type="text"
-            onChange={ this.handleInput }
-            value={this.state.username} />
+        <div className="form-container">
+          <h1>{ buttonText } to Lax</h1>
+          <form>
+            <input
+              id="username"
+              type="text"
+              value={ this.state.username }
+              onChange={ this.handleInput }
+              placeholder="Username" />
 
-          <label htmlFor="username"><span>Password</span></label>
-          <input
-            id="password"
-            type="text"
-            onChange={ this.handleInput }
-            value={this.state.password} />
+            <input
+              id="password"
+              type="password"
+              value={ this.state.password }
+              onChange={ this.handleInput }
+              placeholder="Password" />
 
-          <input type="submit" value={buttonText}/>
-        </form>
-        <div>
-          <span>Or { this.altNavLink() }</span>
+            <input type="submit" name="commit" value={ buttonText } />
+          </form>
+          <div>
+            <span>Or { this.altNavLink() }</span>
+          </div>
         </div>
+
       </section>
     );
   }
 }
 
 export default withRouter(SessionForm);
+
+// <form onSubmit={ this.handleSubmit }>
+//   <label htmlFor="username"><span>Username</span></label>
+//   <input
+//     id="username"
+//     type="text"
+//     onChange={ this.handleInput }
+//     value={this.state.username} />
+//
+//   <label htmlFor="username"><span>Password</span></label>
+//   <input
+//     id="password"
+//     type="text"
+//     onChange={ this.handleInput }
+//     value={this.state.password} />
+//
+//   <input type="submit" value={buttonText}/>
+// </form>
