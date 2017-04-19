@@ -2,27 +2,27 @@ class Api::ChatroomsController < ApplicationController
   before_action :set_chatroom, only: [:destroy]
 
   def index
-    # think about making this public
+    # eventually this will be just public chatrooms
     @chatrooms = Chatroom.all
-  end
-
-  def show
-    # this will eventually show messages in chatroom
+    render 'api/chatrooms/index'
   end
 
   def create
     @chatroom = Chatroom.new(chatroom_params)
 
     if @chatroom.save
-      @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
+      debugger
+      # we want to create a chatroom to user association at the same time
       render 'api/chatrooms/show'
     else
       render json: @chatroom.errors.full_messages, status: 422
     end
   end
 
+
   def destroy
     @chatroom.destroy
+    redner 'api/chatrooms/show'
   end
 
   private
@@ -32,6 +32,6 @@ class Api::ChatroomsController < ApplicationController
   end
 
   def chatroom_params
-    params.require(:chatroom).permit(:name)
+    params.require(:chatroom).permit(:name, :description)
   end
 end
