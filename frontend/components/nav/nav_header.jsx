@@ -1,14 +1,16 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 const NavHeader = ({ currentUser }) => {
   return (
-    <section className="nav-header-container">
-      <div className="nav-header">
-        <h1>Lax Team</h1>
+    <div className="nav-header">
+      <h1>Team Lax</h1>
+      <div className="username">
+        <div className="status"></div>
         <p>{ currentUser.username }</p>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default NavHeader;
+export default withRouter(NavHeader);

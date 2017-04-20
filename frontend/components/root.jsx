@@ -13,7 +13,7 @@ const Root = ({ store }) => {
     if (currentUser) {
       replace('/main');
     }
-  }
+  };
 
   return (
     <Provider store={ store }>

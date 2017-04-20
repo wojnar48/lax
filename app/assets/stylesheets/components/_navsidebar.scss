@@ -1,0 +1,261 @@
+
+$light-eggplant: #ab9ba9;
+$dark-eggplant: #4d394b;
+$darkest-eggplant: #220920;
+$SlackTeal: #4C9689;
+$SlackPurple: #4E394C;
+
+$green: #00B880;
+$darker-green: #009064;
+
+$lightest-gray: #FFFFFF;
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+#nav-container {
+  font-family: 'Lato', Helvetica, sans-serif;
+  box-shadow: 0 0 50px 0 rgba(0,0,0,0.2);
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  .sidebar {
+    float: left;
+    color: #fff;
+    display: inline-block;
+    height: 100%;
+    float: left;
+    width: 15%;
+    background: $SlackPurple;
+
+    .nav-header {
+      display: inline-block;
+      width: 100%;
+
+      h1 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-left: 15px;
+        margin-top: 10px;
+      }
+
+      .username {
+        display: block;
+        margin-left: 15px;
+
+        .status {
+          display: inline-block;
+          margin-right: 4px;
+          width: 8px;
+          height: 8px;
+          border-radius: 10px;
+          background-color: $SlackTeal;
+        }
+
+        p {
+          display: inline-block;
+          opacity: 0.5;
+          font-size: 14px;
+          font-weight: 300;
+          margin: 0;
+        }
+      }
+    }
+
+    .username {
+      display: block;
+
+      .status {
+        display: inline-block;
+        margin-right: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 10px;
+        background-color: $SlackTeal;
+      }
+
+      h2 {
+        display: inline-block;
+        opacity: 0.5;
+        font-size: 14px;
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+
+    .channels {
+      display: block;
+      margin: 20px 15px;
+
+      h4 {
+        margin: 0;
+        margin-bottom: 5px;
+        padding: 0;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 16px;
+        opacity: 0.5;
+      }
+      .channel {
+        box-sizing: border-box;
+        padding-left: 5px;
+        display: block;
+        font-weight: 300;
+
+        :hover {
+          background: $darkest-eggplant;
+          border-radius: 5px;
+        }
+
+
+        p {
+
+          font-size: 16px;
+          margin: 0;
+          padding-top: 2.5px;
+          padding-bottom: 2.5px;
+          opacity: 0.5;
+
+          i {
+            font-style: normal;
+            opacity: 0.45;
+            span {
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+
+      .channel.unread {
+        font-weight: 700;
+        p {
+          opacity: 1;
+
+          i {
+            font-weight: 300;
+          }
+        }
+      }
+
+      .channel.selected {
+        width: 92%;
+        border-radius: 3px;
+        background: $SlackTeal;
+        padding-bottom: 3px;
+
+        p {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .chat {
+      position: relative;
+      width: 85%;
+      height: 100%;
+      // float: left;
+      display: inline-block;
+
+      .header-bar {
+        position: absolute;
+        width: 100%;
+        padding-left: 10px;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 0 50px 0 rgba(0,0,0,0.2);
+
+        .details {
+          width: 400px;
+          float: left;
+        }
+
+        h1 {
+          font-size: 16px;
+          margin-bottom: 0;
+        }
+        h3 {
+          font-weight: 400;
+          display: inline-block;
+          font-size: 12px;
+          opacity: 0.3;
+          padding-right: 7px;
+          margin-top: 0;
+        }
+        .logout-button {
+        }
+        .purpose {
+          border-left: 1px solid #ccc;
+          padding-left: 7px;
+        }
+      }
+
+      #chatbox {
+        width: 100%;
+
+        .messages {
+          width: 100%;
+          height: 100vh;
+          .message {
+            padding: 10px 10px 10px 20px;
+            display: block;
+            font-size: 14px;
+
+            .user-icon {
+              position: relative;
+              top: 4px;
+              margin-right: 7px;
+              width: 35px;
+              height: 35px;
+              border-radius: 4px;
+              overflow: hidden;
+              background: $SlackPurple;
+              display: inline-block;
+
+              img {
+                width: 550%;
+                height: auto;
+              }
+            }
+
+            .body {
+              display: inline-block;
+
+              .username {
+                font-weight: 700;
+                padding-bottom: 3px;
+              }
+
+              .text {
+                color: #252525;
+              }
+
+            }
+          }
+        }
+      }
+
+      .input-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 95%;
+        padding: 30px 20px;
+
+
+        form {
+          input {
+            outline: none;
+            border-radius: 5px;
+            border: 2px solid #dedede;
+            height: 30px;
+            width: 100%;
+            padding: 5px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
