@@ -6,6 +6,9 @@ $light-eggplant: #ab9ba9;
 $dark-eggplant: #4d394b;
 
 .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: abolsute;
   top: 0;
   height: 70px;
@@ -15,6 +18,7 @@ $dark-eggplant: #4d394b;
   .fa-bug {
     padding: 10px;
     font-size: 50px;
+    padding-left: 15px;
     color: $dark-eggplant;
   }
 }

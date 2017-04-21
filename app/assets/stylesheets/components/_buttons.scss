@@ -1,0 +1,28 @@
+$lightest-gray: #FFFFFF;
+$light-gray: #F9F9F9;
+$almost-gray: #E8E8E8;
+$gray: #C5C5C5;
+$darker-gray: #555459;
+$light-eggplant: #ab9ba9;
+$dark-eggplant: #4d394b;
+
+.button {
+  background-color: $lightest-gray;
+  border: 2px solid $light-eggplant;
+  border-radius: 4px;
+  color: #595959;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  margin: 8px;
+  padding: 8px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.button:hover {
+  border: 2px solid $dark-eggplant;
+}

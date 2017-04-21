@@ -6,9 +6,19 @@ const App = (props) => {
   return (
     <section>
       <header className="header-container">
-        <i className="fa fa-bug"></i>
+        <div>
+          <i className="fa fa-bug"></i>
+        </div>
+        <div>
+          <Link to="/login">
+            <button className="button login">Log in</button>
+          </Link>
+          <Link to="/signup">
+            <button className="button logout">Sign up</button>
+          </Link>
+        </div>
       </header>
-      <div>
+      <div className="landing-page">
         { props.children }
       </div>
     </section>
