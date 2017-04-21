@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :chatrooms do
       resource :chatroom_users
+      resources :messages
     end
   end
 end

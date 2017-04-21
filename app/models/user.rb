@@ -5,6 +5,10 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   attr_reader :password
 
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
+  has_many :messages
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
