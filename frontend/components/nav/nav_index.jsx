@@ -38,15 +38,16 @@ class NavIndex extends Component {
     const publicChannels = this.props.publicChannels.map(channel => {
       return (
         <li className="channel" key={ channel.id }>
-          <p><i>#<span>{ channel.name }</span></i></p>
+        <p><i>#<span>{ channel.name }</span></i></p>
         </li>
       );
     });
+
     return (
       <section id="nav-container">
         <div className="sidebar">
           <NavHeader currentUser={ this.props.session.currentUser } />
-          <Channels publicChannels={ publicChannels }/>
+          <Channels publicChannels={ publicChannels } />
         </div>
         <div className="chat">
           <div className="header-bar">
@@ -56,7 +57,7 @@ class NavIndex extends Component {
               <h3 className="purpose">channel selected logic</h3>
             </div>
             <button
-              className="logout-button"
+              className="button logout"
               onClick={ this.handleLogout }>Log out
             </button>
           </div>

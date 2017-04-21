@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Channels = (props) => {
+const Channels = ({ publicChannels }) => {
   return (
     <ul className="channels">
       <h4>channels</h4>
-      { props.publicChannels }
+      { publicChannels }
     </ul>
   );
 };

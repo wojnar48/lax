@@ -2,8 +2,7 @@
 $light-eggplant: #ab9ba9;
 $dark-eggplant: #4d394b;
 $darkest-eggplant: #220920;
-$SlackTeal: #4C9689;
-$SlackPurple: #4E394C;
+$darker-green: #4C9689;
 
 $green: #00B880;
 $darker-green: #009064;
@@ -29,7 +28,7 @@ ul {
     height: 100%;
     float: left;
     width: 15%;
-    background: $SlackPurple;
+    background: $dark-eggplant;
 
     .nav-header {
       display: inline-block;
@@ -52,7 +51,7 @@ ul {
           width: 8px;
           height: 8px;
           border-radius: 10px;
-          background-color: $SlackTeal;
+          background-color: $darker-green;
         }
 
         p {
@@ -74,7 +73,7 @@ ul {
         width: 8px;
         height: 8px;
         border-radius: 10px;
-        background-color: $SlackTeal;
+        background-color: $darker-green;
       }
 
       h2 {
@@ -140,10 +139,10 @@ ul {
         }
       }
 
-      .channel.selected {
+      .selected {
         width: 92%;
         border-radius: 3px;
-        background: $SlackTeal;
+        background: $darker-green;
         padding-bottom: 3px;
 
         p {
@@ -211,7 +210,7 @@ ul {
               height: 35px;
               border-radius: 4px;
               overflow: hidden;
-              background: $SlackPurple;
+              background: $dark-eggplant;
               display: inline-block;
 
               img {
