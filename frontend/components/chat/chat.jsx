@@ -20,8 +20,7 @@ class Chat extends Component {
       return <Spinner />;
     } else {
       return (
-        <Nav
-          activeChannel={ this.props.activeChannel }
+        <Nav activeChannel={ this.props.activeChannel }
           setActiveChannel={ this.props.setActiveChannel } />
       );
     }

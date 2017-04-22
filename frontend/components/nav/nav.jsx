@@ -11,6 +11,12 @@ class Nav extends Component {
   constructor (props) {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleSelectChannel = this.handleSelectChannel.bind(this);
+  }
+
+  handleSelectChannel (e) {
+    const nextActive = parseInt(e.currentTarget.id);
+    this.props.setActiveChannel(nextActive);
   }
 
   componentWillUpdate (newProps, newState) {
@@ -30,7 +36,7 @@ class Nav extends Component {
         'channel';
 
       return (
-        <li key={ channel.id }>
+        <li id={ channel.id } key={ channel.id } onClick={ this.handleSelectChannel }>
           <p className={ channelClass }><i>#<span>{ channel.name }</span></i></p>
         </li>
       );
