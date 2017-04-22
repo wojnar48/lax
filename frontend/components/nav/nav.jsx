@@ -25,9 +25,13 @@ class Nav extends Component {
 
   render () {
     const publicChannels = this.props.publicChannels.map(channel => {
+      let channelClass = channel.id === this.props.activeChannel ?
+        'channel selected' :
+        'channel';
+
       return (
-        <li key={ channel.id } className="channel">
-          <p><i>#<span>{ channel.name }</span></i></p>
+        <li key={ channel.id }>
+          <p className={ channelClass }><i>#<span>{ channel.name }</span></i></p>
         </li>
       );
     });

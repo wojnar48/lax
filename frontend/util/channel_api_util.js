@@ -6,6 +6,13 @@ export const fetchChannels = () => {
   });
 };
 
+export const fetchChannel = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/chatroom/${id}`
+  });
+};
+
 export const createChannel = (channel) => {
   return $.ajax({
     method: 'POST',

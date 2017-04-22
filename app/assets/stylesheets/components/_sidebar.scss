@@ -69,6 +69,14 @@ $lightest-gray: #FFFFFF;
 
     p:hover {
       background: $darker-eggplant;
+      border-radius: 4px;
+      color: $lightest-gray;
+    }
+
+    p.selected {
+      background: $darker-green;
+      border-radius: 4px;
+      color: $lightest-gray;
     }
   }
 
