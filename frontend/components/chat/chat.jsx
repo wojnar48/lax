@@ -10,7 +10,6 @@ class Chat extends Component {
   }
 
   componentDidMount () {
-    debugger
     this.props.fetchChannels();
   }
 

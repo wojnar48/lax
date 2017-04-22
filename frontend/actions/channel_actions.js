@@ -1,15 +1,17 @@
 import * as ChannelApiUtil from '../util/channel_api_util';
 
-export const REQUEST_CHANNELS = 'REQUEST_CHANNELS';
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_DELETE_CHANNEL = 'RECEIVE_DELETE_CHANNEL';
+export const REQUEST_CHANNELS = 'REQUEST_CHANNELS';
+export const REQUEST_COMPLETE = 'REQUEST_COMPLETE';
 
 export const fetchChannels = () => (dispatch) => {
   dispatch(requestChannels());
   return ChannelApiUtil.fetchChannels()
-    .then(res => dispatch(receiveChannels(res)),
+    .then(res => dispatch(receiveChannels(res)))
+    .then(() => dispatch(requestComplete()),
     err => console.log(err));
 };
 
@@ -28,6 +30,12 @@ export const deleteChannel = (id) => (dispatch) => {
 export const requestChannels = () => {
   return {
     type: REQUEST_CHANNELS
+  };
+};
+
+export const requestComplete = () => {
+  return {
+    type: REQUEST_COMPLETE
   };
 };
 

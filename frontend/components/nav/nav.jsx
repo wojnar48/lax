@@ -12,14 +12,6 @@ class Nav extends Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    if (nextProps.session.currentUser === null) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   componentWillUpdate (newProps, newState) {
     if (newProps.session.currentUser === null) {
       newProps.router.push('/login');
