@@ -7,9 +7,11 @@ class MessageList extends Component {
 
   render () {
     return (
-      <ul>
-        { this.props.messages }
-      </ul>
+      <div>
+        <ul>
+          { this.props.messages }
+        </ul>
+      </div>
     );
   }
 }

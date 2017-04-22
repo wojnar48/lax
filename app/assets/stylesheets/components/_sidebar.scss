@@ -10,8 +10,6 @@ $lightest-gray: #FFFFFF;
 
 
 .sidebar {
-  min-width: 250px;
-  width: 15%;
   height: 100vh;
   background: $dark-eggplant;
   color: $light-eggplant;
@@ -26,11 +24,11 @@ $lightest-gray: #FFFFFF;
     }
   }
 
-  .username {
+  .nav-username {
     display: block;
     padding-left: 15px;
 
-    .status {
+    .nav-status {
       display: inline-block;
       width: 8px;
       height: 8px;

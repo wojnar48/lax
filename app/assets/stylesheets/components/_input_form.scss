@@ -7,3 +7,12 @@ $darker-green: #4C9689;
 $green: #00B880;
 $darker-green: #009064;
 $lightest-gray: #FFFFFF;
+
+.input-form {
+  position: absolute;
+  bottom: 20px;
+  height: 50px;
+  width: 80%;
+  border: 3px solid $light-eggplant;
+  border-radius: 5px;
+}

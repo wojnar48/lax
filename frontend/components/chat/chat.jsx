@@ -21,10 +21,14 @@ class Chat extends Component {
       return <Spinner />;
     } else {
       return (
-        <section className="main-container">
-          <Nav activeChannel={ this.props.activeChannel }
-            setActiveChannel={ this.props.setActiveChannel } />
-          <Messages activeChannel={ this.props.channels[this.props.activeChannel]} />
+        <section className="section group app-container">
+          <nav className="col span_2-12">
+            <Nav activeChannel={ this.props.activeChannel }
+              setActiveChannel={ this.props.setActiveChannel } />
+          </nav>
+          <section className="col span_10-12">
+            <Messages activeChannel={ this.props.channels[this.props.activeChannel]} />
+          </section>
         </section>
       );
     }

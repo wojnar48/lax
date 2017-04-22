@@ -17,10 +17,10 @@ class Messages extends Component {
       );
     });
     return (
-      <section className="messages-container">
+      <div className="section group messages-container">
         <MessageList messages={ messages} />
         <MessageInputForm />
-      </section>
+      </div>
     );
   }
 }

@@ -42,14 +42,14 @@ class Nav extends Component {
       );
     });
     return (
-      <section className="sidebar">
+      <div className="sidebar">
         <NavHeader currentUser={ this.props.session.currentUser } />
         <ChannelList publicChannels={ publicChannels } />
         <button
           className="button logout"
           onClick={ this.handleLogout }>Log out
         </button>
-      </section>
+      </div>
     );
   }
 }

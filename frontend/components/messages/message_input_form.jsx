@@ -7,7 +7,9 @@ class MessageInputForm extends Component {
 
   render () {
     return (
-      <input className="message-input-form" type="text"></input>
+      <div>
+        <input className="input-form" type="text"></input>
+      </div>
     );
   }
 }
