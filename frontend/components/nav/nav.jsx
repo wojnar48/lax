@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavHeader from './nav_header';
-import Channels from './channels';
+import ChannelList from './channel_list';
+import ChannelListItem from './channel_list_item';
 import { withRouter } from 'react-router';
 import { fetchChannels } from '../../actions/channel_actions';
 import { logout } from '../../actions/session_actions';
@@ -25,22 +26,19 @@ class Nav extends Component {
   render () {
     const publicChannels = this.props.publicChannels.map(channel => {
       return (
-        <li className="channel" key={ channel.id }>
-        <p><i>#<span>{ channel.name }</span></i></p>
+        <li key={ channel.id } className="channel">
+          <p><i>#<span>{ channel.name }</span></i></p>
         </li>
       );
     });
-
     return (
-      <section id="nav-container">
-        <div className="sidebar">
-          <NavHeader currentUser={ this.props.session.currentUser } />
-          <Channels publicChannels={ publicChannels } />
-          <button
-            className="button logout"
-            onClick={ this.handleLogout }>Log out
-          </button>
-        </div>
+      <section className="sidebar">
+        <NavHeader currentUser={ this.props.session.currentUser } />
+        <ChannelList publicChannels={ publicChannels } />
+        <button
+          className="button logout"
+          onClick={ this.handleLogout }>Log out
+        </button>
       </section>
     );
   }

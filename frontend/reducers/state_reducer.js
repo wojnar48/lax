@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 const _initialState = {
-  isFetching: false
+  isFetching: true
 };
 
 const StateReducer = (state = _initialState, action) => {

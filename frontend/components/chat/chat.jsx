@@ -9,12 +9,12 @@ class Chat extends Component {
     super(props);
   }
 
-  componentDidMount () {
+  componentWillMount () {
     this.props.fetchChannels();
   }
 
   render () {
-    if (this.props.channels.isFetching) {
+    if (this.props.state.isFetching) {
       return <Spinner />;
     } else {
       return <Nav />;
@@ -22,9 +22,10 @@ class Chat extends Component {
   }
 }
 
-const setStateToProps = ({ channels }) => {
+const setStateToProps = ({ channels, state }) => {
   return {
-    channels
+    channels,
+    state
   };
 };
 

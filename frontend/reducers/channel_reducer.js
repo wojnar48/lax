@@ -6,8 +6,7 @@ import {
 import { merge } from 'lodash';
 
 const _initialState = {
-  channels: {},
-  isFetching: false
+  channels: {}
 };
 
 const ChannelReducer = (state = _initialState, action) => {
