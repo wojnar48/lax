@@ -4,15 +4,14 @@ $dark-eggplant: #4d394b;
 $darker-eggplant: #40333F;
 $darkest-eggplant: #220920;
 $darker-green: #4C9689;
-
 $green: #00B880;
 $darker-green: #009064;
-
 $lightest-gray: #FFFFFF;
 
 
 .sidebar {
-  width: 250px;
+  min-width: 250px;
+  width: 15%;
   height: 100vh;
   background: $dark-eggplant;
   color: $light-eggplant;
@@ -71,6 +70,7 @@ $lightest-gray: #FFFFFF;
       background: $darker-eggplant;
       border-radius: 4px;
       color: $lightest-gray;
+      cursor: pointer;
     }
 
     p.selected {

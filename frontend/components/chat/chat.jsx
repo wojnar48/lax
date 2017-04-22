@@ -4,6 +4,7 @@ import Nav from '../nav/nav';
 import Spinner from './spinner';
 import { fetchChannels } from '../../actions/channel_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
+import Messages from '../messages/messages';
 
 class Chat extends Component {
   constructor (props) {
@@ -20,8 +21,11 @@ class Chat extends Component {
       return <Spinner />;
     } else {
       return (
-        <Nav activeChannel={ this.props.activeChannel }
-          setActiveChannel={ this.props.setActiveChannel } />
+        <section className="main-container">
+          <Nav activeChannel={ this.props.activeChannel }
+            setActiveChannel={ this.props.setActiveChannel } />
+          <Messages activeChannel={ this.props.channels[this.props.activeChannel]} />
+        </section>
       );
     }
   }
