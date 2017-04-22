@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import NavHeader from './nav_header';
 import Channels from './channels';
-import ChatContainer from '../chat/chat_container';
+import { withRouter } from 'react-router';
+import { fetchChannels } from '../../actions/channel_actions';
+import { logout } from '../../actions/session_actions';
 
-class NavIndex extends Component {
+class Nav extends Component {
   constructor (props) {
     super(props);
-    this.state = { publicChannels: [] };
     this.handleLogout = this.handleLogout.bind(this);
-  }
-
-  componentDidMount () {
-    this.setState({
-      publicChannels: this.props.fetchChannels()
-    });
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -48,32 +44,31 @@ class NavIndex extends Component {
         <div className="sidebar">
           <NavHeader currentUser={ this.props.session.currentUser } />
           <Channels publicChannels={ publicChannels } />
-        </div>
-        <div className="chat">
-          <div className="header-bar">
-            <div className="details">
-              <h1>Depends on selected channel</h1>
-              <h3 className="members">count logic</h3>
-              <h3 className="purpose">channel selected logic</h3>
-            </div>
-            <button
-              className="button logout"
-              onClick={ this.handleLogout }>Log out
-            </button>
-          </div>
-          <div id="chatbox">
-            <ul className="messages">
-            </ul>
-          </div>
-          <div className="input-bar">
-            <form>
-              <input type="text" placeholder=""/>
-            </form>
-          </div>
+          <button
+            className="button logout"
+            onClick={ this.handleLogout }>Log out
+          </button>
         </div>
       </section>
     );
   }
 }
 
-export default NavIndex;
+const mapStateToProps = ({ session, channels }) => {
+  const publicChannels = Object.values(channels);
+  return {
+    session,
+    publicChannels
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Nav));
