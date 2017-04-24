@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
+import MessagesHeader from './messages_header';
 
 class Messages extends Component {
   constructor (props) {
@@ -18,6 +19,7 @@ class Messages extends Component {
     });
     return (
       <div className="section group messages-container">
+        <MessagesHeader activeChannel={ this.props.activeChannel }/>
         <MessageList messages={ messages} />
         <MessageInputForm />
       </div>

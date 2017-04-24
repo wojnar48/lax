@@ -6,4 +6,46 @@ $darkest-eggplant: #220920;
 $darker-green: #4C9689;
 $green: #00B880;
 $darker-green: #009064;
+
 $lightest-gray: #FFFFFF;
+$light-gray: #F9F9F9;
+$almost-gray: #E8E8E8;
+$gray: #C5C5C5;
+$darker-gray: #555459;
+$darkest-gray: #373535;
+
+.messages-header {
+  border-bottom: 1px solid $almost-gray;
+
+  .channel-name {
+    font-size: 22px;
+    font-weight: 400;
+    margin-left: 15px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .channel-details {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color: $darker-gray;
+
+    .user-count {
+      display: inline-block;
+      padding-right: 10px;
+      border-right: 1px solid $gray;
+
+      i {
+        margin-right: 4px;
+        font-size: 15px;
+      }
+    }
+
+    .channel-desc {
+      display: inline-block;
+      padding-left: 10px;
+    }
+  }
+}

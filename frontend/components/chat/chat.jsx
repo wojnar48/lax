@@ -27,7 +27,7 @@ class Chat extends Component {
               setActiveChannel={ this.props.setActiveChannel } />
           </nav>
           <section className="col span_10-12">
-            <Messages activeChannel={ this.props.channels[this.props.activeChannel]} />
+            <Messages activeChannel={ this.props.channels[this.props.activeChannel] } />
           </section>
         </section>
       );
