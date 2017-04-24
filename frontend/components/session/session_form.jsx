@@ -43,11 +43,21 @@ class SessionForm extends Component {
     const buttonText = this.props.formType === 'login' ?
       'Sign in' :
       'Sign up';
+    const errors = this.props.errors.map(error => (
+      <li>
+        <p className="error">{ error }</p>
+      </li>
+    ));
 
     return (
       <section className="form-container">
         <div className="auth-form">
           <h2>{ buttonText } to Lax</h2>
+          <div className="session-errors">
+            <ul>
+              { this.props.errors }
+            </ul>
+          </div>
           <p>Please enter your <span>username</span> and <span>password</span></p>
           <form onSubmit={ this.handleSubmit }>
             <input

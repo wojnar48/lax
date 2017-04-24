@@ -6,7 +6,7 @@ const mapStateToProps = ({ session }) => {
   const errors = Boolean(session.errors) ? session.errors : [];
   return {
     loggedIn: Boolean(session.currentUser),
-    errors
+    errors: session.errors
   };
 };
 

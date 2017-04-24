@@ -31,6 +31,10 @@ body {
     background: $lightest-gray;
     box-shadow: 0 1px 0 rgba(0,0,0,.25);
 
+    .session-errors {
+      color: red;
+    }
+
     p span {
       font-weight: bold;
       color: $darkest-gray;
