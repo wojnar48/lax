@@ -16,6 +16,12 @@ export const login = (user) => (dispatch) => {
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 
+export const loginGuest = () => (dispatch) => {
+  return SessionApiUtil.loginGuest()
+    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
+    err => dispatch(receiveErrors(err.responseJSON)));
+};
+
 export const logout = () => (dispatch) => {
   return SessionApiUtil.logout()
     .then(() => dispatch(receiveLogout()),
