@@ -21,6 +21,7 @@ export const createChannel = (channel) => {
   });
 };
 
+
 export const deleteChannel = (id) => {
   return $.ajax({
     method: 'DELETE',
