@@ -20,7 +20,6 @@ class Nav extends Component {
   }
 
   handleSelectChannel (e) {
-    debugger
     const nextActive = parseInt(e.currentTarget.id);
     this.props.setActiveChannel(nextActive);
   }
@@ -50,7 +49,8 @@ class Nav extends Component {
     return (
       <div className="sidebar">
         <NavHeader currentUser={ this.props.session.currentUser } />
-        <ChannelList publicChannels={ subscriptions } />
+        <ChannelList publicChannels={ subscriptions }
+          channels={ this.props.channels }/>
         <button
           className="button logout"
           onClick={ this.handleLogout }>Log out
