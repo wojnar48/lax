@@ -18,14 +18,15 @@ class Chat extends Component {
   }
 
   componentWillUpdate (nextProps, nextState) {
-    if (nextProps.activeChannel === null) {
-      this.props.setActiveChannel(Object.values(nextProps.subscriptions)[0]);
+    if ((nextProps.activeChannel === null) &&
+      (Object.values(nextProps.subscriptions).length !== 0)) {
+      nextProps.setActiveChannel(Object.values(nextProps.subscriptions)[0]);
     }
   }
 
   render () {
     let allChannels = Object.values(this.props.channels);
-    if ((this.props.activeChannel === null) || (allChannels.length === 1)) {
+    if ((this.props.activeChannel === null) || (allChannels.length < 2)) {
       return <Spinner />;
     } else {
       return (

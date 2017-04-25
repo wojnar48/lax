@@ -16,8 +16,8 @@ class Nav extends Component {
   }
 
   handleSelectChannel (e) {
-    const nextActive = parseInt(e.currentTarget.id);
-    this.props.setActiveChannel(nextActive);
+    const nextActiveId = parseInt(e.currentTarget.id);
+    this.props.setActiveChannel(this.props.subscriptions[nextActiveId]);
   }
 
   componentWillUpdate (newProps, newState) {
