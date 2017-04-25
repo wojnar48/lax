@@ -21,17 +21,12 @@ class Messages extends Component {
   }
 
   render () {
-    // const messages = this.props.activeChannel.messages.map(message => {
-    //   return (
-    //     <li key={ message.id } className="message-item">
-    //       <p>{ message.body }</p>
-    //     </li>
-    //   );
-    // });
+    const activeMessages = Object.values(this.props.messages);
+
     return (
       <div className="section group messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel }/>
-        <MessageList />
+        <MessageList messages={ activeMessages } />
         <MessageInputForm />
       </div>
     );

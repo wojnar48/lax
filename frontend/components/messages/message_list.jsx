@@ -6,10 +6,17 @@ class MessageList extends Component {
   }
 
   render () {
+    const messageListItems = this.props.messages.map(message => {
+      return (
+        <li key={ message.id }>
+          <p>{ message.body }</p>
+        </li>
+      );
+    });
     return (
       <div>
         <ul>
-          { this.props.messages }
+          { messageListItems }
         </ul>
       </div>
     );

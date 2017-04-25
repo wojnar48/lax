@@ -13,7 +13,7 @@ class Chat extends Component {
 
   componentDidMount () {
     this.props.fetchChannels();
-    this.props.setActiveChannel(1);
+    // this.props.setActiveChannel(1);
   }
 
   render () {
@@ -27,7 +27,7 @@ class Chat extends Component {
               setActiveChannel={ this.props.setActiveChannel } />
           </nav>
           <section className="col span_10-12">
-            <Messages activeChannel={ this.props.channels[this.props.activeChannel] } />
+            <Messages activeChannel={ this.props.messages } />
           </section>
         </section>
       );
@@ -35,11 +35,12 @@ class Chat extends Component {
   }
 }
 
-const setStateToProps = ({ channels, state, activeChannel }) => {
+const setStateToProps = ({ channels, state, activeChannel, messages }) => {
   return {
     channels,
     state,
-    activeChannel
+    activeChannel,
+    messages
   };
 };
 

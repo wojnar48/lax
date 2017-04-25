@@ -14,7 +14,13 @@ class Nav extends Component {
     this.handleSelectChannel = this.handleSelectChannel.bind(this);
   }
 
+  componentDidMount () {
+    const channels = Object.values(this.props.channels);
+    this.props.setActiveChannel(channels[0].id);
+  }
+
   handleSelectChannel (e) {
+    debugger
     const nextActive = parseInt(e.currentTarget.id);
     this.props.setActiveChannel(nextActive);
   }
@@ -30,7 +36,7 @@ class Nav extends Component {
   }
 
   render () {
-    const publicChannels = this.props.publicChannels.map(channel => {
+    const subscriptions = this.props.session.currentUser.subscriptions.map(channel => {
       let channelClass = channel.id === this.props.activeChannel ?
         'channel selected' :
         'channel';
@@ -44,7 +50,7 @@ class Nav extends Component {
     return (
       <div className="sidebar">
         <NavHeader currentUser={ this.props.session.currentUser } />
-        <ChannelList publicChannels={ publicChannels } />
+        <ChannelList publicChannels={ subscriptions } />
         <button
           className="button logout"
           onClick={ this.handleLogout }>Log out
@@ -55,10 +61,9 @@ class Nav extends Component {
 }
 
 const mapStateToProps = ({ session, channels }) => {
-  const publicChannels = Object.values(channels);
   return {
     session,
-    publicChannels
+    channels
   };
 };
 

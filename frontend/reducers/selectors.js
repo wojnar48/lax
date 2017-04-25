@@ -1,4 +1,4 @@
 
-export const channelsArr = (channels) => {
-  return Object.channels.values(channels);
+export const messagesArr = (messages) => {
+  return Object.values(messages);
 };
