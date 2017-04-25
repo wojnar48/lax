@@ -1,6 +1,11 @@
 class Api::MessagesController < ApplicationController
   before_action :set_chatroom
 
+  def index
+    @messages = @chatroom.messages
+    render 'api/messages/index'
+  end
+
   def create
     message = @chatroom.messages.new(message_params)
     message.user = current_user

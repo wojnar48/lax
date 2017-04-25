@@ -3,29 +3,56 @@ import { connect } from 'react-redux';
 import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
 import MessagesHeader from './messages_header';
+import { fetchMessages } from '../../actions/message_actions';
 
 class Messages extends Component {
   constructor (props) {
     super(props);
   }
 
+  componentDidMount () {
+    this.props.fetchMessages(this.props.activeChannel);
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.activeChannel !== prevProps.activeChannel) {
+      this.props.fetchMessages(this.props.activeChannel);
+    }
+  }
+
   render () {
-    const messages = this.props.activeChannel.messages.map(message => {
-      return (
-        <li key={ message.id } className="message-item">
-          <p>{ message.body }</p>
-        </li>
-      );
-    });
+    // const messages = this.props.activeChannel.messages.map(message => {
+    //   return (
+    //     <li key={ message.id } className="message-item">
+    //       <p>{ message.body }</p>
+    //     </li>
+    //   );
+    // });
     return (
       <div className="section group messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel }/>
-        <MessageList messages={ messages} />
+        <MessageList />
         <MessageInputForm />
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ activeChannel, messages }) => {
+  return {
+    activeChannel,
+    messages
+  };
+};
 
-export default Messages;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id))
+  };
+};
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Messages);

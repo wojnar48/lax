@@ -1,5 +1,5 @@
 class Api::ChatroomsController < ApplicationController
-  before_action :set_chatroom, only: [:destroy]
+  before_action :set_chatroom, only: [:destroy, :show]
 
   def index
     # eventually this will be just public chatrooms
@@ -17,7 +17,6 @@ class Api::ChatroomsController < ApplicationController
       render json: @chatroom.errors.full_messages, status: 422
     end
   end
-
 
   def destroy
     @chatroom.destroy
