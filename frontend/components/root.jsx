@@ -6,7 +6,7 @@ import FormContainer from './session/session_form_container';
 import Chat from './chat/chat';
 
 const Root = ({ store }) => {
-  
+
   const _redirectIfLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {

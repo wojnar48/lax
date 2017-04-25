@@ -8,10 +8,8 @@ export const REQUEST_CHANNELS = 'REQUEST_CHANNELS';
 export const REQUEST_COMPLETE = 'REQUEST_COMPLETE';
 
 export const fetchChannels = () => (dispatch) => {
-  dispatch(requestChannels());
   return ChannelApiUtil.fetchChannels()
-    .then(res => dispatch(receiveChannels(res)))
-    .then(() => dispatch(requestComplete()),
+    .then(res => dispatch(receiveChannels(res)),
     err => console.log(err));
 };
 

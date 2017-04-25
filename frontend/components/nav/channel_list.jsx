@@ -35,7 +35,8 @@ class ChannelList extends Component {
 
 
   render () {
-    const allChannels = Object.values(this.props.channels).map(channel => {
+    const channelsArr = Object.values(this.props.channels);
+    const allChannels = channelsArr.map(channel => {
       return (
         <li key={ channel.id } className="channel-modal">
           <p><i>#</i><span>{ channel.name }</span></p>
@@ -48,7 +49,7 @@ class ChannelList extends Component {
       <div className="channels-container">
         <h4 onClick={ this.openModal }>channels</h4>
         <ul className="channels">
-          { this.props.publicChannels }
+          { this.props.subscriptions }
         </ul>
         <Modal
           isOpen={this.state.modalIsOpen}

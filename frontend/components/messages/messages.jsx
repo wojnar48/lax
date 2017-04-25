@@ -11,12 +11,12 @@ class Messages extends Component {
   }
 
   componentDidMount () {
-    this.props.fetchMessages(this.props.activeChannel);
+    this.props.fetchMessages(this.props.activeChannel.id);
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.props.activeChannel !== prevProps.activeChannel) {
-      this.props.fetchMessages(this.props.activeChannel);
+    if (this.props.activeChannel.id !== prevProps.activeChannel.id) {
+      this.props.fetchMessages(this.props.activeChannel.id);
     }
   }
 
