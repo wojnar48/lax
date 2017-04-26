@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
 import MessagesHeader from './messages_header';
-import MessageItem from './message_item';
 import { fetchMessages } from '../../actions/message_actions';
 
 class Messages extends Component {
@@ -22,12 +21,10 @@ class Messages extends Component {
   }
 
   render () {
-    const activeMessages = Object.values(this.props.messages);
-
     return (
       <div className="section group messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel } />
-        <MessageList messages={ activeMessages } />
+        <MessageList messages={ this.props.messages } />
         <MessageInputForm activeChannel={ this.props.activeChannel } />
       </div>
     );

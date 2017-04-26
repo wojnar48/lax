@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MessageItem from './message_item';
 
 class MessageList extends Component {
   constructor (props) {
@@ -8,13 +9,17 @@ class MessageList extends Component {
   render () {
     const messageListItems = this.props.messages.map(message => {
       return (
-        <li key={ message.id }>
-          <p>{ message.body }</p>
+        <li className="message-item" key={ message.id }>
+          <MessageItem
+            body={ message.body }
+            author={ message.author }
+            date={ message.date } />
         </li>
       );
     });
+
     return (
-      <div>
+      <div className="message-items-container">
         <ul>
           { messageListItems }
         </ul>

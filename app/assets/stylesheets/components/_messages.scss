@@ -50,3 +50,28 @@ $darkest-gray: #373535;
     }
   }
 }
+
+.message-items-container {
+  .message-item {
+    padding-left: 15px;
+    margin: 10px 0;
+  }
+
+  .message-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+
+    .message-author {
+      display: inline-block;
+      font-weight: 700;
+      color: $darkest-gray;
+    }
+
+    .message-date {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 14px;
+    }
+  }
+}
