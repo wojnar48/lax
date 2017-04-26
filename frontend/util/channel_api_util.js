@@ -13,11 +13,11 @@ export const fetchChannel = (id) => {
   });
 };
 
-export const createChannel = (channel) => {
+export const createChannel = (chatroom) => {
   return $.ajax({
     method: 'POST',
     url: 'api/chatrooms',
-    data: { channel }
+    data: { chatroom }
   });
 };
 

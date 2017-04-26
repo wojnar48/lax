@@ -3,6 +3,21 @@ import React, { Component } from 'react';
 class CreateChannelForm extends Component {
   constructor (props) {
     super(props);
+    this.state = { name: '', description: '' };
+
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInput (e) {
+    const field = e.currentTarget.id;
+    this.setState({ [field]: e.currentTarget.value });
+  }
+
+  handleSubmit (e) {
+    e.preventDefault();
+    this.props.handleCreateChannel(this.state);
+    this.props.closeModal();
   }
 
   render () {
@@ -30,24 +45,30 @@ class CreateChannelForm extends Component {
           </div>
           <div className="channel-errors">
           </div>
-          <form>
+          <form onSubmit={ this.handleSubmit }>
             <p>Name</p>
             <input
-              id="channel-name"
+              id="name"
               type="text"
+              value={ this.state.name }
+              onChange={ this.handleInput }
               placeholder="" />
             <p className="sub-text"><i>Names must be lowercase and have no spaces.</i></p>
 
             <p>Purpose <span className="sub-text">(optional)</span></p>
             <input
-              id="channel-desc"
+              id="description"
               type="text"
+              value={ this.state.description }
+              onChange={ this.handleInput }
               placeholder="" />
             <p className="sub-text"><i>What's this channel about?</i></p>
 
             <button onClick={ this.props.closeModal }
               className="button cancel">Cancel</button>
-            <button className="button submit">Create channel</button>
+            <input type="submit"
+              className="button submit"
+              value="Create Channel" />
           </form>
         </div>
       </section>

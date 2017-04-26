@@ -19,7 +19,7 @@ const ChannelReducer = (state = _initialState, action) => {
       });
       return newState;
     case RECEIVE_CHANNEL:
-      newState = state;
+      newState = merge({}, state);
       newState[action.channel.id] = action.channel;
       return newState;
     default:

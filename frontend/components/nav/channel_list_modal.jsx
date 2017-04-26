@@ -25,7 +25,8 @@ class ChannelListModal extends Component {
     const modalType = this.props.modalType === 'BrowseChannels' ?
       <BrowseChannels allChannels={ this.props.allChannels }
         closeModal={ this.props.closeModal } /> :
-      <CreateChannelForm closeModal={ this.props.closeModal } />;
+      <CreateChannelForm handleCreateChannel={ this.props.handleCreateChannel }
+        closeModal={ this.props.closeModal } />;
 
     return (
       <Modal

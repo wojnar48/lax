@@ -8,8 +8,6 @@ class ChannelList extends Component {
     super(props);
     this.state = { modalIsOpen: false, modalType: null };
 
-
-    // this.handleCreateChannel = this.handleCreateChannel.bind(this);
     this.handleSubscription = this.handleSubscription.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -31,6 +29,10 @@ class ChannelList extends Component {
     const channelId = parseInt(e.currentTarget.dataset.id);
     this.props.createSubscription(channelId);
   }
+
+  // handleCreateChannel (channel) {
+  //   this.props.createChannel(channel);
+  // }
 
 
   render () {
@@ -64,6 +66,7 @@ class ChannelList extends Component {
           { this.props.subscriptions }
         </ul>
         <ChannelListModal
+          handleCreateChannel={ this.props.handleCreateChannel }
           modalIsOpen={ this.state.modalIsOpen }
           modalType={ this.state.modalType }
           allChannels={ allChannels }

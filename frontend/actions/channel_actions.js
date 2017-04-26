@@ -25,17 +25,6 @@ export const deleteChannel = (id) => (dispatch) => {
     err => console.log(err));
 };
 
-export const requestChannels = () => {
-  return {
-    type: REQUEST_CHANNELS
-  };
-};
-
-export const requestComplete = () => {
-  return {
-    type: REQUEST_COMPLETE
-  };
-};
 
 export const receiveChannels = (channels) => {
   return {

@@ -11,7 +11,9 @@ import { createChannel } from '../../actions/channel_actions';
 class Nav extends Component {
   constructor (props) {
     super(props);
+
     this.handleSelectChannel = this.handleSelectChannel.bind(this);
+    this.handleCreateChannel = this.handleCreateChannel.bind(this);
   }
 
   handleSelectChannel (e) {
@@ -23,6 +25,10 @@ class Nav extends Component {
     if (newProps.session.currentUser === null) {
       this.props.router.push('/login');
     }
+  }
+
+  handleCreateChannel (channel) {
+    this.props.createChannel(channel);
   }
 
   render () {
@@ -43,6 +49,7 @@ class Nav extends Component {
       <div className="sidebar">
         <NavHeader currentUser={ this.props.session.currentUser } />
         <ChannelList
+          handleCreateChannel={ this.handleCreateChannel }
           createSubscription={ this.props.createSubscription }
           subscriptions={ subscriptions }
           channels={ this.props.channels } />
@@ -68,7 +75,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
     setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
-    createSubscription: (channel_id) => dispatch(createSubscription(channel_id))
+    createSubscription: (channel_id) => dispatch(createSubscription(channel_id)),
+    createChannel: (channel) => dispatch(createChannel(channel))
   };
 };
 

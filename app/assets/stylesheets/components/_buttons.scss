@@ -9,7 +9,7 @@ $shiny-blue: #07D0FF;
 
 .button {
   background-color: $lightest-gray;
-  border: 2px solid $light-eggplant;
+  border: 1px solid $light-eggplant;
   border-radius: 4px;
   color: #595959;
   cursor: pointer;
@@ -25,5 +25,5 @@ $shiny-blue: #07D0FF;
 }
 
 .button:hover {
-  border: 2px solid $shiny-blue;
+  border: 1px solid $shiny-blue;
 }

@@ -196,11 +196,13 @@ $darker-green: #009064;
   }
 
   .submit {
+    width: 100px;
+    height: 20px;
     background: $green;
     color: $lightest-gray;
     border: 1px solid $darker-green;
   }
-
+  
   .submit:hover {
     background: $darker-green;
     cursor: pointer;
