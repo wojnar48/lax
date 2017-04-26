@@ -57,7 +57,12 @@ class ChannelList extends Component {
 
     return (
       <div className="channels-container">
-        <h4 onClick={ this.openModal }>channels</h4>
+        <div className="channels-header">
+          <h4 data-tooltip="browse all channels"
+            onClick={ this.openModal }>channels
+          </h4>
+          <i className="fa fa-plus-circle"></i>
+        </div>
         <ul className="channels">
           { this.props.subscriptions }
         </ul>
