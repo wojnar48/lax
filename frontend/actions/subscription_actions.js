@@ -8,7 +8,7 @@ export const fetchSubscriptions = () => dispatch => {
     .then(res => dispatch(receiveSubscriptions(res)));
 };
 
-export const createSubscription = (chatroom_id) => {
+export const createSubscription = chatroom_id => dispatch => {
   return SubscriptionApiUtil.createSubscription(chatroom_id)
     .then(res => dispatch(receiveSubscription(res)));
 };

@@ -3,7 +3,7 @@ class Api::ChatroomUsersController < ApplicationController
 
   def create
     @chatroom_user = @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
-    # render some sort of response
+    render 'api/subscriptions/show'
   end
 
   def destroy

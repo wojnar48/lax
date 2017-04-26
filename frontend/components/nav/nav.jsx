@@ -5,6 +5,7 @@ import ChannelList from './channel_list';
 import { withRouter } from 'react-router';
 import { logout } from '../../actions/session_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
+import { createSubscription } from '../../actions/subscription_actions';
 
 class Nav extends Component {
   constructor (props) {
@@ -41,6 +42,7 @@ class Nav extends Component {
       <div className="sidebar">
         <NavHeader currentUser={ this.props.session.currentUser } />
         <ChannelList
+          createSubscription={ this.props.createSubscription }
           subscriptions={ subscriptions }
           channels={ this.props.channels } />
         <button
@@ -64,7 +66,8 @@ const mapStateToProps = ({ session, channels, activeChannel, subscriptions }) =>
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    setActiveChannel: (channel) => dispatch(setActiveChannel(channel))
+    setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
+    createSubscription: (channel_id) => dispatch(createSubscription(channel_id))
   };
 };
 
