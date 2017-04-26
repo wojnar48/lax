@@ -1,37 +1,30 @@
 import React, { Component } from 'react';
 import ChannelListItem from './channel_list_item';
 import Modal from 'react-modal';
+import ChannelListModal from './channel_list_modal';
 
 class ChannelList extends Component {
   constructor (props) {
     super(props);
-    this.state = { modalIsOpen: false };
+    this.state = { modalIsOpen: false, modalType: null };
 
+
+    // this.handleCreateChannel = this.handleCreateChannel.bind(this);
     this.handleSubscription = this.handleSubscription.bind(this);
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
-  componentWillMount() {
-    Modal.setAppElement('body');
-  }
+  openModal(e) {
+    const modalType = e.currentTarget.id === 'browse-channels' ?
+      'BrowseChannels' :
+      'CreateChannel';
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+    this.setState({ modalIsOpen: true, modalType });
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
-  }
-
-  getParent () {
-    return document.querySelector('#root');
+    this.setState({ modalIsOpen: false });
   }
 
   handleSubscription (e) {
@@ -58,33 +51,22 @@ class ChannelList extends Component {
     return (
       <div className="channels-container">
         <div className="channels-header">
-          <h4 data-tooltip="browse all channels"
+          <h4 id="browse-channels"
+            data-tooltip="browse all channels"
             onClick={ this.openModal }>channels
           </h4>
-          <i className="fa fa-plus-circle"></i>
+          <i id="create-channel"
+            onClick={ this.openModal }
+            className="fa fa-plus-circle">
+          </i>
         </div>
         <ul className="channels">
           { this.props.subscriptions }
         </ul>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          className={ 'channel-list-modal' }
-          overlayClassName={ 'channel-list-modal-overlay' }
-          contentLabel="Example Modal">
-
-          <button onClick={this.closeModal}>
-            <div className="close"></div>
-          </button>
-          <div>
-            <h2>Browse All Channels</h2>
-            <p>Channels you can join</p>
-            <ul>
-              { allChannels }
-            </ul>
-          </div>
-        </Modal>
+        <ChannelListModal
+          modalIsOpen={ this.state.modalIsOpen }
+          modalType={ this.state.modalType }
+          allChannels={ allChannels }/>
       </div>
     );
   }

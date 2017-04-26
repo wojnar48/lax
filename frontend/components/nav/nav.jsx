@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import { logout } from '../../actions/session_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
 import { createSubscription } from '../../actions/subscription_actions';
+import { createChannel } from '../../actions/channel_actions';
 
 class Nav extends Component {
   constructor (props) {
