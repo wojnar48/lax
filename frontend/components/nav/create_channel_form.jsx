@@ -45,7 +45,8 @@ class CreateChannelForm extends Component {
               placeholder="" />
             <p className="sub-text"><i>What's this channel about?</i></p>
 
-            <button className="button cancel">Cancel</button>
+            <button onClick={ this.props.closeModal }
+              className="button cancel">Cancel</button>
             <button className="button submit">Create channel</button>
           </form>
         </div>

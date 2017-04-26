@@ -5,6 +5,7 @@ $gray: #C5C5C5;
 $darker-gray: #555459;
 $light-eggplant: #ab9ba9;
 $dark-eggplant: #4d394b;
+$shiny-blue: #07D0FF;
 
 .button {
   background-color: $lightest-gray;
@@ -24,5 +25,5 @@ $dark-eggplant: #4d394b;
 }
 
 .button:hover {
-  border: 2px solid $dark-eggplant;
+  border: 2px solid $shiny-blue;
 }

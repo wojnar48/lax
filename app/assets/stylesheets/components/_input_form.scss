@@ -7,12 +7,35 @@ $darker-green: #4C9689;
 $green: #00B880;
 $darker-green: #009064;
 $lightest-gray: #FFFFFF;
+$light-gray: #F9F9F9;
+$almost-gray: #E8E8E8;
+$gray: #C5C5C5;
+$darker-gray: #555459;
+$darkest-gray: #373535;
+$blue: #007ab8;
+$shiny-blue: #07D0FF;
 
 .input-form {
   position: absolute;
   bottom: 20px;
-  height: 50px;
+  height: 45px;
   width: 80%;
-  border: 3px solid $light-eggplant;
+  margin-left: 15px;
+  border: 2px solid $gray;
   border-radius: 5px;
+}
+
+.input-form:hover {
+  border: 2px solid $shiny-blue;
+}
+
+input[type=text] {
+  padding-left: 10px;
+  color: $darkest-gray;
+}
+
+::-webkit-input-placeholder {
+  padding: 5px;
+  color: $gray;
+  font-size: 16px;
 }

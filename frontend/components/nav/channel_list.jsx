@@ -15,7 +15,7 @@ class ChannelList extends Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  openModal(e) {
+  openModal (e) {
     const modalType = e.currentTarget.id === 'browse-channels' ?
       'BrowseChannels' :
       'CreateChannel';
@@ -66,7 +66,8 @@ class ChannelList extends Component {
         <ChannelListModal
           modalIsOpen={ this.state.modalIsOpen }
           modalType={ this.state.modalType }
-          allChannels={ allChannels }/>
+          allChannels={ allChannels }
+          closeModal={ this.closeModal } />
       </div>
     );
   }

@@ -8,7 +8,10 @@ class MessageInputForm extends Component {
   render () {
     return (
       <div>
-        <input className="input-form" type="text"></input>
+        <input
+          className="input-form"
+          type="text"
+          placeholder={`Message #${this.props.activeChannel.name}`} />
       </div>
     );
   }

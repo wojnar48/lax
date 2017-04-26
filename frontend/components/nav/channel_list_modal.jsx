@@ -7,8 +7,6 @@ class ChannelListModal extends Component {
   constructor (props) {
     super(props);
     this.state = { modalIsOpen: props.modalIsOpen };
-
-    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,14 +21,11 @@ class ChannelListModal extends Component {
     Modal.setAppElement('body');
   }
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
-  }
-
   render () {
     const modalType = this.props.modalType === 'BrowseChannels' ?
-      <BrowseChannels allChannels={ this.props.allChannels } /> :
-      <CreateChannelForm closeModal={ this.closeModal } />;
+      <BrowseChannels allChannels={ this.props.allChannels }
+        closeModal={ this.props.closeModal } /> :
+      <CreateChannelForm closeModal={ this.props.closeModal } />;
 
     return (
       <Modal
@@ -40,7 +35,7 @@ class ChannelListModal extends Component {
         overlayClassName={ 'channel-list-modal-overlay' }
         contentLabel="Modal 1">
 
-        <button onClick={ this.closeModal }>
+        <button onClick={ this.props.closeModal }>
           <div className="close"></div>
         </button>
 
