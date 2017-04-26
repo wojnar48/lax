@@ -6,12 +6,9 @@ import { withRouter } from 'react-router';
 import { logout } from '../../actions/session_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
 
-//rework logic for active channel to contain more info
-
 class Nav extends Component {
   constructor (props) {
     super(props);
-    this.handleLogout = this.handleLogout.bind(this);
     this.handleSelectChannel = this.handleSelectChannel.bind(this);
   }
 
@@ -22,12 +19,8 @@ class Nav extends Component {
 
   componentWillUpdate (newProps, newState) {
     if (newProps.session.currentUser === null) {
-      newProps.router.push('/login');
+      this.props.router.push('/login');
     }
-  }
-
-  handleLogout () {
-    this.props.logout().then(() => this.props.router.push('/login'));
   }
 
   render () {
@@ -52,7 +45,7 @@ class Nav extends Component {
           channels={ this.props.channels } />
         <button
           className="button logout"
-          onClick={ this.handleLogout }>Log out
+          onClick={ this.props.logout }>Log out
         </button>
       </div>
     );
@@ -79,23 +72,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(Nav));
-//
-// <ChannelList publicChannels={ subscriptions }
-//   channels={ this.props.channels }/>
-
-
-
-// const subscriptions = this.props.subscriptions.map(sub => {
-//   let channelClass = sub.id === this.props.activeChannel.id ?
-//     'channel selected' :
-//     'channel';
-//
-//   return (
-//     <li id={ sub.id } key={ sub.id } onClick={ this.handleSelectChannel }>
-//       <p className={ channelClass }><i>#<span>{ sub.name }</span></i></p>
-//     </li>
-//   );
-// });
-
-// <ChannelList publicChannels={ subscriptions }
-//   channels={ this.props.channels }/>

@@ -14,24 +14,21 @@ const Root = ({ store }) => {
     }
   };
 
+  const _ensureLoggedIn = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if (!currentUser) {
+      replace('/login');
+    }
+  };
+
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path='/' component={ App }>
-          <Route
-            path='/login'
-            component={ FormContainer }
-            onEnter={ _redirectIfLoggedIn } />
-
-          <Route
-            path='/signup'
-            component={ FormContainer }
-            onEnter={ _redirectIfLoggedIn } />
-
+          <Route path='/login' component={ FormContainer } onEnter={ _redirectIfLoggedIn } />
+          <Route path='/signup' component={ FormContainer } onEnter={ _redirectIfLoggedIn } />
         </Route>
-        <Route path="/main" component={ Chat }>
-
-        </Route>
+        <Route path="/main" component={ Chat } onEnter={ _ensureLoggedIn } />
       </Router>
     </Provider>
   );
