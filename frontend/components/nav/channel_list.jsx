@@ -30,11 +30,6 @@ class ChannelList extends Component {
     this.props.createSubscription(channelId);
   }
 
-  // handleCreateChannel (channel) {
-  //   this.props.createChannel(channel);
-  // }
-
-
   render () {
     const channelsArr = Object.values(this.props.channels);
     const allChannels = channelsArr.map(channel => {

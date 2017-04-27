@@ -6,10 +6,16 @@ class Api::MessagesController < ApplicationController
     render 'api/messages/index'
   end
 
+  # make sure to render errors
   def create
-    message = @chatroom.messages.new(message_params)
-    message.user = current_user
-    message.save
+    @message = @chatroom.messages.new(message_params)
+    @message.user = current_user
+
+    if @message.save
+      render 'api/messages/show'
+    else
+      render json: @message.errors.full_messages, status: 422
+    end
   end
 
   private

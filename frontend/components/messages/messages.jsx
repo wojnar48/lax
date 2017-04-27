@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
 import MessagesHeader from './messages_header';
-import { fetchMessages } from '../../actions/message_actions';
+import { fetchMessages, createMessage } from '../../actions/message_actions';
 
 class Messages extends Component {
   constructor (props) {
@@ -25,7 +25,8 @@ class Messages extends Component {
       <div className="section group messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel } />
         <MessageList messages={ this.props.messages } />
-        <MessageInputForm activeChannel={ this.props.activeChannel } />
+        <MessageInputForm activeChannel={ this.props.activeChannel }
+          createMessage={ this.props.createMessage } />
       </div>
     );
   }
@@ -40,7 +41,8 @@ const mapStateToProps = ({ activeChannel, messages }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id))
+    fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
+    createMessage: (channel_id, message) => dispatch(createMessage(channel_id, message))
   };
 };
 

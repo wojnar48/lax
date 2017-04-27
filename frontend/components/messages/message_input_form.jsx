@@ -3,15 +3,35 @@ import React, { Component } from 'react';
 class MessageInputForm extends Component {
   constructor (props) {
     super(props);
+    this.state = { 'body': '' };
+
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInput (e) {
+    this.setState({
+      body: e.currentTarget.value
+    });
+  }
+
+  handleSubmit (e) {
+    e.preventDefault();
+    this.props.createMessage(this.props.activeChannel.id, this.state);
+    this.setState({ 'body': ''});
   }
 
   render () {
     return (
       <div>
-        <input
-          className="input-form"
-          type="text"
-          placeholder={`Message #${this.props.activeChannel.name}`} />
+        <form onSubmit={ this.handleSubmit }>
+          <input
+            className="input-form"
+            type="text"
+            onChange={ this.handleInput }
+            value={ this.state.body }
+            placeholder={`Message #${this.props.activeChannel.name}`} />
+        </form>
       </div>
     );
   }
