@@ -15,6 +15,10 @@ export const createMessage = (channel_id, message) => (dispatch) => {
     err => console.log(err));
 };
 
+export const receiveMessageStream = (message) => (dispatch) => {
+  return dispatch(receiveMessage(message));
+};
+
 export const receiveMessages = (messages) => {
   return {
     type: RECEIVE_MESSAGES,

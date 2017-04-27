@@ -12,10 +12,19 @@ class Api::MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      render 'api/messages/show'
-    else
-      render json: @message.errors.full_messages, status: 422
+      ActionCable.server.broadcast 'messages',
+        id: @message.id,
+        body: @message.body,
+        author: @message.user.username,
+        date: @message.created_at,
+        userId: @message.user_id,
+        chatroomId: @message.chatroom_id
+      head :ok
     end
+    #   render 'api/messages/show'
+    # else
+    #   render json: @message.errors.full_messages, status: 422
+    # end
   end
 
   private

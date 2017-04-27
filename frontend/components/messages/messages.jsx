@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
 import MessagesHeader from './messages_header';
-import { fetchMessages, createMessage, receiveMessage } from '../../actions/message_actions';
+import { fetchMessages,
+  createMessage,
+  receiveMessage,
+  receiveMessageStream } from '../../actions/message_actions';
 import MessagesChannel from '../../actioncable/messages_subscriptions';
 
 class Messages extends Component {
@@ -13,7 +16,9 @@ class Messages extends Component {
 
   componentDidMount () {
     this.props.fetchMessages(this.props.activeChannel.id);
-    MessagesChannel.subscribe(message => receiveMessage(message));
+    MessagesChannel.subscribe(message => {
+      this.props.receiveMessageStream(message);
+    });
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -45,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
     createMessage: (channel_id, message) => dispatch(createMessage(channel_id, message)),
-    receiveMessage: (message) => dispatch(receiveMessage(message))
+    receiveMessageStream: (message) => dispatch(receiveMessage(message))
   };
 };
 
