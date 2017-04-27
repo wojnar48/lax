@@ -22,6 +22,7 @@ class Nav extends Component {
   }
 
   componentWillUpdate (newProps, newState) {
+    debugger
     if (newProps.session.currentUser === null) {
       this.props.router.push('/login');
     }

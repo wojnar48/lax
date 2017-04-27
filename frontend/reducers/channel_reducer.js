@@ -5,11 +5,7 @@ import {
   RECEIVE_ERRORS } from '../actions/channel_actions';
 import { merge } from 'lodash';
 
-const _initialState = {
-  channels: {}
-};
-
-const ChannelReducer = (state = _initialState, action) => {
+const ChannelReducer = (state = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_CHANNELS:

@@ -11,7 +11,7 @@ class Api::ChatroomsController < ApplicationController
     @chatroom = Chatroom.new(chatroom_params)
 
     if @chatroom.save
-      @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
+      @chatroom.chatroom_users.where(user_id: current_user.id).create
       render 'api/chatrooms/show'
     else
       render json: @chatroom.errors.full_messages, status: 422
