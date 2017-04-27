@@ -10,6 +10,8 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.web_socket_server_url = "wss://lax-app.herokuapp.com/cable"
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -80,6 +82,8 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.action_cable.allowed_request_origins = ['https://lax-app.herokuapp.com', 'http://lax-app.herokuapp.com']
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
