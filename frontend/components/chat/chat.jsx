@@ -5,7 +5,9 @@ import Spinner from './spinner';
 import Messages from '../messages/messages';
 import { fetchChannels } from '../../actions/channel_actions';
 import { fetchSubscriptions } from '../../actions/subscription_actions';
+import { createSubscription } from '../../actions/subscription_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
+import { channelsArr, subscriptionsArr } from '../../reducers/selectors';
 
 class Chat extends Component {
   constructor (props) {
@@ -15,18 +17,19 @@ class Chat extends Component {
   componentDidMount () {
     this.props.fetchChannels();
     this.props.fetchSubscriptions();
+    this.props.createSubscription(1);
   }
 
   componentWillUpdate (nextProps, nextState) {
-    if ((nextProps.activeChannel === null) &&
-      (Object.values(nextProps.subscriptions).length !== 0)) {
-      nextProps.setActiveChannel(Object.values(nextProps.subscriptions)[0]);
+    const oldSubs = subscriptionsArr(this.props.subscriptions);
+    const newSubs = subscriptionsArr(nextProps.subscriptions);
+    if ((oldSubs.length === 0) && (newSubs.length !== 0)) {
+      nextProps.setActiveChannel(newSubs[0]);
     }
   }
 
   render () {
-    let allChannels = Object.values(this.props.channels);
-    if ((this.props.activeChannel === null) || (allChannels.length < 2)) {
+    if (this.props.activeChannel === null) {
       return <Spinner />;
     } else {
       return (
@@ -56,7 +59,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchChannels: () => dispatch(fetchChannels()),
     setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
-    fetchSubscriptions: () => dispatch(fetchSubscriptions())
+    fetchSubscriptions: () => dispatch(fetchSubscriptions()),
+    createSubscription: (channelId) => dispatch(createSubscription(channelId))
   };
 };
 
