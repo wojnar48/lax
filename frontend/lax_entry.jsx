@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root.jsx';
 import configureStore from './store/store';
 import { fetchChannels } from './actions/channel_actions';
+import ActionCable from 'actioncable';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -12,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+
+  window.App = {};
+  window.App.cable = ActionCable.createConsumer();
 
   ReactDOM.render(<Root store={ store }/>,
   document.getElementById('root'));
