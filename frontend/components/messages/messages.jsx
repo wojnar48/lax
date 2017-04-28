@@ -31,7 +31,7 @@ class Messages extends Component {
     return (
       <div className="messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel } />
-        <MessageList messages={ this.props.messages } />
+        <MessageList messages={ this.props.messages } activeChannel={ this.props.activeChannel } />
         <MessageInputForm activeChannel={ this.props.activeChannel }
           createMessage={ this.props.createMessage } />
       </div>
