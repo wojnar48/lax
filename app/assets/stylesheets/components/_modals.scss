@@ -14,11 +14,11 @@ $green: #00B880;
 $darker-green: #009064;
 
 .channel-list-modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: $lightest-gray;
 
   div {
@@ -202,7 +202,7 @@ $darker-green: #009064;
     color: $lightest-gray;
     border: 1px solid $darker-green;
   }
-  
+
   .submit:hover {
     background: $darker-green;
     cursor: pointer;
