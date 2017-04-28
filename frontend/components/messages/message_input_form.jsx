@@ -23,14 +23,14 @@ class MessageInputForm extends Component {
 
   render () {
     return (
-      <div>
+      <div className="input-form-container">
         <form onSubmit={ this.handleSubmit }>
           <input
             className="input-form"
             type="text"
             onChange={ this.handleInput }
             value={ this.state.body }
-            placeholder={`Message #${this.props.activeChannel.name}`} />
+            placeholder={ `Message #${this.props.activeChannel.name}` } />
         </form>
       </div>
     );

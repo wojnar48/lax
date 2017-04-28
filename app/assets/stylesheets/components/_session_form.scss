@@ -1,17 +1,19 @@
-$green: #00B880;
+$light-eggplant: #ab9ba9;
+$dark-eggplant: #4d394b;
+$darker-eggplant: #40333F;
+$darkest-eggplant: #220920;
 $darker-green: #4C9689;
-
+$green: #00B880;
 $lightest-gray: #FFFFFF;
 $light-gray: #F9F9F9;
 $almost-gray: #E8E8E8;
 $gray: #C5C5C5;
 $darker-gray: #555459;
 $darkest-gray: #373535;
-
 $blue: #007ab8;
 
 body {
-  background: $light-gray;
+  background: $lightest-gray;
   font-family: 'Lato', sans-serif;
   color: $darker-gray;
 }
