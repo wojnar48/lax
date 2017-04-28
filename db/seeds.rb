@@ -5,6 +5,7 @@ ActiveRecord::Base.transaction do
   Message.destroy_all
 
   user1 = User.create!(username: 'guest', password: 'password')
+  user2 = User.create!(username: 'guest2', password: 'password')
 
   chatroom = Chatroom.create!(
     name: 'general',
@@ -16,35 +17,18 @@ ActiveRecord::Base.transaction do
     user_id: user1.id
   )
 
-  Message.create!(
-    body: 'first message in general',
-    chatroom_id: chatroom.id,
-    user_id: user1.id
-  )
-
-  user2 = User.create!(username: 'guest2', password: 'password')
-
-  5.times do
+  3.times do
+    rand_user = [user1, user2].sample
     chatroom_name = Faker::Hipster.word
     chatroom_desc = Faker::Hipster.sentence
 
-    chatroom = Chatroom.create!(
-      name: chatroom_name,
-      description: chatroom_desc
-    )
+    chatroom = Chatroom.create!(name: chatroom_name, description: chatroom_desc)
+    chatroom.chatroom_users.create!(user_id: rand_user.id)
 
-    ChatroomUser.create!(
-      chatroom_id: chatroom.id,
-      user_id: user2.id
-    )
-
-    rand(10).times do
+    rand(30).times do
+      rand_user = [user1, user2].sample
       sentence = Faker::Hipster.sentence
-      Message.create!(
-        body: sentence,
-        chatroom_id: chatroom.id,
-        user_id: user2.id
-      )
+      rand_user.messages.create!(body: sentence, chatroom_id: chatroom.id)
     end
   end
 end
