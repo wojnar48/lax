@@ -25,6 +25,7 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path='/' component={ App }>
+          <IndexRoute component={ FormContainer } />
           <Route path='/login' component={ FormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signup' component={ FormContainer } onEnter={ _redirectIfLoggedIn } />
         </Route>

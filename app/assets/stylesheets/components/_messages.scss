@@ -71,23 +71,58 @@ section {
       .message-item {
         padding-left: 20px;
         margin: 10px 0;
+
+        .message-container {
+          display: flex;
+          align-items: center;
+
+          .avatar1 {
+            display: inline-block;
+            background-image: asset_url('pepsi_man.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: 1px solid $darker-gray;
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 1px 0 rgba(0,0,0,.25);
+          }
+
+          .avatar2 {
+            display: inline-block;
+            background-image: asset_url('goku.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: 1px solid $darker-gray;
+            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 1px 0 rgba(0,0,0,.25);
+          }
+        }
       }
 
-      .message-header {
-        display: flex;
-        justify-content: flex-start;
-        align-items: baseline;
+      .message-body {
+        margin-left: 5px;
 
-        .message-author {
-          display: inline-block;
-          font-weight: 700;
-          color: $darkest-gray;
-        }
 
-        .message-date {
-          display: inline-block;
-          margin-left: 8px;
-          font-size: 14px;
+        .message-header {
+          display: flex;
+          justify-content: flex-start;
+          align-items: baseline;
+
+          .message-author {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 16px;
+            color: $darkest-gray;
+          }
+
+          .message-date {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 14px;
+          }
         }
       }
     }
