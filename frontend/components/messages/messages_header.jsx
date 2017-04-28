@@ -9,7 +9,7 @@ class MessagesHeader extends Component {
     return (
       <section className="messages-header">
         <div className="channel-name">
-          <p><i>#</i><span>{ this.props.activeChannel.name }</span></p>
+          <p><i>#</i>{ this.props.activeChannel.name }</p>
         </div>
         <div className="channel-details">
           <p className="user-count">

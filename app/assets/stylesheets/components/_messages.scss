@@ -1,12 +1,9 @@
-
 $light-eggplant: #ab9ba9;
 $dark-eggplant: #4d394b;
 $darker-eggplant: #40333F;
 $darkest-eggplant: #220920;
 $darker-green: #4C9689;
 $green: #00B880;
-$darker-green: #009064;
-
 $lightest-gray: #FFFFFF;
 $light-gray: #F9F9F9;
 $almost-gray: #E8E8E8;
@@ -14,64 +11,81 @@ $gray: #C5C5C5;
 $darker-gray: #555459;
 $darkest-gray: #373535;
 
-.messages-header {
-  border-bottom: 1px solid $almost-gray;
+section {
 
-  .channel-name {
-    font-size: 22px;
-    font-weight: 400;
-    margin-left: 15px;
-    color: $darkest-gray;
+  .messages-container {
+    width: 100%;
+    margin-left: 250px;
 
-    i {
-      margin-right: 5px;
-    }
-  }
+    .messages-header {
+      position: fixed;
+      display: block;
+      width: 100%;
+      height: 60px;
+      border-bottom: 1px solid $almost-gray;
 
-  .channel-details {
-    margin-left: 15px;
-    margin-bottom: 10px;
-    color: $darker-gray;
+      .channel-name {
+        font-size: 22px;
+        font-weight: 700;
+        margin-left: 15px;
+        color: $darkest-gray;
 
-    .user-count {
-      display: inline-block;
-      padding-right: 10px;
-      border-right: 1px solid $gray;
+        i {
+          margin-right: 5px;
+        }
+      }
 
-      i {
-        margin-right: 4px;
-        font-size: 15px;
+      .channel-details {
+        display: flex;
+        align-items: baseline;
+        font-weight: 300;
+        margin-top: 5px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+        color: $darker-gray;
+
+        .user-count {
+          display: inline-block;
+          padding-right: 10px;
+          border-right: 1px solid $gray;
+
+          i {
+            margin-right: 4px;
+            font-size: 14px;
+          }
+        }
+
+        .channel-desc {
+          display: inline-block;
+          padding-left: 10px;
+        }
       }
     }
 
-    .channel-desc {
-      display: inline-block;
-      padding-left: 10px;
-    }
-  }
-}
+    .message-items-container {
+      padding-top: 61px;
+      .message-item {
+        padding-left: 15px;
+        margin: 10px 0;
+      }
 
-.message-items-container {
-  .message-item {
-    padding-left: 15px;
-    margin: 10px 0;
-  }
+      .message-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
 
-  .message-header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
+        .message-author {
+          display: inline-block;
+          font-weight: 700;
+          color: $darkest-gray;
+        }
 
-    .message-author {
-      display: inline-block;
-      font-weight: 700;
-      color: $darkest-gray;
-    }
-
-    .message-date {
-      display: inline-block;
-      margin-left: 8px;
-      font-size: 14px;
+        .message-date {
+          display: inline-block;
+          margin-left: 8px;
+          font-size: 14px;
+        }
+      }
     }
   }
 }

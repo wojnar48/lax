@@ -29,7 +29,7 @@ class Messages extends Component {
 
   render () {
     return (
-      <div className="section group messages-container">
+      <div className="messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel } />
         <MessageList messages={ this.props.messages } />
         <MessageInputForm activeChannel={ this.props.activeChannel }

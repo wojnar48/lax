@@ -37,7 +37,7 @@ class Chat extends Component {
           <nav className="sidebar-container">
             <Nav />
           </nav>
-          <section className="messages-container">
+          <section>
             <Messages />
           </section>
         </section>
