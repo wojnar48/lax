@@ -8,7 +8,11 @@ class MessageList extends Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
+
     let nextMessages = messagesArr(nextProps.messages);
+    if (nextMessages.slice(-1)[0] === undefined) {
+      return true;
+    }
     if (nextMessages.slice(-1)[0].chatroomId !== this.props.activeChannel.id) {
       return false;
     } else {
