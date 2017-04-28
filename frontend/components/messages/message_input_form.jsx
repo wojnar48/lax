@@ -30,6 +30,7 @@ class MessageInputForm extends Component {
             type="text"
             onChange={ this.handleInput }
             value={ this.state.body }
+            autoFocus
             placeholder={ `Message #${this.props.activeChannel.name}` } />
         </form>
       </div>

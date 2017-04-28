@@ -24,6 +24,7 @@ section {
       height: 60px;
       background: $lightest-gray;
       border-bottom: 1px solid $almost-gray;
+      box-shadow: 0 1px 0 rgba(0,0,0,.25);
 
       .channel-name {
         font-size: 22px;
@@ -39,7 +40,7 @@ section {
       .channel-details {
         display: flex;
         align-items: baseline;
-        font-weight: 300;
+        font-weight: 400;
         margin-top: 5px;
         margin-left: 20px;
         margin-bottom: 10px;
