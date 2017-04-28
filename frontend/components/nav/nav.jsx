@@ -47,16 +47,13 @@ class Nav extends Component {
 
     return (
       <div className="sidebar">
-        <NavHeader currentUser={ this.props.session.currentUser } />
+        <NavHeader logout={ this.props.logout }
+          currentUser={ this.props.session.currentUser } />
         <ChannelList
           handleCreateChannel={ this.handleCreateChannel }
           createSubscription={ this.props.createSubscription }
           subscriptions={ subscriptions }
           channels={ this.props.channels } />
-        <button
-          className="button logout"
-          onClick={ this.props.logout }>Log out
-        </button>
       </div>
     );
   }

@@ -33,11 +33,11 @@ class Chat extends Component {
       return <Spinner />;
     } else {
       return (
-        <section className="section group app-container">
-          <nav className="col span_2-12">
+        <section>
+          <nav className="sidebar-container">
             <Nav />
           </nav>
-          <section className="col span_10-12">
+          <section className="messages-container">
             <Messages />
           </section>
         </section>
