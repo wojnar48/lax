@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import ChannelListItem from './channel_list_item';
+import PublicChannels from './public_channels';
+import PublicChannelItem from './public_channel_item';
+import PrivateChannels from './private_channels';
+// import PrivateChannelItem from './private_channel_item';
 import Modal from 'react-modal';
 import ChannelListModal from './channel_list_modal';
 
@@ -34,32 +37,21 @@ class ChannelList extends Component {
     const channelsArr = Object.values(this.props.channels);
     const allChannels = channelsArr.map(channel => {
       return (
-        <li
-          data-id={ channel.id }
-          key={ channel.id } className="channel-modal"
-          onClick={ this.handleSubscription }>
-
-          <p><i>#</i><span>{ channel.name }</span></p>
-          <p><i>{ channel.description }</i></p>
-        </li>
+        <PublicChannelItem
+          key={ channel.id }
+          channel={ channel }
+          handleSubscription={ this.handleSubscription } />
       );
     });
 
     return (
-      <div className="channels-container">
-        <div className="channels-header">
-          <h4 id="browse-channels"
-            data-tooltip="browse all channels"
-            onClick={ this.openModal }>channels
-          </h4>
-          <i id="create-channel"
-            onClick={ this.openModal }
-            className="fa fa-plus-circle">
-          </i>
-        </div>
-        <ul className="channels">
-          { this.props.subscriptions }
-        </ul>
+      <div>
+        <PublicChannels
+          channels={ this.props.channels }
+          openModal={ this.openModal }
+          subscriptions={ this.props.subscriptions }
+          handleSubscription={ this.handleSubscription } />
+
         <ChannelListModal
           handleCreateChannel={ this.props.handleCreateChannel }
           modalIsOpen={ this.state.modalIsOpen }

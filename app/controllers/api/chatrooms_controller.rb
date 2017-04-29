@@ -2,8 +2,7 @@ class Api::ChatroomsController < ApplicationController
   before_action :set_chatroom, only: [:destroy]
 
   def index
-    # eventually this will be just public chatrooms
-    @chatrooms = Chatroom.all
+    @chatrooms = Chatroom.where(private: false)
     render 'api/chatrooms/index'
   end
 

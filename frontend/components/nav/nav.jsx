@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavHeader from './nav_header';
 import ChannelList from './channel_list';
+import PublicChannelItem from './public_channel_item';
 import { withRouter } from 'react-router';
 import { logout } from '../../actions/session_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
