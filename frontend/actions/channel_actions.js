@@ -1,11 +1,10 @@
 import * as ChannelApiUtil from '../util/channel_api_util';
+import { receiveSubscription } from './subscription_actions';
 
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_DELETE_CHANNEL = 'RECEIVE_DELETE_CHANNEL';
-export const REQUEST_CHANNELS = 'REQUEST_CHANNELS';
-export const REQUEST_COMPLETE = 'REQUEST_COMPLETE';
 
 export const fetchChannels = () => (dispatch) => {
   return ChannelApiUtil.fetchChannels()
@@ -15,8 +14,10 @@ export const fetchChannels = () => (dispatch) => {
 
 export const createChannel = (channel) => (dispatch) => {
   return ChannelApiUtil.createChannel(channel)
-    .then(res => dispatch(receiveChannel(res)),
-    err => console.log(err));
+    .then(res => {
+      dispatch(receiveChannel(res));
+      dispatch(receiveSubscription(res));
+    });
 };
 
 export const deleteChannel = (id) => (dispatch) => {

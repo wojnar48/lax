@@ -108,13 +108,31 @@ $darkest-gray: #373535;
         span {
           padding-left: 5px;
         }
+
+        span:hover {
+          cursor: pointer;
+        }
+
+        .fa-trash-o {
+          float: right;
+          margin-right: 5px;
+          padding-top: 3px;
+          opacity: 0.5;
+        }
+
+        .fa-trash-o:hover {
+          float: right;
+          margin-right: 5px;
+          padding-top: 3px;
+          opacity: 1;
+          cursor: pointer;
+        }
       }
 
       p:hover {
         background: $darker-eggplant;
         border-radius: 4px;
         color: $lightest-gray;
-        cursor: pointer;
       }
 
       p.selected {

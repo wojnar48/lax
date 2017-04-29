@@ -1,5 +1,5 @@
 class Api::ChatroomsController < ApplicationController
-  before_action :set_chatroom, only: [:destroy, :show]
+  before_action :set_chatroom, only: [:destroy]
 
   def index
     # eventually this will be just public chatrooms

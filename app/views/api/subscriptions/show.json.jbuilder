@@ -1,1 +1,1 @@
-json.extract! @chatroom_user.chatroom, :id, :name, :description
+json.extract! @subscription, :id, :name, :description

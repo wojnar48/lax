@@ -4,6 +4,7 @@ import Root from './components/root.jsx';
 import configureStore from './store/store';
 import { fetchChannels } from './actions/channel_actions';
 import ActionCable from 'actioncable';
+import { deleteSubscription } from './actions/subscription_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -16,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.App = {};
   window.App.cable = ActionCable.createConsumer();
+
+  window.store = store;
+  window.deleteSubscription = deleteSubscription;
 
   ReactDOM.render(<Root store={ store }/>,
   document.getElementById('root'));

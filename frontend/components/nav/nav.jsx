@@ -5,8 +5,11 @@ import ChannelList from './channel_list';
 import { withRouter } from 'react-router';
 import { logout } from '../../actions/session_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
-import { createSubscription } from '../../actions/subscription_actions';
+import { createSubscription,
+        fetchSubscription,
+        deleteSubscription } from '../../actions/subscription_actions';
 import { createChannel } from '../../actions/channel_actions';
+
 
 class Nav extends Component {
   constructor (props) {
@@ -14,6 +17,7 @@ class Nav extends Component {
 
     this.handleSelectChannel = this.handleSelectChannel.bind(this);
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
+    this.handleDeleteSubscription = this.handleDeleteSubscription.bind(this);
   }
 
   handleSelectChannel (e) {
@@ -31,6 +35,11 @@ class Nav extends Component {
     this.props.createChannel(channel);
   }
 
+  handleDeleteSubscription (e) {
+    const channelId = e.currentTarget.dataset.channelid;
+    this.props.deleteSubscription(channelId);
+  }
+
   render () {
     let subscriptionsArr = Object.values(this.props.subscriptions);
     let subscriptions = subscriptionsArr.map(subscription => {
@@ -39,8 +48,19 @@ class Nav extends Component {
         'channel';
 
       return (
-        <li id={ subscription.id } key={ subscription.id } onClick={ this.handleSelectChannel }>
-          <p className={ channelClass }><i>#<span>{ subscription.name }</span></i></p>
+        <li key={ subscription.id }>
+          <p className={ channelClass }>
+            <i>
+              #<span id={ subscription.id }
+                onClick={ this.handleSelectChannel }>
+              { subscription.name }
+              </span>
+            </i>
+            <i data-channelId={ subscription.id }
+              className="fa fa-trash-o"
+              onClick={ this.handleDeleteSubscription }>
+            </i>
+          </p>
         </li>
       );
     });
@@ -72,7 +92,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
     setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
-    createSubscription: (channel_id) => dispatch(createSubscription(channel_id)),
+    createSubscription: (channelId) => dispatch(createSubscription(channelId)),
+    fetchSubscription: (channelId) => dispatch(fetchSubscription(channelId)),
+    deleteSubscription: (channelId) => dispatch(deleteSubscription(channelId)),
     createChannel: (channel) => dispatch(createChannel(channel))
   };
 };
