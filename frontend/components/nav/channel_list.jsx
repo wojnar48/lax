@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PublicChannels from './public_channels';
 import PublicChannelItem from './public_channel_item';
-import PrivateChannels from './private_channels';
+// import PrivateChannels from './private_channels';
 // import PrivateChannelItem from './private_channel_item';
 import Modal from 'react-modal';
 import ChannelListModal from './channel_list_modal';

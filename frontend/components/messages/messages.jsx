@@ -17,7 +17,9 @@ class Messages extends Component {
   componentDidMount () {
     this.props.fetchMessages(this.props.activeChannel.id);
     MessagesChannel.subscribe(message => {
-      this.props.receiveMessageStream(message);
+      if (message.chatroomId === this.props.activeChannel.id) {
+        this.props.receiveMessageStream(message);
+      }
     });
   }
 
