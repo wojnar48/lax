@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import BrowseChannels from './browse_channels';
 import CreateChannelForm from './create_channel_form';
-// import CreateDm from './create_dm';
+import CreateDm from './create_dm';
 
 class ChannelListModal extends Component {
   constructor (props) {
@@ -23,11 +23,22 @@ class ChannelListModal extends Component {
   }
 
   render () {
-    const modalType = this.props.modalType === 'BrowseChannels' ?
-      <BrowseChannels allChannels={ this.props.allChannels }
-        closeModal={ this.props.closeModal } /> :
-      <CreateChannelForm handleCreateChannel={ this.props.handleCreateChannel }
-        closeModal={ this.props.closeModal } />;
+    let modalType;
+    switch(this.props.modalType) {
+      case 'BrowseChannels':
+        modalType = <BrowseChannels
+          allChannels={ this.props.allChannels }
+          closeModal={ this.props.closeModal } />
+        break;
+      case 'CreateChannelForm':
+        modalType = <CreateChannelForm
+          handleCreateChannel={ this.props.handleCreateChannel }
+          closeModal={ this.props.closeModal } />
+        break;
+      case 'CreateDm':
+        modalType = <CreateDm />
+        break;
+    }
 
     return (
       <Modal
