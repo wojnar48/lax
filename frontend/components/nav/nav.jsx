@@ -75,19 +75,21 @@ class Nav extends Component {
           createSubscription={ this.props.createSubscription }
           subscriptions={ subscriptions }
           channels={ this.props.channels }
-          dms={ this.props.dms } />
+          dms={ this.props.dms }
+          users={ this.props.users } />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ session, channels, activeChannel, subscriptions, dms }) => {
+const mapStateToProps = ({ session, channels, activeChannel, subscriptions, dms, users }) => {
   return {
     session,
     channels,
     subscriptions,
     activeChannel,
-    dms
+    dms,
+    users
   };
 };
 

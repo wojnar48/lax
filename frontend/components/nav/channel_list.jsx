@@ -24,7 +24,7 @@ class ChannelList extends Component {
         modalType = 'BrowseChannels';
         break;
       case 'create-channel':
-        modalType = 'CreateChannel';
+        modalType = 'CreateChannelForm';
         break;
       case 'create-dm':
         modalType = 'CreateDm';
@@ -80,6 +80,7 @@ class ChannelList extends Component {
           modalIsOpen={ this.state.modalIsOpen }
           modalType={ this.state.modalType }
           allChannels={ allChannels }
+          users={ this.props.users }
           closeModal={ this.closeModal } />
       </div>
     );

@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
     render 'api/users/index'
   end
 

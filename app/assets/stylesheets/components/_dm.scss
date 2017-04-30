@@ -1,0 +1,102 @@
+$lightest-gray: #FFFFFF;
+$light-gray: #F9F9F9;
+$almost-gray: #E8E8E8;
+$gray: #9A9A9A;
+$darker-gray: #555459;
+$darkest-gray: #373535;
+$lightest-blue: #E2F6FB;
+$light-blue: #B7E2EC;
+$blue: #86C3D1;
+$shiny-blue: #07D0FF;
+$blue: #0798d6;
+$green: #00B880;
+$darker-green: #009064;
+
+
+.user-list-modal {
+  width: 800px;
+  margin: 0 auto;
+
+  .dm-form-container {
+    form {
+      width: 100%;
+
+      .input-wrapper {
+        display: flex;
+        display: inline-block;
+        width: 500px;
+        margin: 20px 5px 15px 0;
+        border: 1px solid $gray;
+        border-radius: 4px;
+
+        ul {
+          display: flex;
+          align-items: center;
+
+          li {
+            font-size: 14px;
+            margin-right: 10px;
+            padding: 8px;
+            background: $blue;
+            border-radius: 4px;
+          }
+        }
+
+        ul:first-child {
+          margin-left: 5px;
+        }
+      }
+
+      input {
+        display: inline-block;
+        height: 40px;
+        border: 1px solid $gray;
+        border-radius: 4px;
+        padding-left: 5px;
+      }
+
+      input[type=text]:hover {
+        border-color: $blue;
+      }
+
+      input[type=submit] {
+        width: 60px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: $lightest-gray;
+        background: $green;
+        border-color: $darker-green;
+      }
+
+      input[type=submit]:hover {
+        background: $darker-green;
+        cursor: pointer;
+        box-shadow: 0 1px 0 rgba(0,0,0,.25);
+      }
+    }
+
+    ul {
+      .user-modal {
+        width: 100%;
+        border-top: 1px solid $almost-gray;
+        padding: 15px 15px;
+
+        span {
+          margin-left: 4px;
+          font-weight: 400;
+        }
+
+        p {
+          font-weight: 300i;
+        }
+      }
+
+      .user-modal:hover {
+        background: $lightest-blue;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+}

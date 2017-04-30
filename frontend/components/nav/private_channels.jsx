@@ -2,7 +2,6 @@ import React from 'react';
 
 const PrivateChannels = (props) => {
   const { openModal, privateChannels, channels } = props;
-
   return (
     <div className="channels-container">
       <div className="channels-header">
@@ -15,7 +14,7 @@ const PrivateChannels = (props) => {
           className="fa fa-plus-circle">
         </i>
       </div>
-      <ul className="channels">
+      <ul>
         { privateChannels }
       </ul>
     </div>
