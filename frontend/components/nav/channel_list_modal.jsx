@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import BrowseChannels from './browse_channels';
 import CreateChannelForm from './create_channel_form';
+// import CreateDm from './create_dm';
 
 class ChannelListModal extends Component {
   constructor (props) {

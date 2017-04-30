@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PublicChannels from './public_channels';
 import PublicChannelItem from './public_channel_item';
-// import PrivateChannels from './private_channels';
-// import PrivateChannelItem from './private_channel_item';
+import PrivateChannels from './private_channels';
+import PrivateChannelItem from './private_channel_item';
 import Modal from 'react-modal';
 import ChannelListModal from './channel_list_modal';
 
@@ -17,9 +17,19 @@ class ChannelList extends Component {
   }
 
   openModal (e) {
-    const modalType = e.currentTarget.id === 'browse-channels' ?
-      'BrowseChannels' :
-      'CreateChannel';
+    const targetId = e.currentTarget.id;
+    let modalType;
+    switch(targetId) {
+      case 'browse-channels':
+        modalType = 'BrowseChannels';
+        break;
+      case 'create-channel':
+        modalType = 'CreateChannel';
+        break;
+      case 'create-dm':
+        modalType = 'CreateDm';
+        break;
+    }
 
     this.setState({ modalIsOpen: true, modalType });
   }
@@ -44,6 +54,16 @@ class ChannelList extends Component {
       );
     });
 
+    const privateChannelsArr = Object.values(this.props.dms);
+    const privateChannels = privateChannelsArr.map(channel => {
+      return (
+        <PrivateChannelItem
+          key={ channel.id }
+          channel={ channel }
+          handleSubscription={ this.handleSubscription } />
+      );
+    });
+
     return (
       <div>
         <PublicChannels
@@ -51,6 +71,9 @@ class ChannelList extends Component {
           openModal={ this.openModal }
           subscriptions={ this.props.subscriptions }
           handleSubscription={ this.handleSubscription } />
+
+        <PrivateChannels privateChannels={ privateChannels }
+          openModal={ this.openModal } />
 
         <ChannelListModal
           handleCreateChannel={ this.props.handleCreateChannel }
