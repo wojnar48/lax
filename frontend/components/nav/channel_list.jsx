@@ -54,15 +54,14 @@ class ChannelList extends Component {
       );
     });
 
-    const privateChannelsArr = Object.values(this.props.dms);
-    const privateChannels = privateChannelsArr.map(channel => {
-      return (
-        <PrivateChannelItem
-          key={ channel.id }
-          channel={ channel }
-          handleSubscription={ this.handleSubscription } />
-      );
-    });
+    // const privateChannelsArr = Object.values(this.props.dms);
+    // const privateChannels = privateChannelsArr.map(channel => {
+    //   return (
+    //     <PrivateChannelItem
+    //       key={ channel.id }
+    //       channel={ channel } />
+    //   );
+    // });
 
     return (
       <div>
@@ -72,7 +71,7 @@ class ChannelList extends Component {
           subscriptions={ this.props.subscriptions }
           handleSubscription={ this.handleSubscription } />
 
-        <PrivateChannels privateChannels={ privateChannels }
+        <PrivateChannels dms={ this.props.dms }
           openModal={ this.openModal } />
 
         <ChannelListModal
@@ -89,3 +88,12 @@ class ChannelList extends Component {
 }
 
 export default ChannelList;
+
+// const privateChannelsArr = Object.values(this.props.dms);
+// const privateChannels = privateChannelsArr.map(channel => {
+//   return (
+//     <PrivateChannelItem
+//       key={ channel.id }
+//       channel={ channel } />
+//   );
+// });

@@ -1,13 +1,12 @@
 import React from 'react';
 
-const PrivateChannelItem = ({ channel, handleSubscription }) => {
+const PrivateChannelItem = ({ channel }) => {
+
   return (
-    <li
+    <li className="channel"
       data-id={ channel.id }
-      key={ channel.id } className="channel-modal"
-      onClick={ handleSubscription }>
+      key={ channel.id }>
       <p><i></i><span>{ channel.name }</span></p>
-      <p><i>{ channel.description }</i></p>
     </li>
   );
 };

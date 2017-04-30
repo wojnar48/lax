@@ -24,7 +24,12 @@ class Nav extends Component {
 
   handleSelectChannel (e) {
     const nextActiveId = parseInt(e.currentTarget.id);
-    this.props.setActiveChannel(this.props.subscriptions[nextActiveId]);
+    const nextActiveChannel = this.props.subscriptions[nextActiveId];
+    if (nextActiveChannel === undefined) {
+      this.props.setActiveChannel(this.props.dms[nextActiveId]);
+    } else {
+      this.props.setActiveChannel(nextActiveChannel);
+    }
   }
 
   componentWillUpdate (newProps, newState) {
@@ -67,6 +72,30 @@ class Nav extends Component {
       );
     });
 
+    let dmsArr = Object.values(this.props.dms);
+    let dms = dmsArr.map(dm => {
+      let channelClass = dm.id === this.props.activeChannel.id ?
+        'channel selected' :
+        'channel';
+
+      return (
+        <li key={ dm.id }>
+          <p className={ channelClass }>
+            <i>
+              @<span id={ dm.id }
+                onClick={ this.handleSelectChannel }>
+              { dm.name }
+              </span>
+            </i>
+            <i data-channelId={ dm.id }
+              className="fa fa-trash-o"
+              onClick={ this.handleDeleteSubscription }>
+            </i>
+          </p>
+        </li>
+      );
+    });
+
     return (
       <div className="sidebar">
         <NavHeader logout={ this.props.logout }
@@ -77,7 +106,7 @@ class Nav extends Component {
           createSubscription={ this.props.createSubscription }
           subscriptions={ subscriptions }
           channels={ this.props.channels }
-          dms={ this.props.dms }
+          dms={ dms }
           users={ this.props.users } />
       </div>
     );

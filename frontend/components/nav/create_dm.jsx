@@ -39,6 +39,7 @@ class CreateDm extends Component {
       dmMembers[user.id] = user.id;
     });
     this.props.createPrivateChannel(Object.values(dmMembers));
+    this.setState({ users: [] });
   }
 
   render () {

@@ -1,11 +1,12 @@
 class Api::DirectMessagesController < ApplicationController
   def index
-    @chatrooms = Chatroom.where(private: true)
+    @chatrooms = current_user.chatrooms.where(private: true)
     render 'api/chatrooms/index'
   end
 
   def create
     @chatroom = Chatroom.new(name: 'private', private: true)
+
 
     if @chatroom.save
       @chatroom.chatroom_users.where(user_id: current_user.id).create
