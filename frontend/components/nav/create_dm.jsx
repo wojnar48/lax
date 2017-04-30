@@ -9,6 +9,7 @@ class CreateDm extends Component {
 
     this.handleSelectUser = this.handleSelectUser.bind(this);
     this.handleUnselectUser = this.handleUnselectUser.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSelectUser (e) {
@@ -28,8 +29,16 @@ class CreateDm extends Component {
       newUsers.push(user);
       }
     });
-
     this.setState({ users: newUsers });
+  }
+
+  handleSubmit (e) {
+    e.preventDefault();
+    let dmMembers = {};
+    this.state.users.forEach(user => {
+      dmMembers[user.id] = user.id;
+    });
+    this.props.createPrivateChannel(Object.values(dmMembers));
   }
 
   render () {
@@ -53,7 +62,7 @@ class CreateDm extends Component {
         <div className="dm-form-container">
           <h2>Direct Messages</h2>
           <ul className="users-selected"></ul>
-          <form>
+          <form onSubmit={ this.handleSubmit }>
             <div className="input-wrapper">
               <ul>
                 { selectedUsers }

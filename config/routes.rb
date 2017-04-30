@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'api/subscriptions/:chatroom_id', to: 'api/subscriptions#show'
   delete 'api/subscriptions/:chatroom_id', to: 'api/subscriptions#destroy'
   get 'api/direct_messages', to: 'api/direct_messages#index'
+  post 'api/direct_messages', to: 'api/direct_messages#create'
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :index]

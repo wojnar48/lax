@@ -10,6 +10,7 @@ import { createSubscription,
         fetchSubscription,
         deleteSubscription } from '../../actions/subscription_actions';
 import { createChannel } from '../../actions/channel_actions';
+import { createPrivateChannel } from '../../actions/direct_message_actions';
 
 
 class Nav extends Component {
@@ -72,6 +73,7 @@ class Nav extends Component {
           currentUser={ this.props.session.currentUser } />
         <ChannelList
           handleCreateChannel={ this.handleCreateChannel }
+          createPrivateChannel={ this.props.createPrivateChannel }
           createSubscription={ this.props.createSubscription }
           subscriptions={ subscriptions }
           channels={ this.props.channels }
@@ -100,7 +102,8 @@ const mapDispatchToProps = (dispatch) => {
     createSubscription: (channelId) => dispatch(createSubscription(channelId)),
     fetchSubscription: (channelId) => dispatch(fetchSubscription(channelId)),
     deleteSubscription: (channelId) => dispatch(deleteSubscription(channelId)),
-    createChannel: (channel) => dispatch(createChannel(channel))
+    createChannel: (channel) => dispatch(createChannel(channel)),
+    createPrivateChannel: (channel) => dispatch(createPrivateChannel(channel))
   };
 };
 

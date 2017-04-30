@@ -1,6 +1,6 @@
 class Api::SubscriptionsController < ApplicationController
   def index
-    @subscriptions = current_user.chatrooms
+    @subscriptions = current_user.chatrooms.where(private: false)
     render 'api/subscriptions/index'
   end
 

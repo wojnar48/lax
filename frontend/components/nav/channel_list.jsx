@@ -77,6 +77,7 @@ class ChannelList extends Component {
 
         <ChannelListModal
           handleCreateChannel={ this.props.handleCreateChannel }
+          createPrivateChannel={ this.props.createPrivateChannel }
           modalIsOpen={ this.state.modalIsOpen }
           modalType={ this.state.modalType }
           allChannels={ allChannels }

@@ -37,6 +37,7 @@ class ChannelListModal extends Component {
         break;
       case 'CreateDm':
         modalType = <CreateDm
+          createPrivateChannel={ this.props.createPrivateChannel }
           users={ this.props.users } />
         break;
     }
