@@ -8,6 +8,7 @@ import { fetchSubscriptions } from '../../actions/subscription_actions';
 import { createSubscription } from '../../actions/subscription_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
 import { fetchPrivateChannels } from '../../actions/direct_message_actions';
+import { fetchAllUsers } from '../../actions/user_actions';
 import { channelsArr, subscriptionsArr } from '../../reducers/selectors';
 
 class Chat extends Component {
@@ -19,6 +20,7 @@ class Chat extends Component {
     this.props.fetchChannels();
     this.props.fetchSubscriptions();
     this.props.fetchPrivateChannels();
+    this.props.fetchAllUsers();
     this.props.createSubscription(1);
   }
 
@@ -48,13 +50,14 @@ class Chat extends Component {
   };
 }
 
-const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms }) => {
+const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms, users }) => {
   return {
     channels,
     subscriptions,
     activeChannel,
     messages,
-    dms
+    dms,
+    users
   };
 };
 
@@ -64,7 +67,8 @@ const mapDispatchToProps = (dispatch) => {
     setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
     fetchSubscriptions: () => dispatch(fetchSubscriptions()),
     createSubscription: (channelId) => dispatch(createSubscription(channelId)),
-    fetchPrivateChannels: () => dispatch(fetchPrivateChannels)
+    fetchPrivateChannels: () => dispatch(fetchPrivateChannels()),
+    fetchAllUsers: () => dispatch(fetchAllUsers())
   };
 };
 

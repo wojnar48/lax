@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class CreateDm extends Component {
   constructor (props) {
     super(props);
+    this.state = { users: [] };
   }
 
   render () {

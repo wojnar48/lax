@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'api/direct_messages', to: 'api/direct_messages#index'
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:create]
+    resources :users, only: [:create, :index]
     resource :session, only: [:create, :destroy]
     resources :chatrooms do
       resource :chatroom_users
