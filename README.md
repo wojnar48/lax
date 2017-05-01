@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cahootz is collaborative live messaging platform inspired by Slack and was built end-to-end in 2 weeks.
 
-Things you may want to cover:
+Live Site:[https://lax-app.herokuapp.com/#/]
 
-* Ruby version
+## Implementation
 
-* System dependencies
+Cahootz's UI and single-page architecture were built with React.js and Ruby on Rails. Messaging data is stored in a Postgres database, while AWS hosts all user images.
 
-* Configuration
+In addition, the app also utilizes the following:
+- Redux
+- BCrypt
+- Pusher
+- Figaro
+- Paperclip
+- jBuilder
+- react-modal
 
-* Database creation
+## Features
 
-* Database initialization
+The application is composed of the following main features:
 
-* How to run the test suite
+### Authentication
 
-* Services (job queues, cache servers, search engines, etc.)
+Cahootz utilizes BCrypt in order to hash user passwords, saving only the encrypted user-data to the server. A cookie storing a hashed token is used to keep track of the user's current session.  Without a matching session token, the user is redirected to the login page to authentication.  
 
-* Deployment instructions
+### Live Chat
 
-* ...
+This app utilizes the Pusher API in order to maintain a WebSocket, TCP-based protocol connection, which enables bi-directional communication between the server and the client.
+
+### Channels
+
+Conversations are organized in channels, which are public and can be subscribed to by users.
+
+### Direct Messages
+
+Cahootz allows for multi-person private, direct messaging.
+
+## Future Release
+
+* [X] User Avatar Upload
+* [X] Notifications
+* [X] Teams/Groups
+* [X] Message Formatting
+* [X] Emoticon Reactions
+* [X] GIF Support

@@ -33,7 +33,9 @@ class Messages extends Component {
     return (
       <div className="messages-container">
         <MessagesHeader activeChannel={ this.props.activeChannel } />
-        <MessageList messages={ this.props.messages } activeChannel={ this.props.activeChannel } />
+        <MessageList messages={ this.props.messages }
+          activeChannel={ this.props.activeChannel }
+          currentUser={ this.props.session.currentUser } />
         <MessageInputForm activeChannel={ this.props.activeChannel }
           createMessage={ this.props.createMessage } />
       </div>
@@ -41,10 +43,11 @@ class Messages extends Component {
   }
 }
 
-const mapStateToProps = ({ activeChannel, messages }) => {
+const mapStateToProps = ({ activeChannel, messages, session }) => {
   return {
     activeChannel,
-    messages
+    messages,
+    session
   };
 };
 

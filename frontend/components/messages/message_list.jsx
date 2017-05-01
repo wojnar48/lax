@@ -24,10 +24,7 @@ class MessageList extends Component {
     const messageListItems = this.props.messages.map(message => {
       return (
         <li className="message-item" key={ message.id }>
-          <MessageItem
-            body={ message.body }
-            author={ message.author }
-            date={ message.date } />
+          <MessageItem message={ message } currentUser={ this.props.currentUser} />
         </li>
       );
     });

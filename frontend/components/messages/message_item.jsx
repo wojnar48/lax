@@ -6,24 +6,25 @@ class MessageItem extends Component {
   }
 
   render () {
+    const message =  this.props.message;
     // write helper method to extract am/pm time
-    const date = new Date(this.props.date);
+    const date = new Date(message.date);
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const suffix = 'AM';
 
-    const avatar = this.props.author === 'guest' ? 'avatar1' : 'avatar2';
-
     return (
       <div className="message-container">
-        <div className={ avatar }></div>
+        <div className="avatar">
+          <img src={ this.props.currentUser.avatar_url } />
+        </div>
         <div className="message-body">
           <div className="message-header">
-            <p className="message-author">{ this.props.author }</p>
+            <p className="message-author">{ message.author }</p>
             <p className="message-date">{ `${hours}:${minutes}${suffix}` }</p>
           </div>
           <div>
-            <p>{ this.props.body }</p>
+            <p>{ message.body }</p>
           </div>
         </div>
       </div>
