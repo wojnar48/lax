@@ -12,7 +12,6 @@ class MessageItem extends Component {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const suffix = 'AM';
-
     return (
       <div className="message-container">
         <div className="avatar">

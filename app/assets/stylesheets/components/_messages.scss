@@ -86,6 +86,9 @@ section {
 
           .avatar {
             display: inline-block;
+            background-image: asset_url('philoraptor.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
             border: 1px solid $darker-gray;
             border-radius: 4px;
             width: 40px;
