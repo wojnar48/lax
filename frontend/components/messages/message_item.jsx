@@ -16,7 +16,6 @@ class MessageItem extends Component {
     return (
       <div className="message-container">
         <div className="avatar">
-          <img src={ this.props.currentUser.avatar_url } />
         </div>
         <div className="message-body">
           <div className="message-header">
