@@ -21,6 +21,13 @@ class Api::DirectMessagesController < ApplicationController
     end
   end
 
+  def destroy
+    _dm= ChatroomUser.find_by(chatroom_id: params[:chatroom_id])
+    _dm.destroy
+    @chatroom = Chatroom.find(params[:chatroom_id])
+    render 'api/direct_messages/show'
+  end
+
   private
   # secure this
   def chatroom_params

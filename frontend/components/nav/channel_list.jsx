@@ -54,15 +54,6 @@ class ChannelList extends Component {
       );
     });
 
-    // const privateChannelsArr = Object.values(this.props.dms);
-    // const privateChannels = privateChannelsArr.map(channel => {
-    //   return (
-    //     <PrivateChannelItem
-    //       key={ channel.id }
-    //       channel={ channel } />
-    //   );
-    // });
-
     return (
       <div>
         <PublicChannels

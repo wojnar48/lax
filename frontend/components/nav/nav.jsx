@@ -10,7 +10,8 @@ import { createSubscription,
         fetchSubscription,
         deleteSubscription } from '../../actions/subscription_actions';
 import { createChannel } from '../../actions/channel_actions';
-import { createPrivateChannel } from '../../actions/direct_message_actions';
+import { createPrivateChannel,
+        deletePrivateChannel } from '../../actions/direct_message_actions';
 
 
 class Nav extends Component {
@@ -20,6 +21,7 @@ class Nav extends Component {
     this.handleSelectChannel = this.handleSelectChannel.bind(this);
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
     this.handleDeleteSubscription = this.handleDeleteSubscription.bind(this);
+    this.handleDeletePrivateChannel = this.handleDeletePrivateChannel.bind(this);
   }
 
   handleSelectChannel (e) {
@@ -45,6 +47,11 @@ class Nav extends Component {
   handleDeleteSubscription (e) {
     const channelId = e.currentTarget.dataset.channelid;
     this.props.deleteSubscription(channelId);
+  }
+
+  handleDeletePrivateChannel (e) {
+    const channelId = e.currentTarget.dataset.channelid;
+    this.props.deletePrivateChannel(channelId);
   }
 
   render () {
@@ -89,7 +96,7 @@ class Nav extends Component {
             </i>
             <i data-channelId={ dm.id }
               className="fa fa-trash-o"
-              onClick={ this.handleDeleteSubscription }>
+              onClick={ this.handleDeletePrivateChannel }>
             </i>
           </p>
         </li>
@@ -132,7 +139,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchSubscription: (channelId) => dispatch(fetchSubscription(channelId)),
     deleteSubscription: (channelId) => dispatch(deleteSubscription(channelId)),
     createChannel: (channel) => dispatch(createChannel(channel)),
-    createPrivateChannel: (channel) => dispatch(createPrivateChannel(channel))
+    createPrivateChannel: (channel) => dispatch(createPrivateChannel(channel)),
+    deletePrivateChannel: (channelId) => dispatch(deletePrivateChannel(channelId))
   };
 };
 

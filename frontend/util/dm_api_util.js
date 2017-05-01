@@ -13,3 +13,10 @@ export const createPrivateChannel = (chatroom) => {
     data: { chatroom }
   });
 };
+
+export const deletePrivateChannel = (chatroomId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/direct_messages/${chatroomId}`
+  });
+};

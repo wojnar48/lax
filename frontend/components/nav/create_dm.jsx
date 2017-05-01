@@ -26,7 +26,7 @@ class CreateDm extends Component {
     const newUsers = [];
     this.state.users.forEach(user => {
       if (user.id !== e.currentTarget.dataset.id) {
-      newUsers.push(user);
+        newUsers.push(user);
       }
     });
     this.setState({ users: newUsers });
@@ -40,6 +40,7 @@ class CreateDm extends Component {
     });
     this.props.createPrivateChannel(Object.values(dmMembers));
     this.setState({ users: [] });
+    this.props.closeModal();
   }
 
   render () {
