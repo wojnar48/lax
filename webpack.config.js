@@ -1,3 +1,6 @@
+path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
   entry: './frontend/lax_entry.jsx',
   output: {
@@ -15,8 +18,14 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   resolve: {
     extensions: ['.js', '.jsx', '*']
-  }
+  },
+  plugins: [
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  })],
 };
