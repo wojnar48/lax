@@ -33,8 +33,7 @@ class CreateChannelForm extends Component {
             <div className="onoffswitch">
               <input type="checkbox" name="onoffswitch"
                 className="onoffswitch-checkbox"
-                id="myonoffswitch"
-                dafaultChecked />
+                id="myonoffswitch" />
 
               <label className="onoffswitch-label" htmlFor="myonoffswitch">
                 <span className="onoffswitch-inner"></span>

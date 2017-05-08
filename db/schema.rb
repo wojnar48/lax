@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20170501012715) do
     t.string   "session_token",       null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.datetime "avatar_updated_at"
-    t.string   "avatar_file_size"
-    t.string   "avatar_content_type"
     t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["username", "password_digest"], name: "index_users_on_username_and_password_digest", unique: true, using: :btree
   end
 

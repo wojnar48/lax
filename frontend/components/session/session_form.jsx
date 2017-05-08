@@ -13,6 +13,12 @@ class SessionForm extends Component {
     this.redirectIfLoggedIn();
   }
 
+  componentWillUpdate (nextProps, nextState) {
+    if (this.props.location.pathname !== nextProps.location.pathname) {
+      this.props.receiveErrors([]);
+    }
+  }
+
   redirectIfLoggedIn () {
     if (this.props.loggedIn) {
       this.props.router.push('/main');
