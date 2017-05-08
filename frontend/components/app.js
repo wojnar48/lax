@@ -12,9 +12,7 @@ class App extends Component {
     return (
       <section>
         <header className="header-container">
-          <div>
-            <i className="fa fa-bug"></i>
-          </div>
+          <div><i className="fa fa-bug"></i></div>
           <div>
             <Link to="/login">
               <button className="button login">Log in</button>
