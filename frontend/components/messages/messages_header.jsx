@@ -14,7 +14,7 @@ class MessagesHeader extends Component {
         <div className="channel-details">
           <p className="user-count">
             <i className="fa fa-user-o"></i>
-            <span>4</span>
+            <span>{ this.props.activeChannel.users.length }</span>
           </p>
           <p className="channel-desc">{ this.props.activeChannel.description }</p>
         </div>
