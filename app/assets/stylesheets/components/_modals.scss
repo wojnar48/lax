@@ -6,7 +6,7 @@ $darker-gray: #555459;
 $darkest-gray: #373535;
 
 $lightest-blue: #E2F6FB;
-$light-blue: #B7E2EC;
+$light-blue: #A6EEFF;
 $blue: #86C3D1;
 $shiny-blue: #07D0FF;
 
@@ -43,9 +43,12 @@ $darker-green: #009064;
     height: 32px;
     opacity: 0.3;
   }
+
   .close:hover {
     opacity: 1;
+    cursor: pointer;
   }
+
   .close:before, .close:after {
     position: absolute;
     left: 15px;
@@ -54,24 +57,35 @@ $darker-green: #009064;
     width: 2px;
     background-color: $darker-gray;
   }
+
   .close:before {
     transform: rotate(45deg);
   }
+
   .close:after {
     transform: rotate(-45deg);
   }
 
   .channel-modal {
+    display: flex;
+    align-items: center;
     border-top: 1px solid $almost-gray;
     padding: 15px 15px;
 
     span {
       margin-left: 4px;
-      font-weight: 400;
+      font-weight: 700;
     }
 
     p {
       font-weight: 300i;
+    }
+
+    .add-channel {
+      margin-right: 20px;
+      font-size: 26px;
+      color: $gray;
+      opacity: 0;
     }
   }
 
@@ -79,6 +93,10 @@ $darker-green: #009064;
     background: $lightest-blue;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  .channel-modal:hover .add-channel {
+    opacity: 0.5;
   }
 }
 

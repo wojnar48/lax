@@ -6,8 +6,11 @@ const PublicChannelItem = ({ channel, handleSubscription }) => {
       data-id={ channel.id }
       key={ channel.id } className="channel-modal"
       onClick={ handleSubscription }>
-      <p><i>#</i><span>{ channel.name }</span></p>
-      <p><i>{ channel.description }</i></p>
+      <div>
+        <p><i>#</i><span>{ channel.name }</span></p>
+        <p><i>{ channel.description }</i></p>
+      </div>
+      <i className="fa fa-plus add-channel"></i>
     </li>
   );
 };

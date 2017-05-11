@@ -21,6 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.deleteSubscription = deleteSubscription;
 
-  ReactDOM.render(<Root store={ store }/>,
+  ReactDOM.render(<Root store={ store } />,
   document.getElementById('root'));
 });

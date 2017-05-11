@@ -41,6 +41,7 @@ class ChannelList extends Component {
   handleSubscription (e) {
     const channelId = parseInt(e.currentTarget.dataset.id);
     this.props.createSubscription(channelId);
+    this.closeModal();
   }
 
   render () {
@@ -79,12 +80,3 @@ class ChannelList extends Component {
 }
 
 export default ChannelList;
-
-// const privateChannelsArr = Object.values(this.props.dms);
-// const privateChannels = privateChannelsArr.map(channel => {
-//   return (
-//     <PrivateChannelItem
-//       key={ channel.id }
-//       channel={ channel } />
-//   );
-// });
