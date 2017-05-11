@@ -1,1 +1,7 @@
-json.extract! @chatroom, :id, :name, :description, :users
+json.id @chatroom.id
+json.name @chatroom.name
+json.description @chatroom.description
+json.users @chatroom.users do |user|
+  json.id user.id
+  json.username user.username
+end
