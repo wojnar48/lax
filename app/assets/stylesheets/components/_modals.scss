@@ -98,6 +98,24 @@ $darker-green: #009064;
   .channel-modal:hover .add-channel {
     opacity: 0.5;
   }
+
+  .public-channel-list {
+    height: 500px;
+    overflow: scroll;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+      border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  }
 }
 
 .channel-form {

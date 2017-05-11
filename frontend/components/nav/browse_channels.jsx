@@ -5,7 +5,7 @@ const BrowseChannels = (props) => {
     <div>
       <h2>Browse All Channels</h2>
       <p>Channels you can join</p>
-      <ul>
+      <ul className="public-channel-list">
         { props.allChannels }
       </ul>
     </div>
