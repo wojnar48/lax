@@ -7,14 +7,21 @@ class Api::DirectMessagesController < ApplicationController
   def create
     @chatroom = Chatroom.new(name: 'private', private: true)
 
-
     if @chatroom.save
       @chatroom.chatroom_users.where(user_id: current_user.id).create
+
       chatroom_params.each do |user_id|
         user_id = user_id.to_i
         user = User.find(user_id)
         @chatroom.chatroom_users.where(user_id: user.id).create
       end
+
+      names = []
+      @chatroom.users.each do |user|
+        names << user.username unless user.id == current_user.id
+      end
+
+      @chatroom.update(name: names.join(', '))
       render 'api/direct_messages/show'
     else
       render json: @chatroom.errors.full_messages, status: 422
