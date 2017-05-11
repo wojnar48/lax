@@ -14,7 +14,7 @@ $darkest-gray: #373535;
 section {
 
   .messages-container {
-    width: 100%;
+    width: 70%;
     margin-left: 250px;
 
     .messages-header {
@@ -68,7 +68,7 @@ section {
       padding-top: 61px;
 
       #messages-list {
-        overflow-y: scroll;
+        // overflow-y: scroll;
       }
 
       ul:last-child {
