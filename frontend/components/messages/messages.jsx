@@ -19,6 +19,7 @@ class Messages extends Component {
     MessagesChannel.subscribe(message => {
       if (message.chatroomId === this.props.activeChannel.id) {
         this.props.receiveMessageStream(message);
+        this.updateScroll();
       }
     });
   }
@@ -27,6 +28,13 @@ class Messages extends Component {
     if (this.props.activeChannel.id !== prevProps.activeChannel.id) {
       this.props.fetchMessages(this.props.activeChannel.id);
     }
+    this.updateScroll();
+  }
+
+  updateScroll () {
+    const documentHeight = document.documentElement.offsetHeight;
+    const viewportHeight = window.innerHeight;
+    window.scrollTo(0, documentHeight - viewportHeight);
   }
 
   render () {

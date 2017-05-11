@@ -31,7 +31,7 @@ class MessageList extends Component {
 
     return (
       <div className="message-items-container">
-        <ul>
+        <ul id="messages-list">
           { messageListItems }
         </ul>
       </div>

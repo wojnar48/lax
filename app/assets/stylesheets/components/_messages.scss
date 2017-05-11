@@ -66,10 +66,9 @@ section {
 
     .message-items-container {
       padding-top: 61px;
-      // overflow-y: hidden;
 
-      ul {
-        overflow-y: hidden;
+      #messages-list {
+        overflow-y: scroll;
       }
 
       ul:last-child {
