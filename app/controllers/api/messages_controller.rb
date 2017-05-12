@@ -6,7 +6,6 @@ class Api::MessagesController < ApplicationController
     render 'api/messages/index'
   end
 
-  # make sure to render errors
   def create
     @message = @chatroom.messages.new(message_params)
     @message.user = current_user
