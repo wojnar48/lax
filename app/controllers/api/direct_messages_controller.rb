@@ -21,7 +21,9 @@ class Api::DirectMessagesController < ApplicationController
         names << user.username unless user.id == current_user.id
       end
 
-      @chatroom.update(name: names.join(', '))
+      name_str = names.join(', ')
+      desc_str = "Direct chat with: #{name_str}"
+      @chatroom.update(name: name_str, description: desc_str)
       render 'api/direct_messages/show'
     else
       render json: @chatroom.errors.full_messages, status: 422

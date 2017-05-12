@@ -1,1 +1,1 @@
-json.extract! @subscription, :id, :name, :description
+json.extract! @subscription, :id, :name, :description, :private
