@@ -85,13 +85,15 @@ class Nav extends Component {
         'channel selected' :
         'channel';
 
+      let names = dm.name.split(',');
+      names = names.length > 1 ? `${names[0]}, ...` : names;
       return (
         <li key={ dm.id }>
           <p className={ channelClass }>
             <i>
               @<span id={ dm.id }
                 onClick={ this.handleSelectChannel }>
-              { dm.name }
+              { names }
               </span>
             </i>
             <i data-channelId={ dm.id }
