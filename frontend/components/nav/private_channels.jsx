@@ -4,7 +4,7 @@ const PrivateChannels = (props) => {
   const { openModal, dms, channels } = props;
   return (
     <div className="channels-container">
-      <div className="channels-header">
+      <div className="dm-header">
         <h4>direct messages</h4>
         <i id="create-dm"
           onClick={ openModal }

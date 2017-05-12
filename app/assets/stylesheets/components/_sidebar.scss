@@ -64,6 +64,30 @@ $darkest-gray: #373535;
       }
     }
 
+    .dm-header {
+      h4 {
+        display: inline-block;
+        text-transform: uppercase;
+        padding-left: 15px;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+      }
+
+      .fa-plus-circle {
+        display: inline-block;
+        font-size: 18px;
+        padding: 10px;
+        opacity: 0.5;
+      }
+
+      .fa-plus-circle:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+
     .channels-header {
       h4 {
         display: inline-block;
