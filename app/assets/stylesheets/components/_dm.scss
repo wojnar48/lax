@@ -29,7 +29,7 @@ $darker-green: #009064;
       .input-wrapper {
         display: flex;
         display: inline-block;
-        width: 500px;
+        width: 100%;
         margin: 0;
         border: 1px solid $gray;
         border-radius: 4px;
@@ -44,7 +44,6 @@ $darker-green: #009064;
             padding: 8px;
             background: $light-blue;
             border-radius: 4px;
-
           }
         }
 
@@ -96,11 +95,15 @@ $darker-green: #009064;
       }
     }
 
-    ul {
+    .dm-users {
+      height: 400px;
+      overflow: scroll;
+
       .user-modal {
         width: 100%;
         border-top: 1px solid $almost-gray;
         padding: 15px 15px;
+        width: 90%;
 
         span {
           margin-left: 4px;

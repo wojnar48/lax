@@ -74,7 +74,7 @@ class CreateDm extends Component {
             </div>
             <input type="submit" value="Go!" />
           </form>
-          <ul>
+          <ul className="dm-users">
             { allUsers }
           </ul>
         </div>
