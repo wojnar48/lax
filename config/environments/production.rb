@@ -84,7 +84,13 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.action_cable.allowed_request_origins = ['https://lax-app.herokuapp.com', 'http://lax-app.herokuapp.com', 'http://laxapp.online', 'https://laxapp.online']
+  config.action_cable.allowed_request_origins = [
+    'https://lax-app.herokuapp.com',
+    'http://lax-app.herokuapp.com',
+    'http://laxapp.online',
+    'https://laxapp.online',
+    'www.laxapp.online'
+  ]
   config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
 
   # Do not dump schema after migrations.
