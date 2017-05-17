@@ -11,14 +11,16 @@ class Api::MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      ActionCable.server.broadcast 'messages',
-        id: @message.id,
-        body: @message.body,
-        author: @message.user.username,
-        date: @message.created_at,
-        userId: @message.user_id,
-        chatroomId: @message.chatroom_id
-      head :ok
+      Pusher.trigger('messages', 'new-message', {
+        message: {
+          id: @message.id,
+          body: @message.body,
+          author: @message.user.username,
+          date: @message.created_at,
+          userId: @message.user_id,
+          chatroomId: @message.chatroom_id
+        }
+      })
     end
   end
 

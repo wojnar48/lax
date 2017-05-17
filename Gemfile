@@ -33,6 +33,7 @@ gem 'redis', '~> 3.0'
 gem 'bcrypt'
 gem 'faker'
 gem 'paperclip', '~> 5.1'
+gem 'pusher'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

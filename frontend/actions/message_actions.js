@@ -10,13 +10,7 @@ export const fetchMessages = (channel_id) => (dispatch) => {
 };
 
 export const createMessage = (channel_id, message) => (dispatch) => {
-  return MessageApiUtil.createMessage(channel_id, message)
-    .then(res => dispatch(receiveMessage(res)),
-    err => console.log(err));
-};
-
-export const receiveMessageStream = (message) => (dispatch) => {
-  return dispatch(receiveMessage(message));
+  return MessageApiUtil.createMessage(channel_id, message);
 };
 
 export const receiveMessages = (messages) => {

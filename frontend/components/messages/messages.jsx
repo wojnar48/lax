@@ -5,8 +5,7 @@ import MessageList from './message_list';
 import MessagesHeader from './messages_header';
 import { fetchMessages,
   createMessage,
-  receiveMessage,
-  receiveMessageStream } from '../../actions/message_actions';
+  receiveMessage } from '../../actions/message_actions';
 import MessagesChannel from '../../actioncable/messages_subscriptions';
 
 class Messages extends Component {
@@ -16,9 +15,16 @@ class Messages extends Component {
 
   componentDidMount () {
     this.props.fetchMessages(this.props.activeChannel.id);
-    MessagesChannel.subscribe(message => {
+
+    const pusher = new Pusher('a514cb9081b7cf5aace9', {
+      encrypted: true
+    });
+
+    const channel = pusher.subscribe('messages');
+    channel.bind('new-message', (data) => {
+      const message = data.message;
       if (message.chatroomId === this.props.activeChannel.id) {
-        this.props.receiveMessageStream(message);
+        this.props.receiveMessage(message);
         this.updateScroll();
       }
     });
@@ -63,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchMessages: (channel_id) => dispatch(fetchMessages(channel_id)),
     createMessage: (channel_id, message) => dispatch(createMessage(channel_id, message)),
-    receiveMessageStream: (message) => dispatch(receiveMessage(message))
+    receiveMessage: (message) => dispatch(receiveMessage(message))
   };
 };
 
