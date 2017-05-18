@@ -7,14 +7,26 @@ class MessageItem extends Component {
 
   render () {
     const message =  this.props.message;
-    // write helper method to extract am/pm time
     const date = new Date(message.date);
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const suffix = 'AM';
+
+    let avatar;
+    switch(message.author) {
+      case 'guest':
+        avatar = 'goku';
+        break;
+      case 'guest2':
+        avatar = 'pepsi-man';
+        break;
+      default:
+        avatar = 'avatar';
+    }
+
     return (
       <div className="message-container">
-        <div className="avatar">
+        <div className={ avatar }>
         </div>
         <div className="message-body">
           <div className="message-header">
