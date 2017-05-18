@@ -15,19 +15,6 @@ class Messages extends Component {
 
   componentDidMount () {
     this.props.fetchMessages(this.props.activeChannel.id);
-
-    const pusher = new Pusher('a514cb9081b7cf5aace9', {
-      encrypted: true
-    });
-
-    const channel = pusher.subscribe('messages');
-    channel.bind('new-message', (data) => {
-      const message = data.message;
-      if (message.chatroomId === this.props.activeChannel.id) {
-        this.props.receiveMessage(message);
-        this.updateScroll();
-      }
-    });
   }
 
   componentDidUpdate (prevProps, prevState) {

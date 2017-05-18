@@ -10,13 +10,25 @@ import { setActiveChannel } from '../../actions/active_channel_actions';
 import { fetchPrivateChannels } from '../../actions/direct_message_actions';
 import { fetchAllUsers } from '../../actions/user_actions';
 import { channelsArr, subscriptionsArr } from '../../reducers/selectors';
+import { receiveMessage } from '../../actions/message_actions';
 
 class Chat extends Component {
   constructor (props) {
     super(props);
+    this.pusher = new Pusher('a514cb9081b7cf5aace9', {
+      encrypted: true
+    });
   }
 
   componentDidMount () {
+    const channel = this.pusher.subscribe('messages');
+    channel.bind('new-message', (data) => {
+      const message = data.message;
+      if (message.chatroomId === this.props.activeChannel.id) {
+        this.props.receiveMessage(message);
+      }
+    });
+
     this.props.fetchChannels();
     this.props.fetchSubscriptions();
     this.props.fetchPrivateChannels();
@@ -30,6 +42,10 @@ class Chat extends Component {
     if ((oldSubs.length === 0) && (newSubs.length !== 0)) {
       nextProps.setActiveChannel(newSubs[0]);
     }
+  }
+
+  componentWillUnmount () {
+    this.pusher.disconnect();
   }
 
   render () {
@@ -68,7 +84,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchSubscriptions: () => dispatch(fetchSubscriptions()),
     createSubscription: (channelId) => dispatch(createSubscription(channelId)),
     fetchPrivateChannels: () => dispatch(fetchPrivateChannels()),
-    fetchAllUsers: () => dispatch(fetchAllUsers())
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
+    receiveMessage: (message) => dispatch(receiveMessage(message))
   };
 };
 

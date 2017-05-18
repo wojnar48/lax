@@ -38,7 +38,7 @@ class Api::DirectMessagesController < ApplicationController
   end
 
   private
-  # secure this
+
   def chatroom_params
     params.require(:chatroom)
   end
