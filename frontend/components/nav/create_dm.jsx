@@ -10,6 +10,7 @@ class CreateDm extends Component {
     this.handleSelectUser = this.handleSelectUser.bind(this);
     this.handleUnselectUser = this.handleUnselectUser.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderUsersSelected = this.renderUsersSelected.bind(this);
   }
 
   handleSelectUser (e) {
@@ -18,18 +19,21 @@ class CreateDm extends Component {
       username: e.currentTarget.innerText
     };
     const newState = this.state.users.slice();
-    newState.push(user);
-    this.setState({ users: newState });
+    if (newState.length < 3) {
+      newState.push(user);
+      this.setState({ users: newState });
+    }
   }
 
   handleUnselectUser (e) {
+    const selectedUsers = this.state.users;
     const newUsers = [];
-    this.state.users.forEach(user => {
+    selectedUsers.forEach( user => {
       if (user.id !== e.currentTarget.dataset.id) {
         newUsers.push(user);
       }
+      this.setState({ users: newUsers });
     });
-    this.setState({ users: newUsers });
   }
 
   handleSubmit (e) {
@@ -38,9 +42,24 @@ class CreateDm extends Component {
     this.state.users.forEach(user => {
       dmMembers[user.id] = user.id;
     });
+    
     this.props.createPrivateChannel(Object.values(dmMembers));
     this.setState({ users: [] });
     this.props.closeModal();
+  }
+
+  renderUsersSelected () {
+    const numUsers = this.state.users.length;
+    switch(numUsers) {
+      case 0:
+        return <p>You can add up to 3 users</p>;
+      case 1:
+        return <p>You can add 2 more users</p>;
+      case 2:
+        return <p>You can add 1 more user</p>;
+      default:
+        return <p>Cannot add more than 3 users</p>;
+    }
   }
 
   render () {
@@ -74,6 +93,7 @@ class CreateDm extends Component {
             </div>
             <input type="submit" value="Go!" />
           </form>
+          <p>{ this.renderUsersSelected() }</p>
           <ul className="dm-users">
             { allUsers }
           </ul>
