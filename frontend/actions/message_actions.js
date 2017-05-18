@@ -5,8 +5,7 @@ export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 
 export const fetchMessages = (channel_id) => (dispatch) => {
   return MessageApiUtil.fetchChannelMessages(channel_id)
-    .then(res => dispatch(receiveMessages(res)),
-    err => console.log(err));
+    .then(res => dispatch(receiveMessages(res)));
 };
 
 export const createMessage = (channel_id, message) => (dispatch) => {
