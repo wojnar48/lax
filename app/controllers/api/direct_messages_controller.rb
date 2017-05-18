@@ -24,6 +24,17 @@ class Api::DirectMessagesController < ApplicationController
       name_str = names.join(', ')
       desc_str = "Direct chat with: #{name_str}"
       @chatroom.update(name: name_str, description: desc_str)
+
+      Pusher.trigger('dms', 'new-dm', {
+        dm: {
+          id: @chatroom.id,
+          name: @chatroom.name,
+          description: @chatroom.description,
+          private: @chatroom.private,
+          users: @chatroom.users
+        }
+      })
+
       render 'api/direct_messages/show'
     else
       render json: @chatroom.errors.full_messages, status: 422

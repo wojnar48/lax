@@ -21,12 +21,17 @@ class Chat extends Component {
   }
 
   componentDidMount () {
-    const channel = this.pusher.subscribe('messages');
-    channel.bind('new-message', (data) => {
+    const messages = this.pusher.subscribe('messages');
+    messages.bind('new-message', (data) => {
       const message = data.message;
       if (message.chatroomId === this.props.activeChannel.id) {
         this.props.receiveMessage(message);
       }
+    });
+
+    const directMessages = this.pusher.subscribe('dms');
+    directMessages.bind('new-dm', (data) => {
+      this.props.fetchPrivateChannels();
     });
 
     this.props.fetchChannels();
