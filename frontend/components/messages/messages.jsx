@@ -6,7 +6,6 @@ import MessagesHeader from './messages_header';
 import { fetchMessages,
   createMessage,
   receiveMessage } from '../../actions/message_actions';
-import MessagesChannel from '../../actioncable/messages_subscriptions';
 
 class Messages extends Component {
   constructor (props) {

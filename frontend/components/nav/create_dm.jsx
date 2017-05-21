@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserItem from './user_item';
 import SelectedUser from './selected_user';
+import { userAlreadySelected } from '../../reducers/selectors';
 
 class CreateDm extends Component {
   constructor (props) {
@@ -19,7 +20,8 @@ class CreateDm extends Component {
       username: e.currentTarget.innerText
     };
     const newState = this.state.users.slice();
-    if (newState.length < 3) {
+    const alreadySelected = userAlreadySelected(newState, user);
+    if (newState.length < 3 && !alreadySelected) {
       newState.push(user);
       this.setState({ users: newState });
     }
@@ -42,7 +44,7 @@ class CreateDm extends Component {
     this.state.users.forEach(user => {
       dmMembers[user.id] = user.id;
     });
-    
+
     this.props.createPrivateChannel(Object.values(dmMembers));
     this.setState({ users: [] });
     this.props.closeModal();
