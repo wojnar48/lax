@@ -6,12 +6,13 @@ import { userAlreadySelected } from '../../reducers/selectors';
 class CreateDm extends Component {
   constructor (props) {
     super(props);
-    this.state = { users: [] };
+    this.state = { users: [], allUsers: this.props.users };
 
     this.handleSelectUser = this.handleSelectUser.bind(this);
     this.handleUnselectUser = this.handleUnselectUser.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderUsersSelected = this.renderUsersSelected.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
   }
 
   handleSelectUser (e) {
@@ -19,6 +20,7 @@ class CreateDm extends Component {
       id: e.currentTarget.dataset.id,
       username: e.currentTarget.innerText
     };
+
     const newState = this.state.users.slice();
     const alreadySelected = userAlreadySelected(newState, user);
     if (newState.length < 3 && !alreadySelected) {
@@ -36,6 +38,18 @@ class CreateDm extends Component {
       }
       this.setState({ users: newUsers });
     });
+  }
+
+  handleSearchInput (e) {
+    const searchString = e.currentTarget.value;
+    const newUsers = [];
+    this.props.users.forEach( user => {
+      if (user.username.includes(searchString)) {
+        newUsers.push(user);
+      }
+    });
+
+    this.setState({ allUsers: newUsers});
   }
 
   handleSubmit (e) {
@@ -65,7 +79,7 @@ class CreateDm extends Component {
   }
 
   render () {
-    const allUsers = this.props.users.map(user => {
+    const allUsers = this.state.allUsers.map(user => {
       return (
         <UserItem
           handleSelectUser={ this.handleSelectUser }
@@ -90,7 +104,8 @@ class CreateDm extends Component {
               <ul>
                 { selectedUsers }
                 <input type="text"
-                placeholder="Start a conversation" />
+                placeholder="Start a conversation"
+                onChange={ this.handleSearchInput } />
               </ul>
             </div>
             <input type="submit" value="Go!" />

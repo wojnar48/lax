@@ -4,8 +4,8 @@ import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
 import MessagesHeader from './messages_header';
 import { fetchMessages,
-  createMessage,
-  receiveMessage } from '../../actions/message_actions';
+        createMessage,
+        receiveMessage } from '../../actions/message_actions';
 
 class Messages extends Component {
   constructor (props) {
