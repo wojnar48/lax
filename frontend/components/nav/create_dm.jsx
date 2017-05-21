@@ -98,13 +98,14 @@ class CreateDm extends Component {
       <section className="user-list-modal">
         <div className="dm-form-container">
           <h2>Direct Messages</h2>
+          <p>Use search to narrow down users</p>
           <ul className="users-selected"></ul>
           <form onSubmit={ this.handleSubmit }>
             <div className="input-wrapper">
               <ul>
                 { selectedUsers }
                 <input type="text"
-                placeholder="Start a conversation"
+                placeholder="Seach users"
                 onChange={ this.handleSearchInput } />
               </ul>
             </div>

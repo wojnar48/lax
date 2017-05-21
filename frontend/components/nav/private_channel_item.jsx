@@ -5,7 +5,7 @@ const PrivateChannelItem = ({ channel }) => {
     <li className="channel"
       data-id={ channel.id }
       key={ channel.id }>
-      <p><i></i><span>{ channel.name }</span></p>
+      <p><span>{ channel.name }</span></p>
     </li>
   );
 };
