@@ -7,8 +7,8 @@ class SessionForm extends Component {
     this.state = {
       username: '',
       password: '',
-      imageFile: null,
-      imageUrl: null
+      avatarFile: null,
+      avatarUrl: null
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,7 +41,7 @@ class SessionForm extends Component {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result });
+      this.setState({ avatarFile: file, avatarUrl: fileReader.result });
     };
 
     if (file) {
@@ -51,8 +51,11 @@ class SessionForm extends Component {
 
   handleSubmit (e) {
     e.preventDefault();
-    const user = this.state;
-    this.props.processForm(this.state);
+    const formData = new FormData();
+    formData.append("user[username]", this.state.username);
+    formData.append("user[password]", this.state.password);
+    formData.append("user[avatar]", this.state.avatarFile);
+    this.props.processForm(formData);
   }
 
   altNavLink() {

@@ -1,3 +1,3 @@
 json.id user.id
 json.username user.username
-json.avatar_url asset_path(user.avatar.url)
+json.avatarUrl asset_path(user.avatar.url)
