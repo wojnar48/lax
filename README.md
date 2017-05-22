@@ -2,20 +2,20 @@
 
 Slack-inspired, single-page chat app with a RESTful Ruby on Rails API and PostgreSQL backend that serves JSON data to a React / Redux front-end.
 
-Live Site:[http://laxapp.online]
+[Lax Live][live]
 
 ### Technologies & Gems
-- Ruby on Rails - back-end
-- PostgreSQL - database
-- React - front-end rendering
-- Redux - front-end state management
-- jQuery - AJAX requests and DOM manipulation
-- Pusher - real-time chat and notifications
-- AWS S3 - cloud storage for user avatars
-- jbuilder gem - data curation on back-end
-- figaro gem - secure handling of API keys
-- paperclip gem - used with ActiveRecord to allow models to store files easily
-- bcrypt gem - used for custom authentication logic
+- `Ruby on Rails` - back-end
+- `PostgreSQL` - database
+- `React` - front-end rendering
+- `Redux` - front-end state management
+- `jQuery` - AJAX requests and DOM manipulation
+- `Pusher` - real-time chat and notifications
+- `AWS S3` - cloud storage for user avatars
+- `jbuilder gem` - data curation on back-end
+- `figaro gem` - secure handling of API keys
+- `paperclip gem` - used with ActiveRecord to allow models to store files easily
+- `bcrypt gem` - used for custom authentication logic
 
 ## Features & Implementation
 
@@ -54,3 +54,5 @@ be able to scale efficiently.
 * [X] Message Formatting
 * [X] GIF Support
 * [X] Emoticon Support
+
+[live]: http://laxapp.online
