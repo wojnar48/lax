@@ -2,7 +2,7 @@ class Api::MessagesController < ApplicationController
   before_action :set_chatroom
 
   def index
-    @messages = @chatroom.messages
+    @messages = @chatroom.messages.includes(:user)
     render 'api/messages/index'
   end
 

@@ -42,7 +42,7 @@ class Api::DirectMessagesController < ApplicationController
   end
 
   def destroy
-    _dm= ChatroomUser.find_by(chatroom_id: params[:chatroom_id])
+    _dm = ChatroomUser.find_by(chatroom_id: params[:chatroom_id])
     _dm.destroy
     @chatroom = Chatroom.find(params[:chatroom_id])
     render 'api/direct_messages/show'
