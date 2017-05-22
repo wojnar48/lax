@@ -88,6 +88,18 @@ body {
         cursor: pointer;
         box-shadow: 0 1px 0 rgba(0,0,0,.25);
       }
+
+      input[type=file] {
+        border: none;
+        text-align: center;
+        font-size: 18px;
+      }
+
+      .avatar-upload {
+        input[type=file]:hover {
+          cursor: pointer;
+        }
+      }
     }
 
     h2 {

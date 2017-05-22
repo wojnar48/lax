@@ -4,9 +4,15 @@ import { Link, withRouter } from 'react-router';
 class SessionForm extends Component {
   constructor (props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = {
+      username: '',
+      password: '',
+      imageFile: null,
+      imageUrl: null
+    };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   componentDidUpdate () {
@@ -31,6 +37,18 @@ class SessionForm extends Component {
     });
   }
 
+  updateFile (e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
   handleSubmit (e) {
     e.preventDefault();
     const user = this.state;
@@ -46,9 +64,15 @@ class SessionForm extends Component {
   }
 
   render () {
-    const buttonText = this.props.formType === 'login' ?
-      'Sign in' :
-      'Sign up';
+    let buttonText, avatarUpload;
+    if (this.props.formType === 'signup') {
+      buttonText = 'Sign up';
+      avatarUpload = <input type="file" onChange={ this.updateFile } />;
+    } else {
+      buttonText = 'Log in';
+      avatarUpload = '';
+    }
+
     const errors = this.props.errors.map(error => (
       <li>
         <p className="error">{ error }</p>
@@ -80,6 +104,10 @@ class SessionForm extends Component {
               onChange={ this.handleInput }
               placeholder="Password" />
 
+            <div className="avatar-upload">
+              { avatarUpload }
+            </div>
+
             <input type="submit" name="commit" value={ buttonText } />
           </form>
           <div className="alt-link">
@@ -92,3 +120,14 @@ class SessionForm extends Component {
 }
 
 export default withRouter(SessionForm);
+
+// let buttonText, avatarUpload;
+// if (this.props.formType === 'signup') {
+//   buttonText = 'Sign up';
+//   avatarUpload = <input className="avatar-upload"
+//     type="file"
+//     onChange={ this.updateFile } />;
+// } else {
+//   buttonText = 'Log in';
+//   avatarUpload = '';
+// }

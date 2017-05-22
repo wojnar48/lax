@@ -17,6 +17,8 @@ gem "font-awesome-rails"
 gem 'bcrypt'
 gem 'faker'
 gem 'paperclip', '~> 5.1'
+gem 'figaro'
+gem 'aws-sdk'
 gem 'pusher'
 
 group :development, :test do

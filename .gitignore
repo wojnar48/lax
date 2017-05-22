@@ -9,3 +9,6 @@ bundle.js.map
 npm-debug.log
 .jshintrc
 dump.rdb
+
+# Ignore application configuration
+/config/application.yml
