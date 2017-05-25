@@ -5,7 +5,7 @@ const SelectedUser = ({ user, handleUnselectUser }) => {
     <li className="selected-user"
       data-id={ user.id }
       onClick={ handleUnselectUser }>
-      <img src={ user.avatarUrl } />
+      <img className="dm-avatar" src={ user.avatarUrl } />
       <span>{ user.username }</span>
       <i className="fa fa-times"></i>
     </li>

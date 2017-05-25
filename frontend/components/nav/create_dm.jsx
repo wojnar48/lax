@@ -27,6 +27,9 @@ class CreateDm extends Component {
     if (newState.length < 3 && !alreadySelected) {
       newState.push(user);
       this.setState({ users: newState });
+      if (newState.length === 3) {
+        this.hideUserSearchInput();
+      }
     }
   }
 
@@ -38,7 +41,18 @@ class CreateDm extends Component {
         newUsers.push(user);
       }
       this.setState({ users: newUsers });
+      if (newUsers.length < 3) {
+        this.unhideUserSearchInput();
+      }
     });
+  }
+
+  hideUserSearchInput () {
+    $('#user-search').addClass('search-hidden');
+  }
+
+  unhideUserSearchInput () {
+    $('#user-search').removeClass('search-hidden');
   }
 
   handleSearchInput (e) {

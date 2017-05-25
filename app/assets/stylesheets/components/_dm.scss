@@ -19,6 +19,13 @@ $darker-green: #009064;
 
   .dm-form-container {
 
+    .dm-avatar {
+      border: 1px solid $gray;
+      border-radius: 4px;
+      width: 25px;
+      height: 25px;
+    }
+
     form {
       display: flex;
       align-items: center;
@@ -31,6 +38,7 @@ $darker-green: #009064;
         justify-content: flex-start;
         margin: 0;
         width: 90%;
+        height: 40px;
         border: 1px solid $gray;
         border-radius: 4px;
 
@@ -47,13 +55,6 @@ $darker-green: #009064;
             padding: 2px;
             background: $light-blue;
             border-radius: 4px;
-
-            img {
-              border: 1px solid $gray;
-              border-radius: 4px;
-              width: 25px;
-              height: 25px;
-            }
 
             span {
               font-weight: 700;
@@ -96,6 +97,10 @@ $darker-green: #009064;
 
       #user-search {
         width: auto;
+      }
+
+      .search-hidden {
+        display: none;
       }
 
       input[type=text]:hover {
@@ -141,13 +146,21 @@ $darker-green: #009064;
         padding: 15px 15px;
         width: 90%;
 
-        span {
-          margin-left: 4px;
-          font-weight: 400;
-        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
 
-        p {
-          font-weight: 300i;
+          p {
+            font-weight: 300i;
+            margin-bottom: 0;
+
+            span {
+              display: inline-block;
+              margin-left: 4px;
+              font-weight: 400;
+            }
+          }
         }
       }
 

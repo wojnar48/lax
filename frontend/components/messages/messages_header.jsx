@@ -13,7 +13,7 @@ class MessagesHeader extends Component {
     });
 
     const description = activeChannel.name === 'private' ?
-    `Private chat with: ${users.map( user => user.username).join(', ')}` :
+    `Team chat with: ${users.map( user => user.username).join(', ')}` :
     activeChannel.description;
 
     return (
