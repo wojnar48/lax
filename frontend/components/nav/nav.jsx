@@ -54,6 +54,21 @@ class Nav extends Component {
     this.props.deletePrivateChannel(channelId);
   }
 
+  getDmName (dm) {
+    const currentUser = this.props.session.currentUser;
+    if (dm === null || currentUser === null) { return; }
+
+    let dmName;
+    for (let i = 0; i < dm.users.length; i++) {
+      if (dm.users[i].id !== currentUser.id) {
+        dmName = dm.users[i].username;
+        break;
+      }
+    }
+    dmName = dm.users.length > 2 ? `${dmName}...` : dmName;
+    return dmName;
+  }
+
   render () {
     let subscriptionsArr = Object.values(this.props.subscriptions);
     let subscriptions = subscriptionsArr.map(subscription => {
@@ -85,15 +100,14 @@ class Nav extends Component {
         'channel selected' :
         'channel';
 
-      let names = dm.name.split(',');
-      names = names.length > 1 ? `${names[0]}, ...` : names;
+      let dmName = this.getDmName(dm);
       return (
         <li key={ dm.id }>
           <p className={ channelClass }>
             <i>
               @<span id={ dm.id }
                 onClick={ this.handleSelectChannel }>
-              { names }
+              { dmName }
               </span>
             </i>
             <i data-channelId={ dm.id }
@@ -104,7 +118,6 @@ class Nav extends Component {
         </li>
       );
     });
-
     return (
       <div className="sidebar">
         <NavHeader logout={ this.props.logout }

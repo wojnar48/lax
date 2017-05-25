@@ -6,8 +6,16 @@ class MessagesHeader extends Component {
   }
 
   render () {
-    const { activeChannel } = this.props;
+    const { activeChannel, currentUser } = this.props;
     const symbol = activeChannel.private === false ? '#' : '@';
+    const users = activeChannel.users.filter( user => {
+      return user.id !== currentUser.id;
+    });
+
+    const description = activeChannel.name === 'private' ?
+    `Private chat with: ${users.map( user => user.username).join(', ')}` :
+    activeChannel.description;
+
     return (
       <section className="messages-header">
         <div className="channel-name">
@@ -18,7 +26,9 @@ class MessagesHeader extends Component {
             <i className="fa fa-user-o"></i>
             <span>{ activeChannel.users.length }</span>
           </p>
-          <p className="channel-desc">{ activeChannel.description }</p>
+          <p className="channel-desc">
+            { description }
+          </p>
         </div>
       </section>
     );
