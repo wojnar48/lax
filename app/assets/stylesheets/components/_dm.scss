@@ -18,19 +18,19 @@ $darker-green: #009064;
   margin: 0 auto;
 
   .dm-form-container {
+
     form {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 100%;
       margin-top: 20px;
       margin-bottom: 10px;
 
       .input-wrapper {
         display: flex;
-        display: inline-block;
-        width: 100%;
+        justify-content: flex-start;
         margin: 0;
+        width: 90%;
         border: 1px solid $gray;
         border-radius: 4px;
 
@@ -38,12 +38,33 @@ $darker-green: #009064;
           display: flex;
           align-items: center;
 
-          li {
-            font-size: 14px;
-            margin-right: 10px;
-            padding: 8px;
+          .selected-user {
+            display: flex;
+            align-items: center;
+            border: 1px solid $gray;
+            font-size: 16px;
+            margin-right: 5px;
+            padding: 2px;
             background: $light-blue;
             border-radius: 4px;
+
+            img {
+              border: 1px solid $gray;
+              border-radius: 4px;
+              width: 25px;
+              height: 25px;
+            }
+
+            span {
+              font-weight: 700;
+              display: block;
+              padding-bottom: 4px;
+              padding-left: 4px;
+            }
+
+            i {
+              display: block;
+            }
           }
         }
 
@@ -52,15 +73,18 @@ $darker-green: #009064;
         }
 
         .fa-times {
-          margin-left: 10px;
-        }
-
-        .selected-user {
-          border: 1px solid $gray;
+          display: block;
+          margin-left: 8px;
+          margin-right: 2px;
+          opacity: 0.6;
         }
 
         .selected-user:hover {
           cursor: pointer;
+        }
+
+        .selected-user:hover .fa-times {
+          opacity: 0.8;
         }
       }
 
@@ -68,6 +92,10 @@ $darker-green: #009064;
         display: inline-block;
         height: 40px;
         padding-left: 5px;
+      }
+
+      #user-search {
+        width: auto;
       }
 
       input[type=text]:hover {

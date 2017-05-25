@@ -5,6 +5,7 @@ const UserlItem = ({ user, handleSelectUser }) => {
     <li
       onClick={ handleSelectUser }
       data-id={ user.id }
+      data-url={ user.avatarUrl }
       key={ user.id } className="user-modal">
       <p><span>{ user.username }</span></p>
       <i className="fa fa-plus add-user"></i>

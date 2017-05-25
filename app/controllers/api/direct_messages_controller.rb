@@ -16,15 +16,6 @@ class Api::DirectMessagesController < ApplicationController
         @chatroom.chatroom_users.where(user_id: user.id).create
       end
 
-      # names = []
-      # @chatroom.users.each do |user|
-      #   names << user.username unless user.id == current_user.id
-      # end
-      #
-      # name_str = names.join(', ')
-      # desc_str = "Direct chat with: #{name_str}"
-      # @chatroom.update(name: name_str, description: desc_str)
-
       Pusher.trigger('dms', 'new-dm', {
         dm: {
           id: @chatroom.id,

@@ -18,7 +18,8 @@ class CreateDm extends Component {
   handleSelectUser (e) {
     const user = {
       id: e.currentTarget.dataset.id,
-      username: e.currentTarget.innerText
+      username: e.currentTarget.innerText,
+      avatarUrl: e.currentTarget.dataset.url
     };
 
     const newState = this.state.users.slice();
@@ -73,6 +74,8 @@ class CreateDm extends Component {
         return <p>You can add 2 more users</p>;
       case 2:
         return <p>You can add 1 more user</p>;
+      case 3:
+        return <p>All set!</p>;
       default:
         return <p>Cannot add more than 3 users</p>;
     }
@@ -91,7 +94,7 @@ class CreateDm extends Component {
     let selectedUsers = this.state.users.map(user => {
       return <SelectedUser
         handleUnselectUser={ this.handleUnselectUser }
-        key={ user.id } user={ user} />;
+        key={ user.id } user={ user } />;
     });
 
     return (
@@ -104,9 +107,10 @@ class CreateDm extends Component {
             <div className="input-wrapper">
               <ul>
                 { selectedUsers }
-                <input type="text"
-                placeholder="Seach users"
-                onChange={ this.handleSearchInput } />
+                <input id="user-search"
+                  type="text"
+                  placeholder="Seach users"
+                  onChange={ this.handleSearchInput } />
               </ul>
             </div>
             <input type="submit" value="Go!" />
