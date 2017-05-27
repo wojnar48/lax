@@ -103,7 +103,16 @@ class Nav extends Component {
         'channel';
 
       let dmName = this.getDmName(dm);
-      let dmNotifications = this.props.notifications[dm.id];
+      let dmNotifications;
+      let numUnseenMessages = this.props.notifications[dm.id];
+      if (numUnseenMessages === 0) {
+        dmNotifications = '';
+      } else {
+        dmNotifications = <div className="unseen-count">
+          <span>{ numUnseenMessages }</span>
+        </div>;
+      }
+
       return (
         <li key={ dm.id }>
           <p className={ channelClass }>
@@ -111,13 +120,13 @@ class Nav extends Component {
               @<span id={ dm.id }
                 onClick={ this.handleSelectChannel }>
               { dmName }
+              { dmNotifications }
               </span>
             </i>
             <i data-channelId={ dm.id }
               className="fa fa-trash-o"
               onClick={ this.handleDeletePrivateChannel }>
             </i>
-            <span>{ dmNotifications }</span>
           </p>
         </li>
       );
