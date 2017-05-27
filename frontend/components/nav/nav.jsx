@@ -6,6 +6,7 @@ import PublicChannelItem from './public_channel_item';
 import { withRouter } from 'react-router';
 import { logout } from '../../actions/session_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
+import { clearNotifications } from '../../actions/notification_actions';
 import { createSubscription,
         fetchSubscription,
         deleteSubscription } from '../../actions/subscription_actions';
@@ -32,6 +33,7 @@ class Nav extends Component {
     } else {
       this.props.setActiveChannel(nextActiveChannel);
     }
+    this.props.clearNotifications(nextActiveId);
   }
 
   componentWillUpdate (newProps, newState) {
@@ -158,7 +160,8 @@ const mapDispatchToProps = (dispatch) => {
     deleteSubscription: (channelId) => dispatch(deleteSubscription(channelId)),
     createChannel: (channel) => dispatch(createChannel(channel)),
     createPrivateChannel: (channel) => dispatch(createPrivateChannel(channel)),
-    deletePrivateChannel: (channelId) => dispatch(deletePrivateChannel(channelId))
+    deletePrivateChannel: (channelId) => dispatch(deletePrivateChannel(channelId)),
+    clearNotifications: (dmId) => dispatch(clearNotifications(dmId))
   };
 };
 
