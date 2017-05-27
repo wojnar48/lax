@@ -11,6 +11,7 @@ import { fetchPrivateChannels } from '../../actions/direct_message_actions';
 import { fetchAllUsers } from '../../actions/user_actions';
 import { channelsArr, subscriptionsArr } from '../../reducers/selectors';
 import { receiveMessage } from '../../actions/message_actions';
+import { receiveNotification } from '../../actions/notification_actions';
 
 class Chat extends Component {
   constructor (props) {
@@ -26,6 +27,14 @@ class Chat extends Component {
       const message = data.message;
       if (message.chatroomId === this.props.activeChannel.id) {
         this.props.receiveMessage(message);
+      } else {
+        const notification = {
+          dmId: message.chatroomId,
+          authorId: message.userId,
+          authorUserName: message.author
+        };
+
+        this.props.receiveNotification(notification);
       }
     });
 
@@ -71,13 +80,14 @@ class Chat extends Component {
   };
 }
 
-const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms, users }) => {
+const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms, notifications, users }) => {
   return {
     channels,
     subscriptions,
     activeChannel,
     messages,
     dms,
+    notifications,
     users
   };
 };
@@ -90,7 +100,8 @@ const mapDispatchToProps = (dispatch) => {
     createSubscription: (channelId) => dispatch(createSubscription(channelId)),
     fetchPrivateChannels: () => dispatch(fetchPrivateChannels()),
     fetchAllUsers: () => dispatch(fetchAllUsers()),
-    receiveMessage: (message) => dispatch(receiveMessage(message))
+    receiveMessage: (message) => dispatch(receiveMessage(message)),
+    receiveNotification: (notification) => dispatch(receiveNotification(notification))
   };
 };
 

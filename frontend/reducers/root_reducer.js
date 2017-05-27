@@ -5,6 +5,7 @@ import MessagesReducer from './messages_reducer';
 import SubscriptionsReducer from './subscriptions_reducer';
 import PrivateChannelReducer from './private_channel_reducer';
 import UsersReducer from './users_reducer';
+import NotificationsReducer from './notifications_reducer';
 import { combineReducers } from 'redux';
 
 const RootReducer = combineReducers({
@@ -14,7 +15,8 @@ const RootReducer = combineReducers({
   messages: MessagesReducer,
   subscriptions: SubscriptionsReducer,
   dms: PrivateChannelReducer,
-  users: UsersReducer
+  users: UsersReducer,
+  notifications: NotificationsReducer
 });
 
 export default RootReducer;
