@@ -11,7 +11,7 @@ $gray: #C5C5C5;
 $darker-gray: #555459;
 $darkest-gray: #373535;
 $pink: #FF9A9A;
-$red: #FF1919;
+$lax-red: #EB4D5C;
 
 
 .sidebar-container {
@@ -132,15 +132,17 @@ $red: #FF1919;
         line-height: 25px;
 
         .unseen-count {
+          position: relative;
+          bottom: 2px;
           display: inline-block;
           font-size: 12px;
+          font-weight: 700;
           line-height: 22px;
           margin-left: 10px;
-          margin-bottom: 2px;
           color: $lightest-gray;
           width: 22px;
-          height: 22px;
-          background: $pink;
+          height: 100%;
+          background: $lax-red;
           border-radius: 50%;
         }
 

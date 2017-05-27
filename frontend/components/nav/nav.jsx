@@ -105,7 +105,7 @@ class Nav extends Component {
       let dmName = this.getDmName(dm);
       let dmNotifications;
       let numUnseenMessages = this.props.notifications[dm.id];
-      if (numUnseenMessages === 0) {
+      if (numUnseenMessages === 0 || numUnseenMessages === undefined) {
         dmNotifications = '';
       } else {
         dmNotifications = <div className="unseen-count">
