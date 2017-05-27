@@ -101,6 +101,7 @@ class Nav extends Component {
         'channel';
 
       let dmName = this.getDmName(dm);
+      let dmNotifications = this.props.notifications[dm.id];
       return (
         <li key={ dm.id }>
           <p className={ channelClass }>
@@ -114,6 +115,7 @@ class Nav extends Component {
               className="fa fa-trash-o"
               onClick={ this.handleDeletePrivateChannel }>
             </i>
+            <span>{ dmNotifications }</span>
           </p>
         </li>
       );
@@ -135,13 +137,14 @@ class Nav extends Component {
   }
 }
 
-const mapStateToProps = ({ session, channels, activeChannel, subscriptions, dms, users }) => {
+const mapStateToProps = ({ session, channels, activeChannel, subscriptions, dms, notifications, users }) => {
   return {
     session,
     channels,
     subscriptions,
     activeChannel,
     dms,
+    notifications,
     users
   };
 };
