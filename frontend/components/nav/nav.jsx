@@ -61,12 +61,14 @@ class Nav extends Component {
     if (dm === null || currentUser === null) { return; }
 
     let dmName;
-    for (let i = 0; i < dm.users.length; i++) {
-      if (dm.users[i].id !== currentUser.id) {
-        dmName = dm.users[i].username;
+    const names = dm.name.split(', ');
+    for (let i = 0; i < names.length; i++) {
+      if (names[i] !== currentUser.username) {
+        dmName = names[i];
         break;
       }
     }
+
     dmName = dm.users.length > 2 ? `${dmName}...` : dmName;
     return dmName;
   }

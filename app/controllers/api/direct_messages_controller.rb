@@ -16,6 +16,8 @@ class Api::DirectMessagesController < ApplicationController
         @chatroom.chatroom_users.where(user_id: user.id).create
       end
 
+      @chatroom.update(name: @chatroom.users.map(&:username).join(', '))
+      
       Pusher.trigger('dms', 'new-dm', {
         dm: {
           id: @chatroom.id,
