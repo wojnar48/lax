@@ -8,7 +8,7 @@ import UsersReducer from './users_reducer';
 import NotificationsReducer from './notifications_reducer';
 import { combineReducers } from 'redux';
 
-const RootReducer = combineReducers({
+const appReducer = combineReducers({
   session: SessionReducer,
   channels: ChannelReducer,
   activeChannel: ActiveChannelReducer,
@@ -18,5 +18,13 @@ const RootReducer = combineReducers({
   users: UsersReducer,
   notifications: NotificationsReducer
 });
+
+const RootReducer = (state, action) => {
+  if (action.type === 'LOGOUT') {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+};
 
 export default RootReducer;

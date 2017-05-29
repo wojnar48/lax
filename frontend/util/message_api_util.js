@@ -6,7 +6,6 @@ export const fetchChannelMessages = (chatroom_id) => {
   });
 };
 
-
 export const createMessage = (chatroom_id, message) => {
   return $.ajax({
     method: 'POST',

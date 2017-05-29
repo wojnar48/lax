@@ -63,7 +63,8 @@ class Chat extends Component {
   }
 
   render () {
-    if (this.props.activeChannel === null) {
+    if (this.props.activeChannel === null &&
+      this.props.session.currentUser !== null) {
       return <Spinner />;
     } else {
       return (
@@ -80,7 +81,7 @@ class Chat extends Component {
   };
 }
 
-const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms, notifications, users }) => {
+const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms, notifications, users, session }) => {
   return {
     channels,
     subscriptions,
@@ -88,7 +89,8 @@ const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms
     messages,
     dms,
     notifications,
-    users
+    users,
+    session
   };
 };
 

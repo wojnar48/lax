@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import MessageInputForm from './message_input_form';
 import MessageList from './message_list';
 import MessagesHeader from './messages_header';
-import { fetchMessages,
-        createMessage,
-        receiveMessage } from '../../actions/message_actions';
+import { fetchMessages, createMessage, receiveMessage } from '../../actions/message_actions';
 
 class Messages extends Component {
   constructor (props) {
@@ -13,13 +11,17 @@ class Messages extends Component {
   }
 
   componentDidMount () {
-    this.props.fetchMessages(this.props.activeChannel.id);
+    if (this.props.activeChannel.id !== null) {
+      this.props.fetchMessages(this.props.activeChannel.id);
+    }
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.props.activeChannel.id !== prevProps.activeChannel.id) {
+    if (this.props.activeChannel.id !== prevProps.activeChannel.id &&
+      this.props.activeChannel.id !== null) {
       this.props.fetchMessages(this.props.activeChannel.id);
     }
+
     this.updateScroll();
   }
 
