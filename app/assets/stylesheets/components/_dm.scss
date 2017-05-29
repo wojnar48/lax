@@ -151,14 +151,34 @@ $darker-green: #009064;
           align-items: center;
           justify-content: flex-start;
 
-          p {
-            font-weight: 300i;
-            margin-bottom: 0;
+          div {
+            display: flex;
+            align-items: baseline;
+            width: 100%;
 
-            span {
-              display: inline-block;
+            .logged-in {
+              display: block;
+              width: 8px;
+              height: 8px;
               margin-left: 4px;
-              font-weight: 400;
+              border-radius: 10px;
+              background: $green;
+            }
+
+            .logged-out {
+              display: block;
+              width: 8px;
+              height: 8px;
+              margin-left: 4px;
+              border-radius: 10px;
+              background: $gray;
+            }
+
+            p {
+              font-weight: 300i;
+              font-size: 16px;
+              margin-bottom: 0;
+              margin-left: 5px;
             }
           }
         }

@@ -96,7 +96,7 @@ class CreateDm extends Component {
   }
 
   render () {
-    const allUsers = this.state.allUsers.map(user => {
+    const allUsers = this.props.users.map(user => {
       return (
         <UserItem
           handleSelectUser={ this.handleSelectUser }

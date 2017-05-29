@@ -13,6 +13,7 @@ import { createSubscription,
 import { createChannel } from '../../actions/channel_actions';
 import { createPrivateChannel,
         deletePrivateChannel } from '../../actions/direct_message_actions';
+import { fetchAllUsers, receiveUser } from '../../actions/user_actions';
 
 
 class Nav extends Component {
@@ -23,6 +24,17 @@ class Nav extends Component {
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
     this.handleDeleteSubscription = this.handleDeleteSubscription.bind(this);
     this.handleDeletePrivateChannel = this.handleDeletePrivateChannel.bind(this);
+  }
+
+  componentDidMount () {
+    const session = this.props.pusher.subscribe('session');
+    session.bind('login', (data) => {
+      this.props.fetchAllUsers();
+    });
+
+    session.bind('logout', (data) => {
+      this.props.receiveUser(data.logout);
+    });
   }
 
   handleSelectChannel (e) {
@@ -54,6 +66,10 @@ class Nav extends Component {
   handleDeletePrivateChannel (e) {
     const channelId = e.currentTarget.dataset.channelid;
     this.props.deletePrivateChannel(channelId);
+  }
+
+  componentWillUnmount () {
+    this.props.pusher.disconnect();
   }
 
   getDmName (dm) {
@@ -172,7 +188,9 @@ const mapDispatchToProps = (dispatch) => {
     createChannel: (channel) => dispatch(createChannel(channel)),
     createPrivateChannel: (channel) => dispatch(createPrivateChannel(channel)),
     deletePrivateChannel: (channelId) => dispatch(deletePrivateChannel(channelId)),
-    clearNotifications: (dmId) => dispatch(clearNotifications(dmId))
+    clearNotifications: (dmId) => dispatch(clearNotifications(dmId)),
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
+    receiveUser: (user) => dispatch(receiveUser(user))
   };
 };
 

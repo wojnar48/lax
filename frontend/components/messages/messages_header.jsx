@@ -9,6 +9,7 @@ class MessagesHeader extends Component {
     const { activeChannel, currentUser } = this.props;
     const symbol = activeChannel.private === false ? '#' : '@';
     const users = activeChannel.users.filter( user => {
+      if (currentUser === null) { return false; }
       return user.id !== currentUser.id;
     });
 

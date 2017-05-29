@@ -43,6 +43,11 @@ class Chat extends Component {
       this.props.fetchPrivateChannels();
     });
 
+    // const session = this.pusher.subscribe('session');
+    // session.bind('login', (data) => {
+    //   this.props.fetchAllUsers();
+    // });
+
     this.props.fetchChannels();
     this.props.fetchSubscriptions();
     this.props.fetchPrivateChannels();
@@ -70,7 +75,7 @@ class Chat extends Component {
       return (
         <section>
           <nav className="sidebar-container">
-            <Nav />
+            <Nav pusher={ this.pusher } />
           </nav>
           <section>
             <Messages />
