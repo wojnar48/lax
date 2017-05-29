@@ -10,7 +10,7 @@ class MessageItem extends Component {
     const date = new Date(message.date);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const suffix = 'AM';
+    const dateVals = date.toString().split(' ').slice(1, 4);
 
     return (
       <div className="message-container">
@@ -20,7 +20,7 @@ class MessageItem extends Component {
         <div className="message-body">
           <div className="message-header">
             <p className="message-author">{ message.author }</p>
-            <p className="message-date">{ `${hours}:${minutes}${suffix}` }</p>
+            <p className="message-date">{ `${dateVals.join(' ')} ${hours}:${minutes}` }</p>
           </div>
           <div>
             <p>{ message.body }</p>
