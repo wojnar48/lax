@@ -13,9 +13,16 @@ class MessagesHeader extends Component {
       return user.id !== currentUser.id;
     });
 
-    const description = activeChannel.name === 'private' ?
-    `Team chat with: ${users.map( user => user.username).join(', ')}` :
-    activeChannel.description;
+    let description;
+    if (activeChannel.private) {
+      if (users.length === 0) {
+        description = 'Current chat members: [No users left in chat]';
+      } else {
+        description = `Current chat members: ${users.map( user => user.username).join(', ')}`;
+      }
+    } else {
+      description = activeChannel.description;
+    }
 
     return (
       <section className="messages-header">
@@ -25,7 +32,7 @@ class MessagesHeader extends Component {
         <div className="channel-details">
           <p className="user-count">
             <i className="fa fa-user-o"></i>
-            <span>{ activeChannel.users.length }</span>
+            <span>{ activeChannel.users.length - 1}</span>
           </p>
           <p className="channel-desc">
             { description }
