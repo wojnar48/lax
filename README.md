@@ -78,4 +78,4 @@ be able to scale efficiently.
 * [X] Emoticon Support
 
 [live]: http://laxapp.online
-[lax_channels]: docs/images/lax_channels.png
+[lax_channels]: docs/images/lax_channels.gif
