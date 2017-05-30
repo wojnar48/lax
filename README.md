@@ -94,7 +94,6 @@ accelerates web asset delivery through CDN caching, further adding to performanc
 ## Future Direction
 
 * [X] Message Search
-* [X] Live Notifications
 * [X] Message Formatting
 * [X] GIF Support
 * [X] Emoticon Support
