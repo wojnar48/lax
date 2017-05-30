@@ -2,7 +2,7 @@
 
 Slack-inspired, single-page chat app with a RESTful Ruby on Rails API and PostgreSQL backend that serves JSON data to a React / Redux front-end.
 
-![lax image][lax_main]
+![lax image][lax_channels]
 
 [Lax Live][live]
 
@@ -78,4 +78,4 @@ be able to scale efficiently.
 * [X] Emoticon Support
 
 [live]: http://laxapp.online
-[lax_main]: docs/images/laxapp_main.png
+[lax_channels]: docs/images/lax_channels.png
