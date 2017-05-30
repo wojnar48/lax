@@ -6,7 +6,7 @@ import { userAlreadySelected } from '../../reducers/selectors';
 class CreateDm extends Component {
   constructor (props) {
     super(props);
-    this.state = { users: [], allUsers: this.props.users };
+    this.state = { users: [], searchString: '' };
 
     this.handleSelectUser = this.handleSelectUser.bind(this);
     this.handleUnselectUser = this.handleUnselectUser.bind(this);
@@ -57,14 +57,7 @@ class CreateDm extends Component {
 
   handleSearchInput (e) {
     const searchString = e.currentTarget.value;
-    const newUsers = [];
-    this.props.users.forEach( user => {
-      if (user.username.includes(searchString)) {
-        newUsers.push(user);
-      }
-    });
-
-    this.setState({ allUsers: newUsers});
+    this.setState({ searchString });
   }
 
   handleSubmit (e) {
@@ -97,12 +90,14 @@ class CreateDm extends Component {
 
   render () {
     const allUsers = this.props.users.map(user => {
-      return (
-        <UserItem
-          handleSelectUser={ this.handleSelectUser }
-          key={ user.id }
-          user={ user } />
-      );
+      if (user.username.includes(this.state.searchString)) {
+        return (
+          <UserItem
+            handleSelectUser={ this.handleSelectUser }
+            key={ user.id }
+            user={ user } />
+        );
+      }
     });
 
     let selectedUsers = this.state.users.map(user => {
