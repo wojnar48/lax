@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { loginGuest } from '../actions/session_actions';
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 
