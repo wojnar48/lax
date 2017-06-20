@@ -8,6 +8,7 @@ bundle.js.map
 .DS_Store
 npm-debug.log
 .jshintrc
+.eslintrc
 dump.rdb
 
 # Ignore application configuration

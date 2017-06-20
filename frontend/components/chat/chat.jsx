@@ -9,7 +9,7 @@ import { createSubscription } from '../../actions/subscription_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
 import { fetchPrivateChannels } from '../../actions/direct_message_actions';
 import { fetchAllUsers } from '../../actions/user_actions';
-import { channelsArr, subscriptionsArr } from '../../reducers/selectors';
+import { subscriptionsArr } from '../../reducers/selectors';
 import { receiveMessage } from '../../actions/message_actions';
 import { receiveNotification } from '../../actions/notification_actions';
 
@@ -19,7 +19,7 @@ class Chat extends Component {
     this.pusher = new Pusher('a514cb9081b7cf5aace9', { encrypted: true });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const messages = this.pusher.subscribe('messages');
 
     messages.bind('new-message', ({ message }) => {
@@ -46,7 +46,7 @@ class Chat extends Component {
     this.props.createSubscription(1);
   }
 
-  componentWillUpdate (nextProps, _) {
+  componentWillUpdate(nextProps) {
     const oldSubs = subscriptionsArr(this.props.subscriptions);
     const newSubs = subscriptionsArr(nextProps.subscriptions);
 
@@ -55,11 +55,11 @@ class Chat extends Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.pusher.disconnect();
   }
 
-  render () {
+  render() {
     if (this.props.activeChannel === null &&
       this.props.session.currentUser !== null) {
       return <Spinner />;
@@ -67,7 +67,7 @@ class Chat extends Component {
       return (
         <section>
           <nav className="sidebar-container">
-            <Nav pusher={ this.pusher } />
+            <Nav pusher={this.pusher} />
           </nav>
           <section>
             <Messages />
@@ -75,23 +75,23 @@ class Chat extends Component {
         </section>
       );
     }
-  };
+  }
 }
 
 const mapStateToProps = (state) => ({ ...state });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchChannels: () => dispatch(fetchChannels()),
-  setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
+  setActiveChannel: channel => dispatch(setActiveChannel(channel)),
   fetchSubscriptions: () => dispatch(fetchSubscriptions()),
-  createSubscription: (channelId) => dispatch(createSubscription(channelId)),
+  createSubscription: channelId => dispatch(createSubscription(channelId)),
   fetchPrivateChannels: () => dispatch(fetchPrivateChannels()),
   fetchAllUsers: () => dispatch(fetchAllUsers()),
-  receiveMessage: (message) => dispatch(receiveMessage(message)),
-  receiveNotification: (notification) => dispatch(receiveNotification(notification))
+  receiveMessage: message => dispatch(receiveMessage(message)),
+  receiveNotification: notification => dispatch(receiveNotification(notification)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Chat);
