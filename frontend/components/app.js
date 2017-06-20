@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 import { loginGuest } from '../actions/session_actions';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   render () {
@@ -31,11 +31,9 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginGuest: () => dispatch(loginGuest())
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  loginGuest: () => dispatch(loginGuest())
+});
 
 export default connect(
   null,

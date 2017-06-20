@@ -14,17 +14,15 @@ import { receiveMessage } from '../../actions/message_actions';
 import { receiveNotification } from '../../actions/notification_actions';
 
 class Chat extends Component {
-  constructor (props) {
-    super(props);
-    this.pusher = new Pusher('a514cb9081b7cf5aace9', {
-      encrypted: true
-    });
+  constructor() {
+    super();
+    this.pusher = new Pusher('a514cb9081b7cf5aace9', { encrypted: true });
   }
 
   componentDidMount () {
     const messages = this.pusher.subscribe('messages');
-    messages.bind('new-message', (data) => {
-      const message = data.message;
+
+    messages.bind('new-message', ({ message }) => {
       if (message.chatroomId === this.props.activeChannel.id) {
         this.props.receiveMessage(message);
       } else {
@@ -39,14 +37,7 @@ class Chat extends Component {
     });
 
     const directMessages = this.pusher.subscribe('dms');
-    directMessages.bind('new-dm', (data) => {
-      this.props.fetchPrivateChannels();
-    });
-
-    // const session = this.pusher.subscribe('session');
-    // session.bind('login', (data) => {
-    //   this.props.fetchAllUsers();
-    // });
+    directMessages.bind('new-dm', () => this.props.fetchPrivateChannels());
 
     this.props.fetchChannels();
     this.props.fetchSubscriptions();
@@ -55,9 +46,10 @@ class Chat extends Component {
     this.props.createSubscription(1);
   }
 
-  componentWillUpdate (nextProps, nextState) {
+  componentWillUpdate (nextProps, _) {
     const oldSubs = subscriptionsArr(this.props.subscriptions);
     const newSubs = subscriptionsArr(nextProps.subscriptions);
+
     if ((oldSubs.length === 0) && (newSubs.length !== 0)) {
       nextProps.setActiveChannel(newSubs[0]);
     }
@@ -86,33 +78,20 @@ class Chat extends Component {
   };
 }
 
-const setStateToProps = ({ channels, subscriptions, activeChannel, messages, dms, notifications, users, session }) => {
-  return {
-    channels,
-    subscriptions,
-    activeChannel,
-    messages,
-    dms,
-    notifications,
-    users,
-    session
-  };
-};
+const mapStateToProps = (state) => ({ ...state });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchChannels: () => dispatch(fetchChannels()),
-    setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
-    fetchSubscriptions: () => dispatch(fetchSubscriptions()),
-    createSubscription: (channelId) => dispatch(createSubscription(channelId)),
-    fetchPrivateChannels: () => dispatch(fetchPrivateChannels()),
-    fetchAllUsers: () => dispatch(fetchAllUsers()),
-    receiveMessage: (message) => dispatch(receiveMessage(message)),
-    receiveNotification: (notification) => dispatch(receiveNotification(notification))
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchChannels: () => dispatch(fetchChannels()),
+  setActiveChannel: (channel) => dispatch(setActiveChannel(channel)),
+  fetchSubscriptions: () => dispatch(fetchSubscriptions()),
+  createSubscription: (channelId) => dispatch(createSubscription(channelId)),
+  fetchPrivateChannels: () => dispatch(fetchPrivateChannels()),
+  fetchAllUsers: () => dispatch(fetchAllUsers()),
+  receiveMessage: (message) => dispatch(receiveMessage(message)),
+  receiveNotification: (notification) => dispatch(receiveNotification(notification))
+});
 
 export default connect(
-  setStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(Chat);

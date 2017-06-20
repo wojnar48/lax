@@ -18,5 +18,4 @@ const ActiveChannelReducer = (state = _defaultState, action) => {
   }
 };
 
-
 export default ActiveChannelReducer;

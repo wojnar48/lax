@@ -1,5 +1,5 @@
 {
-  "name": "aa_full_stack",
+  "name": "lax",
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "main": "index.js",
@@ -13,15 +13,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wojnar48/aa_full_stack.git"
+    "url": "git+https://github.com/wojnar48/lax.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wojnar48/aa_full_stack/issues"
+    "url": "https://github.com/wojnar48/lax/issues"
   },
-  "homepage": "https://github.com/wojnar48/aa_full_stack#readme",
+  "homepage": "https://github.com/wojnar48/lax#readme",
   "dependencies": {
     "actioncable": "^5.0.2",
     "babel-core": "^6.24.1",
@@ -44,5 +44,8 @@
   "engines": {
     "node": "6.7.0",
     "npm": "3.10.7"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0"
   }
 }

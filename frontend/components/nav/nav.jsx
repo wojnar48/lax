@@ -17,8 +17,8 @@ import { fetchAllUsers, receiveUser } from '../../actions/user_actions';
 
 
 class Nav extends Component {
-  constructor (props) {
-    super(props);
+  constructor() {
+    super();
 
     this.handleSelectChannel = this.handleSelectChannel.bind(this);
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
@@ -26,18 +26,13 @@ class Nav extends Component {
     this.handleDeletePrivateChannel = this.handleDeletePrivateChannel.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const session = this.props.pusher.subscribe('session');
-    session.bind('login', (data) => {
-      this.props.fetchAllUsers();
-    });
-
-    session.bind('logout', (data) => {
-      this.props.receiveUser(data.logout);
-    });
+    session.bind('login', (_data) => this.props.fetchAllUsers());
+    session.bind('logout', ({ logout }) => this.props.receiveUser(data.logout));
   }
 
-  handleSelectChannel (e) {
+  handleSelectChannel(e) {
     const nextActiveId = parseInt(e.currentTarget.id);
     const nextActiveChannel = this.props.subscriptions[nextActiveId];
     if (nextActiveChannel === undefined) {
@@ -48,31 +43,31 @@ class Nav extends Component {
     this.props.clearNotifications(nextActiveId);
   }
 
-  componentWillUpdate (newProps, newState) {
+  componentWillUpdate(newProps, newState) {
     if (newProps.session.currentUser === null) {
       this.props.router.push('/login');
     }
   }
 
-  handleCreateChannel (channel) {
+  handleCreateChannel(channel) {
     this.props.createChannel(channel);
   }
 
-  handleDeleteSubscription (e) {
+  handleDeleteSubscription(e) {
     const channelId = e.currentTarget.dataset.channelid;
     this.props.deleteSubscription(channelId);
   }
 
-  handleDeletePrivateChannel (e) {
+  handleDeletePrivateChannel(e) {
     const channelId = e.currentTarget.dataset.channelid;
     this.props.deletePrivateChannel(channelId);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.props.pusher.disconnect();
   }
 
-  getDmName (dm) {
+  getDmName(dm) {
     const currentUser = this.props.session.currentUser;
     if (dm === null || currentUser === null) { return; }
 
