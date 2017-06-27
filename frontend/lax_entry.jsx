@@ -1,10 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Root from './components/root.jsx';
+import { render } from 'react-dom';
+import Root from './components/root';
 import configureStore from './store/store';
-import { fetchChannels } from './actions/channel_actions';
-import ActionCable from 'actioncable';
-import { deleteSubscription } from './actions/subscription_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -15,14 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.App = {};
-  window.App.cable = ActionCable.createConsumer();
-
-  window.store = store;
-  window.deleteSubscription = deleteSubscription;
-
-  ReactDOM.render(
-    <Root store={ store } />,
+  render(
+    <Root store={store} />,
     document.getElementById('root')
   );
 });
