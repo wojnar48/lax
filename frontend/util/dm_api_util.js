@@ -1,22 +1,21 @@
-
-export const fetchPrivateChannels = () => {
-  return $.ajax({
+export const fetchPrivateChannels = () => (
+  $.ajax({
     method: 'GET',
-    url: 'api/direct_messages'
-  });
-};
+    url: 'api/direct_messages',
+  })
+);
 
-export const createPrivateChannel = (chatroom) => {
-  return $.ajax({
+export const createPrivateChannel = chatroom => (
+  $.ajax({
     method: 'POST',
     url: 'api/direct_messages',
-    data: { chatroom }
-  });
-};
+    data: { chatroom },
+  })
+);
 
-export const deletePrivateChannel = (chatroomId) => {
-  return $.ajax({
+export const deletePrivateChannel = chatroomId => (
+  $.ajax({
     method: 'DELETE',
-    url: `api/direct_messages/${chatroomId}`
-  });
-};
+    url: `api/direct_messages/${chatroomId}`,
+  })
+);

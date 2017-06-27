@@ -1,15 +1,14 @@
-
-export const fetchChannelMessages = (chatroom_id) => {
-  return $.ajax({
+export const fetchChannelMessages = chatroomId => (
+  $.ajax({
     method: 'GET',
-    url: `api/chatrooms/${chatroom_id}/messages`
-  });
-};
+    url: `api/chatrooms/${chatroomId}/messages`,
+  })
+);
 
-export const createMessage = (chatroom_id, message) => {
-  return $.ajax({
+export const createMessage = (chatroomId, message) => (
+  $.ajax({
     method: 'POST',
-    url: `/api/chatrooms/${chatroom_id}/messages`,
-    data: { message }
-  });
-};
+    url: `/api/chatrooms/${chatroomId}/messages`,
+    data: { message },
+  })
+);

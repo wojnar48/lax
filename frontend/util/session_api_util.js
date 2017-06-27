@@ -1,37 +1,36 @@
-
-export const signup = (formData) => {
-  return $.ajax({
+export const signup = formData => (
+  $.ajax({
     method: 'POST',
     url: 'api/users',
     dataType: 'json',
     contentType: false,
     processData: false,
-    data: formData
-  });
-};
+    data: formData,
+  })
+);
 
-export const login = (formData) => {
-  return $.ajax({
+export const login = formData => (
+  $.ajax({
     method: 'POST',
     url: 'api/session',
     dataType: 'json',
     contentType: false,
     processData: false,
-    data: formData
-  });
-};
+    data: formData,
+  })
+);
 
-export const logout = (user) => {
-  return $.ajax({
+export const logout = () => (
+  $.ajax({
     method: 'DELETE',
-    url: 'api/session'
-  });
-};
+    url: 'api/session',
+  })
+);
 
-export const loginGuest = () => {
-  return $.ajax({
+export const loginGuest = () => (
+  $.ajax({
     method: 'POST',
     url: 'api/session',
-    data: { user: { username: 'guest', password: 'password' } }
-  });
-};
+    data: { user: { username: 'guest', password: 'password' } },
+  })
+);
