@@ -1,16 +1,12 @@
-import {
-  RECEIVE_CHANNELS,
-  RECEIVE_CHANNEL,
-  RECEIVE_DELETE_CHANNEL,
-  RECEIVE_ERRORS } from '../actions/channel_actions';
 import { merge } from 'lodash';
+import { RECEIVE_CHANNELS, RECEIVE_CHANNEL } from '../actions/channel_actions';
 
 const ChannelReducer = (state = {}, action) => {
   let newState;
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_CHANNELS:
       newState = {};
-      action.channels.forEach(channel => {
+      action.channels.forEach((channel) => {
         newState[channel.id] = channel;
       });
       return newState;

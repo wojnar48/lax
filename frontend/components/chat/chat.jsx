@@ -4,14 +4,13 @@ import Nav from '../nav/nav';
 import Spinner from './spinner';
 import Messages from '../messages/messages';
 import { fetchChannels } from '../../actions/channel_actions';
-import { fetchSubscriptions } from '../../actions/subscription_actions';
-import { createSubscription } from '../../actions/subscription_actions';
 import { setActiveChannel } from '../../actions/active_channel_actions';
 import { fetchPrivateChannels } from '../../actions/direct_message_actions';
 import { fetchAllUsers } from '../../actions/user_actions';
 import { subscriptionsArr } from '../../reducers/selectors';
 import { receiveMessage } from '../../actions/message_actions';
 import { receiveNotification } from '../../actions/notification_actions';
+import { fetchSubscriptions, createSubscription } from '../../actions/subscription_actions';
 
 class Chat extends Component {
   constructor() {
@@ -78,7 +77,7 @@ class Chat extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ ...state });
+const mapStateToProps = state => ({ ...state });
 
 const mapDispatchToProps = dispatch => ({
   fetchChannels: () => dispatch(fetchChannels()),
