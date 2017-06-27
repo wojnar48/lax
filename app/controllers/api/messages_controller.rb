@@ -1,4 +1,5 @@
 class Api::MessagesController < ApplicationController
+  before_filter :require_login
   before_action :set_chatroom
 
   def index
@@ -27,11 +28,11 @@ class Api::MessagesController < ApplicationController
 
   private
 
-    def set_chatroom
-      @chatroom = Chatroom.find(params[:chatroom_id])
-    end
+  def set_chatroom
+    @chatroom = Chatroom.find(params[:chatroom_id])
+  end
 
-    def message_params
-      params.require(:message).permit(:body)
-    end
+  def message_params
+    params.require(:message).permit(:body)
+  end
 end

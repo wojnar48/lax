@@ -7,7 +7,6 @@ class Api::SessionsController < ApplicationController
 
     if @user
       log_in(@user)
-
       Pusher.trigger('session', 'login', {
         login: {
           id: @user.id,
@@ -25,9 +24,9 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     @user = current_user
+
     if @user
       log_out
-
       Pusher.trigger('session', 'logout', {
         logout: {
           id: @user.id,

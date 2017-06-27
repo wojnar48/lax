@@ -1,4 +1,6 @@
 class Api::DirectMessagesController < ApplicationController
+  before_filter :require_login
+  
   def index
     @chatrooms = current_user.chatrooms.where(private: true)
     render 'api/chatrooms/index'
@@ -17,7 +19,7 @@ class Api::DirectMessagesController < ApplicationController
       end
 
       @chatroom.update(name: @chatroom.users.map(&:username).join(', '))
-      
+
       Pusher.trigger('dms', 'new-dm', {
         dm: {
           id: @chatroom.id,

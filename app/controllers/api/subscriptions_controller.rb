@@ -1,6 +1,9 @@
 class Api::SubscriptionsController < ApplicationController
+  before_filter :require_login
+
   def index
-    @subscriptions = current_user.chatrooms.includes(:users).where(private: false)
+    @subscriptions = current_user.chatrooms
+      .includes(:users).where(private: false)
     render 'api/subscriptions/index'
   end
 

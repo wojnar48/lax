@@ -1,4 +1,5 @@
 class Api::ChatroomsController < ApplicationController
+  before_filter :require_login
   before_action :set_chatroom, only: [:destroy]
 
   def index
