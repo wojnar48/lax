@@ -2,7 +2,8 @@ import { merge } from 'lodash';
 import {
   RECEIVE_CURRENT_USER,
   LOGOUT,
-  RECEIVE_ERRORS } from '../actions/session_actions';
+  RECEIVE_ERRORS,
+} from '../actions/session_actions';
 
 const nullUser = {
   currentUser: null,

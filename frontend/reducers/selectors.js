@@ -1,16 +1,7 @@
-export const messagesArr = (messages) => {
-  return Object.values(messages);
-};
+export const messagesArr = messages => Object.values(messages);
 
-export const subscriptionsArr = (subscriptions) => {
-  return Object.values(subscriptions);
-};
+export const subscriptionsArr = subscriptions => Object.values(subscriptions);
 
-export const userAlreadySelected = (allUsers, user) => {
-  let alreadySelected = false;
-  allUsers.forEach( selectedUser => {
-    if (selectedUser.id === user.id) {
-      alreadySelected = true;
-    }});
-  return alreadySelected;
-};
+export const userAlreadySelected = (allUsers, user) => (
+  allUsers.some(selectedUser => selectedUser.id === user.id)
+);

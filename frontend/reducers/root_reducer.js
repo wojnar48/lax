@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
 import ChannelReducer from './channel_reducer';
 import ActiveChannelReducer from './active_channel_reducer';
@@ -6,7 +7,6 @@ import SubscriptionsReducer from './subscriptions_reducer';
 import PrivateChannelReducer from './private_channel_reducer';
 import UsersReducer from './users_reducer';
 import NotificationsReducer from './notifications_reducer';
-import { combineReducers } from 'redux';
 
 const appReducer = combineReducers({
   session: SessionReducer,
@@ -20,11 +20,8 @@ const appReducer = combineReducers({
 });
 
 const RootReducer = (state, action) => {
-  if (action.type === 'LOGOUT') {
-    state = undefined;
-  }
-
-  return appReducer(state, action);
+  const appState = action.type === 'LOGOUT' ? undefined : state;
+  return appReducer(appState, action);
 };
 
 export default RootReducer;

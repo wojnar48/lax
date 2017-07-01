@@ -1,20 +1,12 @@
-import { merge } from 'lodash';
 import { RECEIVE_CHANNELS, RECEIVE_CHANNEL } from '../actions/channel_actions';
 
 const ChannelReducer = (state = {}, action) => {
-  let newState;
-
   switch (action.type) {
     case RECEIVE_CHANNELS:
-      newState = {};
-      action.channels.forEach((channel) => {
-        newState[channel.id] = channel;
-      });
-      return newState;
+      return action.channels.reduce((obj, channel) => (
+        { ...obj, [channel.id]: channel }), {});
     case RECEIVE_CHANNEL:
-      newState = merge({}, state);
-      newState[action.channel.id] = action.channel;
-      return newState;
+      return { ...state, [action.channel.id]: action.channel };
     default:
       return state;
   }

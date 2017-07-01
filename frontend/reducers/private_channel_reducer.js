@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { pickBy } from 'lodash';
 import {
   RECEIVE_PRIVATE_CHANNELS,
   RECEIVE_PRIVATE_CHANNEL,
@@ -6,23 +6,15 @@ import {
 } from '../actions/direct_message_actions';
 
 const PrivateChannelReducer = (state = {}, action) => {
-  let newState;
-
   switch (action.type) {
     case RECEIVE_PRIVATE_CHANNELS:
-      newState = {};
-      action.channels.forEach((channel) => {
-        newState[channel.id] = channel;
-      });
-      return newState;
+      return action.channels.reduce((obj, channel) => (
+        { ...obj, [channel.id]: channel }), {});
     case RECEIVE_PRIVATE_CHANNEL:
-      newState = merge({}, state);
-      newState[action.channel.id] = action.channel;
-      return newState;
+      return { ...state, [action.channel.id]: action.channel };
     case REMOVE_PRIVATE_CHANNEL:
-      newState = merge({}, state);
-      delete newState[action.channel.id];
-      return newState;
+      return pickBy({ ...state }, (value, key) =>
+        parseInt(key, 10) !== action.channel.id);
     default:
       return state;
   }
