@@ -16,7 +16,7 @@ const appReducer = combineReducers({
   subscriptions: SubscriptionsReducer,
   dms: PrivateChannelReducer,
   users: UsersReducer,
-  notifications: NotificationsReducer
+  notifications: NotificationsReducer,
 });
 
 const RootReducer = (state, action) => {

@@ -1,16 +1,15 @@
-
+import { merge } from 'lodash';
 import {
   RECEIVE_SUBSCRIPTIONS,
   RECEIVE_SUBSCRIPTION,
   REMOVE_SUBSCRIPTION } from '../actions/subscription_actions';
-import { merge } from 'lodash';
 
 export const SubscriptionsReducer = (state = {}, action) => {
   let newState;
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_SUBSCRIPTIONS:
-    newState = {};
-      action.subscriptions.forEach(subscription => {
+      newState = {};
+      action.subscriptions.forEach((subscription) => {
         newState[subscription.id] = subscription;
       });
       return newState;

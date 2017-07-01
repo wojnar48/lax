@@ -1,14 +1,17 @@
-import { RECEIVE_PRIVATE_CHANNELS,
-  RECEIVE_PRIVATE_CHANNEL,
-  REMOVE_PRIVATE_CHANNEL } from '../actions/direct_message_actions';
 import { merge } from 'lodash';
+import {
+  RECEIVE_PRIVATE_CHANNELS,
+  RECEIVE_PRIVATE_CHANNEL,
+  REMOVE_PRIVATE_CHANNEL,
+} from '../actions/direct_message_actions';
 
 const PrivateChannelReducer = (state = {}, action) => {
   let newState;
-  switch(action.type) {
+
+  switch (action.type) {
     case RECEIVE_PRIVATE_CHANNELS:
       newState = {};
-      action.channels.forEach(channel => {
+      action.channels.forEach((channel) => {
         newState[channel.id] = channel;
       });
       return newState;
