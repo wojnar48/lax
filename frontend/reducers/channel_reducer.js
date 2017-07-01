@@ -3,6 +3,7 @@ import { RECEIVE_CHANNELS, RECEIVE_CHANNEL } from '../actions/channel_actions';
 
 const ChannelReducer = (state = {}, action) => {
   let newState;
+
   switch (action.type) {
     case RECEIVE_CHANNELS:
       newState = {};

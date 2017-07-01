@@ -3,7 +3,8 @@ import { merge } from 'lodash';
 
 const NotificationsReducer = (state = {}, action) => {
   let newState;
-  switch(action.type) {
+
+  switch (action.type) {
     case RECEIVE_NOTIFICATION:
       newState = merge({}, state);
       const dmId = action.notification.dmId;

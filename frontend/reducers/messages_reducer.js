@@ -1,12 +1,14 @@
-import { RECEIVE_MESSAGES, RECEIVE_MESSAGE } from '../actions/message_actions';
 import { merge } from 'lodash';
+import { RECEIVE_MESSAGES, RECEIVE_MESSAGE } from '../actions/message_actions';
 
 const MessagesReducer = (state = [], action) => {
-  switch(action.type) {
+  let newState;
+
+  switch (action.type) {
     case RECEIVE_MESSAGES:
       return action.messages;
     case RECEIVE_MESSAGE:
-      const newState = merge([], state);
+      newState = merge([], state);
       newState.push(action.message);
       return newState;
     default:
