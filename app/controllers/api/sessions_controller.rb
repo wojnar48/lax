@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
           id: @user.id,
           username: @user.username,
           loggedIn: @user.logged_in,
-          avatarUrl: view_context.asset_path(@user.avatar.url)
+          # avatarUrl: view_context.asset_path(@user.avatar.url)
         }
       })
 
@@ -32,7 +32,7 @@ class Api::SessionsController < ApplicationController
           id: @user.id,
           username: @user.username,
           loggedIn: false,
-          avatarUrl: view_context.asset_path(@user.avatar.url)
+          # avatarUrl: view_context.asset_path(@user.avatar.url)
         }
       })
 

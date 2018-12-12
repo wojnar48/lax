@@ -17,7 +17,7 @@ class Api::MessagesController < ApplicationController
           id: @message.id,
           body: @message.body,
           author: @message.user.username,
-          avatarUrl: view_context.asset_path(@message.user.avatar.url),
+          # avatarUrl: view_context.asset_path(@message.user.avatar.url),
           date: @message.created_at,
           userId: @message.user_id,
           chatroomId: @message.chatroom_id
