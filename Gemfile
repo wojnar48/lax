@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.2'
-gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -16,9 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem "font-awesome-rails"
 gem 'bcrypt'
 gem 'faker'
-gem 'paperclip', '~> 5.1'
 gem 'figaro'
-gem 'aws-sdk'
 gem 'pusher'
 
 group :development, :test do
@@ -29,8 +26,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'spring'
+  gem 'sqlite3', '~> 1.3', '>= 1.3.11'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
