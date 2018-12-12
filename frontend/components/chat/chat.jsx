@@ -15,7 +15,9 @@ import { fetchSubscriptions, createSubscription } from '../../actions/subscripti
 class Chat extends Component {
   constructor() {
     super();
-    this.pusher = new Pusher('a514cb9081b7cf5aace9', { encrypted: true });
+    // TODO(SW): Enable encryption once TLS is configured
+    // this.pusher = new Pusher('a514cb9081b7cf5aace9', { encrypted: true });
+    this.pusher = new Pusher('a514cb9081b7cf5aace9');
   }
 
   componentDidMount() {
