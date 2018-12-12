@@ -1,6 +1,7 @@
 /log/*
 !/log/.keep
 /tmp
+/db/development.sqlite3
 node_modules/
 bundle.js
 bundle.js.map
@@ -13,3 +14,4 @@ dump.rdb
 
 # Ignore application configuration
 /config/application.yml
+/config/local_env.yml
