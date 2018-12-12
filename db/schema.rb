@@ -12,16 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20170529215450) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "chatroom_users", force: :cascade do |t|
     t.integer  "chatroom_id"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id", using: :btree
-    t.index ["user_id"], name: "index_chatroom_users_on_user_id", using: :btree
+    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chatroom_users_on_user_id"
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -30,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170529215450) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "private",     default: false
-    t.index ["name"], name: "index_chatrooms_on_name", using: :btree
+    t.index ["name"], name: "index_chatrooms_on_name"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -39,8 +36,8 @@ ActiveRecord::Schema.define(version: 20170529215450) do
     t.text     "body"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,11 +51,7 @@ ActiveRecord::Schema.define(version: 20170529215450) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "logged_in",           default: false
-    t.index ["username", "password_digest"], name: "index_users_on_username_and_password_digest", unique: true, using: :btree
+    t.index ["username", "password_digest"], name: "index_users_on_username_and_password_digest", unique: true
   end
 
-  add_foreign_key "chatroom_users", "chatrooms"
-  add_foreign_key "chatroom_users", "users"
-  add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users"
 end
