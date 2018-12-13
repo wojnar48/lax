@@ -1,4 +1,4 @@
-path = require('path');
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -7,15 +7,17 @@ module.exports = {
     filename: './app/assets/javascripts/bundle.js',
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: [/\.jsx?$/],
+        test: /\.jsx?$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react'],
-          plugins: ['transform-object-rest-spread']
-        }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react'],
+            plugins: ['transform-object-rest-spread']
+          }
+        },
       }
     ]
   },
@@ -23,10 +25,5 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '*']
   },
-  plugins: [
-  new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify('production')
-    }
-  })],
 };
+  
