@@ -4,7 +4,8 @@ const webpack = require('webpack');
 module.exports = {
   entry: './frontend/lax_entry.jsx',
   output: {
-    filename: './app/assets/javascripts/bundle.js',
+    path: path.resolve(__dirname, 'app/assets/javascripts'),
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -18,12 +19,14 @@ module.exports = {
             plugins: ['transform-object-rest-spread']
           }
         },
-      }
+      },
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
     ]
   },
   devtool: 'cheap-module-source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '*']
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '*']
   },
 };
   

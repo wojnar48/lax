@@ -15,7 +15,6 @@ import { createPrivateChannel,
         deletePrivateChannel } from '../../actions/direct_message_actions';
 import { fetchAllUsers, receiveUser } from '../../actions/user_actions';
 
-
 class Nav extends Component {
   constructor() {
     super();
