@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem "font-awesome-rails"
 gem 'bcrypt'
 gem 'faker'
+gem 'paperclip'
 gem 'figaro'
 gem 'pusher'
 

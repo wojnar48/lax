@@ -42,14 +42,6 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (7.1.4)
-    aws-sdk (2.11.189)
-      aws-sdk-resources (= 2.11.189)
-    aws-sdk-core (2.11.189)
-      aws-sigv4 (~> 1.0)
-      jmespath (~> 1.0)
-    aws-sdk-resources (2.11.189)
-      aws-sdk-core (= 2.11.189)
-    aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
@@ -90,7 +82,6 @@ GEM
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    jmespath (1.4.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -209,7 +200,6 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  aws-sdk (~> 2.3)
   bcrypt
   better_errors
   binding_of_caller
