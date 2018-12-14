@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './frontend/lax_entry.jsx',
   output: {
     path: path.resolve(__dirname, 'app/assets/javascripts'),
