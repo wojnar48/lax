@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { login, signup, receiveErrors } from '../../actions/session_actions';
-import SessionForm from './session_form';
+import AuthForm from './AuthForm';
 
 const mapState = ({ session }) => ({
   loggedIn: Boolean(session.currentUser),
@@ -18,4 +18,4 @@ const mapDispatch = (dispatch, { location }) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(SessionForm);
+export default connect(mapState, mapDispatch)(AuthForm);
