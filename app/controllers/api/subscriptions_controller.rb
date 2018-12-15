@@ -1,5 +1,5 @@
 class Api::SubscriptionsController < ApplicationController
-  before_filter :require_login
+  before_action :require_login
 
   def index
     @subscriptions = current_user.chatrooms

@@ -1,5 +1,5 @@
 class Api::DirectMessagesController < ApplicationController
-  before_filter :require_login
+  before_action :require_login
   
   def index
     @chatrooms = current_user.chatrooms.where(private: true)

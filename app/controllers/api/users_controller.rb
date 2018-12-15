@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_filter :require_login, only: [:index]
+  before_action :require_login, only: [:index]
 
   def index
     @users = User.where.not(id: current_user.id)
@@ -20,6 +20,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :avatar)
   end
 end

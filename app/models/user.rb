@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :chatroom_users
   has_many :messages
 
-  # has_attached_file :avatar, default_url: "philoraptor.jpg"
+  has_one_attached :avatar
   # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def self.generate_session_token

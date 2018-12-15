@@ -1,5 +1,5 @@
 class Api::MessagesController < ApplicationController
-  before_filter :require_login
+  before_action :require_login
   before_action :set_chatroom
 
   def index
@@ -17,7 +17,7 @@ class Api::MessagesController < ApplicationController
           id: @message.id,
           body: @message.body,
           author: @message.user.username,
-          # avatarUrl: view_context.asset_path(@message.user.avatar.url),
+          avatarUrl: view_context.url_for(@message.user.avatar),
           date: @message.created_at,
           userId: @message.user_id,
           chatroomId: @message.chatroom_id
