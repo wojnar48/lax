@@ -1,4 +1,3 @@
-import { pickBy } from 'lodash';
 import {
   RECEIVE_PRIVATE_CHANNELS,
   RECEIVE_PRIVATE_CHANNEL,
@@ -13,8 +12,16 @@ const PrivateChannelReducer = (state = {}, action) => {
     case RECEIVE_PRIVATE_CHANNEL:
       return { ...state, [action.channel.id]: action.channel };
     case REMOVE_PRIVATE_CHANNEL:
-      return pickBy({ ...state }, (value, key) =>
-        parseInt(key, 10) !== action.channel.id);
+      const newState = {};
+      // The key will be the id of each subscribed-to private channel
+      Object.keys(state).forEach(key => {
+        // We add to the new state only those id's that were not removed 
+        if (parseInt(key, 10) !== action.channel.id) {
+          newState[key] = {...state[key]};
+        }
+      });
+
+      return newState;
     default:
       return state;
   }

@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import {
   RECEIVE_SUBSCRIPTIONS,
   RECEIVE_SUBSCRIPTION,
@@ -15,11 +14,11 @@ const SubscriptionsReducer = (state = {}, action) => {
       });
       return newState;
     case RECEIVE_SUBSCRIPTION:
-      newState = merge({}, state);
+      newState = Object.assign({}, state);
       newState[action.subscription.id] = action.subscription;
       return newState;
     case REMOVE_SUBSCRIPTION:
-      newState = merge({}, state);
+      newState = Object.assign({}, state);
       delete newState[action.subscription.id];
       return newState;
     default:
