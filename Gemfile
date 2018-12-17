@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.5.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -19,6 +20,7 @@ gem 'paperclip'
 gem 'aws-sdk-s3'
 gem 'figaro'
 gem 'pusher'
+gem 'pg'
 
 group :development, :test do
   gem 'byebug', platform: :mri
