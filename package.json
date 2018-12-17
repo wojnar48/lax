@@ -8,8 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "webpack": "webpack --watch",
-    "postinstall": "webpack",
+    "webpack": "webpack --watch --config webpack.dev.js",
+    "postinstall": "webpack --config webpack.prod.js",
     "tslint": "tslint --project ."
   },
   "repository": {
