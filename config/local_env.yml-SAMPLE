@@ -1,0 +1,10 @@
+# Provide the below values and rename the file to local_env.yml
+
+PUSHER_APP_ID: ''
+PUSHER_KEY: ''
+PUSHER_SECRET: ''
+PUSHER_CLUSTER: ''
+AWS_ACCESS_KEY_ID: ''
+AWS_SECRET_ACCESS_KEY: ''
+AWS_S3_REGION: ''
+AWS_S3_BUCKET: ''
