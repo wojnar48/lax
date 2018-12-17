@@ -85,11 +85,8 @@ Rails.application.configure do
   end
 
   config.action_cable.allowed_request_origins = [
-    'https://lax-app.herokuapp.com',
-    'http://lax-app.herokuapp.com',
-    'http://laxapp.online',
-    'https://laxapp.online',
-    'www.laxapp.online'
+    'https://laxapp-staging.herokuapp.com',
+    'http://laxapp-staging.herokuapp.com'
   ]
   config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
 
