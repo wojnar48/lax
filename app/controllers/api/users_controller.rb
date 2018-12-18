@@ -7,7 +7,18 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    uparams = user_params
+    @user = User.new(username: uparams[:username], password: uparams[:password])
+
+    # TODO(SW): Find a better way of doing this
+    # See: https://stackoverflow.com/questions/45870021/how-to-update-attachment-in-activestorage-rails-5-2
+    @user.avatar.purge_later
+    if (uparams[:avatar] == 'null')
+      file = File.open('app/assets/images/philoraptor.jpg')
+      @user.avatar.attach(io: file, filename: 'philoraptor.jpg')
+    else
+      @user.avatar.attach(uparams[:avatar])
+    end
 
     if @user.save
       log_in(@user)
