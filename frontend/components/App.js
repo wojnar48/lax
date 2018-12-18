@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
-import { loginGuest } from '../actions/session_actions';
 
 class App extends Component {
   static propTypes = {
-    loginGuest: PropTypes.func.isRequired,
     children: PropTypes.node,
   };
 
@@ -23,7 +19,6 @@ class App extends Component {
             <Link to="/signup">
               <button className="button logout">Sign up</button>
             </Link>
-            <button onClick={this.props.loginGuest} className="button login">Guest</button>
           </div>
         </header>
         <div className="landing-page">
@@ -34,8 +29,4 @@ class App extends Component {
   }
 }
 
-const mapDispatch = (dispatch) => ({
-  loginGuest: () => dispatch(loginGuest())
-});
-
-export default connect(null, mapDispatch)(App);
+export default App;
