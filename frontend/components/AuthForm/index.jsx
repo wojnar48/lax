@@ -5,6 +5,7 @@ import AuthForm from './AuthForm';
 
 const mapState = ({ session }) => ({
   loggedIn: Boolean(session.currentUser),
+  isLoading: session.isLoading,
   errors: session.errors
 });
 

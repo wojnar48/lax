@@ -7,6 +7,7 @@ class SessionForm extends Component {
 
   static propTypes = {
     errors: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     loggedIn: PropTypes.bool.isRequired,
     processForm: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
@@ -78,7 +79,7 @@ class SessionForm extends Component {
   };
 
   render () {
-    const { location, errors } = this.props;
+    const { location, errors, isLoading } = this.props;
     const { username, password } = this.state;
     const isLogin = location.pathname === '/login';
 
@@ -100,6 +101,7 @@ class SessionForm extends Component {
               value={username}
               onChange={this.handleInputChange}
               placeholder='Username'
+              disabled={isLoading}
             />
 
             <input
@@ -109,13 +111,17 @@ class SessionForm extends Component {
               value={password}
               onChange={this.handleInputChange}
               placeholder='Password'
+              disabled={isLoading}
             />
 
             <div className='avatar-upload'>
               {isLogin ? null : <input type='file' onChange={this.updateFile} />}
             </div>
-
-            <input type='submit' name='commit' value={isLogin? 'Log in' : 'Sign up'} />
+            {
+              isLoading
+                ? <input type='submit' disabled name='commit' value='Loading...' />
+                : <input type='submit' name='commit' value={isLogin ? 'Log in' : 'Sign up'} />
+            }
           </form>
           <div className='alt-link'>
             <p>
