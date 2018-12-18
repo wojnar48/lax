@@ -4,47 +4,66 @@ import * as actionTypes from '../actionTypes';
 export const signup = (user) =>
   async (dispatch) => {
     try {
+      dispatch(authRequest());
       const { data } = await Api.signup(user);
-      dispatch(receiveCurrentUser(data));
+      dispatch(authSuccess(data));
     }
       // The message we want to display to the user lives in error.response.data
       catch({ response }) {
-        dispatch(receiveErrors(response.data));
+        dispatch(authFailure(response.data));
       }
 };
 
 export const login = (user) =>
   async (dispatch) => {
     try {
+      dispatch(authRequest());
       const { data } = await Api.login(user);
-      dispatch(receiveCurrentUser(data));
+      dispatch(authSuccess(data));
     }
       catch ({ response }) {
-        dispatch(receiveErrors(response.data));
+        dispatch(authFailure(response.data));
       }
 };
 
 export const logout = () =>
   async (dispatch) => {
     try {
+      dispatch(logoutRequest());
       await Api.logout();
-      dispatch(receiveLogout());
+      dispatch(logoutSuccess());
     }
       catch ({ response }) {
-        dispatch(receiveErrors(response.data));
+        dispatch(logoutFailure(response.data));
       }
 };
 
-export const receiveCurrentUser = (currentUser) => ({
-  type: actionTypes.RECEIVE_CURRENT_USER,
+export const authRequest = () => ({
+  type: actionTypes.AUTH_REQUEST,
+});
+
+export const authSuccess = (currentUser) => ({
+  type: actionTypes.AUTH_SUCCESS,
   currentUser
 });
 
-export const receiveErrors = (errors) => ({
-  type: actionTypes.RECEIVE_ERRORS,
+export const authFailure = (errors) => ({
+  type: actionTypes.AUTH_FAILURE,
   errors
 });
 
-export const receiveLogout = () => ({
-  type: actionTypes.LOGOUT
+export const clearErrors = () => ({
+  type: actionTypes.CLEAR_ERRORS,
+});
+
+export const logoutSuccess = () => ({
+  type: actionTypes.LOGOUT_SUCCESS
+});
+
+export const logoutRequest = () => ({
+  type: actionTypes.LOGOUT_REQUEST
+});
+
+export const logoutFailure = () => ({
+  type: actionTypes.LOGOUT_FAILURE
 });

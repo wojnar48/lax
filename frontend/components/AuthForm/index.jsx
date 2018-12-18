@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { login, signup, receiveErrors } from '../../actions/session_actions';
+import { login, signup, clearErrors } from '../../actions/session_actions';
 import AuthForm from './AuthForm';
 
 const mapState = ({ session }) => ({
@@ -14,7 +14,7 @@ const mapDispatch = (dispatch, { location }) => {
 
   return {
     processForm: (user) => dispatch(processForm(user)),
-    receiveErrors: (errors) => dispatch(receiveErrors(errors))
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

@@ -9,7 +9,7 @@ class SessionForm extends Component {
     errors: PropTypes.array.isRequired,
     loggedIn: PropTypes.bool.isRequired,
     processForm: PropTypes.func.isRequired,
-    receiveErrors: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     children: PropTypes.exact(null),
     location: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
@@ -27,12 +27,12 @@ class SessionForm extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    const { receiveErrors } = this.props;
+    const { clearErrors } = this.props;
     const currentPathname = this.props.location.pathname;
     const nextPathname = nextProps.location.pathname;
 
     if (currentPathname !== nextPathname) {
-      receiveErrors([]);
+      clearErrors();
     }
   }
 
@@ -122,7 +122,7 @@ class SessionForm extends Component {
               Or
               {' '}
               {
-                isLogin 
+                isLogin
                   ? <Link to='/signup'>sign up instead</Link>
                   : <Link to='/login'>log in instead</Link>
               }
