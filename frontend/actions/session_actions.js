@@ -1,31 +1,31 @@
-import * as SessionApiUtil from '../util/session_api_util';
+import * as Api from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT = 'LOGOUT';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const signup = (user) => (dispatch) => {
-  return SessionApiUtil.signup(user)
-    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-    err => dispatch(receiveErrors(err.responseJSON)));
+  return Api.signup(user)
+    .then(({ data }) => dispatch(receiveCurrentUser(data)))
+    .catch(({ response }) => dispatch(receiveErrors(response)));
 };
 
 export const login = (user) => (dispatch) => {
-  return SessionApiUtil.login(user)
-    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-    err => dispatch(receiveErrors(err.responseJSON)));
+  return Api.login(user)
+    .then(({ data }) => dispatch(receiveCurrentUser(data)))
+    .catch(({ response }) => dispatch(receiveErrors(response)));
 };
 
 export const loginGuest = () => (dispatch) => {
-  return SessionApiUtil.loginGuest()
+  return Api.loginGuest()
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
     err => dispatch(receiveErrors(err.responseJSON)));
 };
 
 export const logout = () => (dispatch) => {
-  return SessionApiUtil.logout()
-    .then(() => dispatch(receiveLogout()),
-    err => dispatch(receiveErrors(err.responseJSON)));
+  return Api.logout()
+    .then(() => dispatch(receiveLogout()))
+    .catch(({ response }) => dispatch(receiveErrors(response)));
 };
 
 export const receiveCurrentUser = (currentUser) => {

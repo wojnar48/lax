@@ -1,34 +1,30 @@
-export const signup = formData => (
-  $.ajax({
+import ax from './axiosConfig';
+
+export const signup = (formData) => (
+  ax({
     method: 'POST',
     url: 'api/users',
-    dataType: 'json',
-    contentType: false,
-    processData: false,
     data: formData,
   })
 );
 
-export const login = formData => (
-  $.ajax({
+export const login = (formData) => (
+  ax({
     method: 'POST',
     url: 'api/session',
-    dataType: 'json',
-    contentType: false,
-    processData: false,
     data: formData,
   })
 );
 
 export const logout = () => (
-  $.ajax({
+  ax({
     method: 'DELETE',
     url: 'api/session',
   })
 );
 
 export const loginGuest = () => (
-  $.ajax({
+  ax({
     method: 'POST',
     url: 'api/session',
     data: { user: { username: 'guest', password: 'password' } },
