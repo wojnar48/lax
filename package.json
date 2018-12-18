@@ -27,6 +27,7 @@
     "@types/react": "^16.7.16",
     "@types/react-dom": "^16.0.11",
     "actioncable": "^5.0.2",
+    "axios": "^0.18.0",
     "babel-preset-es2015": "^6.24.1",
     "datejs": "^1.0.0-rc3",
     "prop-types": "^15.6.2",
