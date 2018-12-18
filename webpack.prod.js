@@ -42,4 +42,9 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '*']
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      PUSHER_KEY: JSON.stringify(process.env.PUSHER_KEY),
+    }),
+  ]
 };

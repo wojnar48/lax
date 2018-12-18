@@ -47,5 +47,8 @@ module.exports = {
   },
   plugins: [
     new BundleAnalyzerPlugin(),
+    new webpack.DefinePlugin({
+      PUSHER_KEY: JSON.stringify(process.env.PUSHER_KEY),
+    }),
   ]
 };
