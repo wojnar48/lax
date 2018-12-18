@@ -3,8 +3,20 @@ class Api::MessagesController < ApplicationController
   before_action :set_chatroom
 
   def index
-    @messages = @chatroom.messages.includes(:user)
-    render 'api/messages/index'
+    # TODO(SW): This seems hacky. Review the UI logic and see if this can be improved.
+    # If we are dealing with a private chatroom, we want to make sure that
+    # a user who is not part of the chatroom can't fetch the messages
+    if @chatroom.private?
+      if user_in_chatroom?
+        @messages = @chatroom.messages.includes(:user)
+        render 'api/messages/index'
+      else
+        render json: ['User is not part of the private chatroom'], status: 401
+      end
+    else
+      @messages = @chatroom.messages.includes(:user)
+      render 'api/messages/index'
+    end
   end
 
   def create
@@ -27,6 +39,10 @@ class Api::MessagesController < ApplicationController
   end
 
   private
+
+  def user_in_chatroom?
+    !@chatroom.chatroom_users.where(user_id: current_user.id).empty?
+  end
 
   def set_chatroom
     @chatroom = Chatroom.find(params[:chatroom_id])
