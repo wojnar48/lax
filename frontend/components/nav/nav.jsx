@@ -26,9 +26,11 @@ class Nav extends Component {
   }
 
   componentDidMount() {
+    // TODO(SW): Review this logic to see if eager updates to the client can be mad
+    // without refetching all users.
     const session = this.props.pusher.subscribe('session');
-    session.bind('login', (_data) => this.props.fetchAllUsers());
-    session.bind('logout', ({ logout }) => this.props.receiveUser(data.logout));
+    session.bind('login', () => this.props.fetchAllUsers());
+    session.bind('logout', () => this.props.fetchAllUsers());
   }
 
   handleSelectChannel(e) {
