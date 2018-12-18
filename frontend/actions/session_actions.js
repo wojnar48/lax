@@ -4,46 +4,50 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT = 'LOGOUT';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
-export const signup = (user) => (dispatch) => {
-  return Api.signup(user)
-    .then(({ data }) => dispatch(receiveCurrentUser(data)))
-    .catch(({ response }) => dispatch(receiveErrors(response)));
+export const signup = (user) =>
+  async (dispatch) => {
+    try {
+      const { data } = await Api.signup(user);
+      dispatch(receiveCurrentUser(data));
+    }
+      // The message we want to display to the user lives in error.response.data
+      catch({ response }) {
+        dispatch(receiveErrors(response.data));
+      }
 };
 
-export const login = (user) => (dispatch) => {
-  return Api.login(user)
-    .then(({ data }) => dispatch(receiveCurrentUser(data)))
-    .catch(({ response }) => dispatch(receiveErrors(response)));
+export const login = (user) =>
+  async (dispatch) => {
+    try {
+      const { data } = await Api.login(user);
+      dispatch(receiveCurrentUser(data));
+    }
+      catch ({ response }) {
+        dispatch(receiveErrors(response.data));
+      }
 };
 
-export const loginGuest = () => (dispatch) => {
-  return Api.loginGuest()
-    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
-    err => dispatch(receiveErrors(err.responseJSON)));
+export const logout = () =>
+  async (dispatch) => {
+    try {
+      await Api.logout();
+      dispatch(receiveLogout());
+    }
+      catch ({ response }) {
+        dispatch(receiveErrors(response.data));
+      }
 };
 
-export const logout = () => (dispatch) => {
-  return Api.logout()
-    .then(() => dispatch(receiveLogout()))
-    .catch(({ response }) => dispatch(receiveErrors(response)));
-};
+export const receiveCurrentUser = (currentUser) => ({
+  type: RECEIVE_CURRENT_USER,
+  currentUser
+});
 
-export const receiveCurrentUser = (currentUser) => {
-  return {
-    type: RECEIVE_CURRENT_USER,
-    currentUser
-  };
-};
+export const receiveErrors = (errors) => ({
+  type: RECEIVE_ERRORS,
+  errors
+});
 
-export const receiveErrors = (errors) => {
-  return {
-    type: RECEIVE_ERRORS,
-    errors
-  };
-};
-
-export const receiveLogout = () => {
-  return {
-    type: LOGOUT
-  };
-};
+export const receiveLogout = () => ({
+  type: LOGOUT
+});

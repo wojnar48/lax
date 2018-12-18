@@ -29,6 +29,7 @@ module.exports = {
             ],
             plugins: [
               'transform-object-rest-spread',
+              'transform-runtime',
               'transform-class-properties'
             ]
           }
@@ -42,4 +43,3 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '*']
   },
 };
-  

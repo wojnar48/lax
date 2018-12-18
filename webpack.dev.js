@@ -31,6 +31,7 @@ module.exports = {
             ],
             plugins: [
               'transform-object-rest-spread',
+              'transform-runtime',
               'transform-class-properties'
             ]
           }
@@ -48,4 +49,3 @@ module.exports = {
     new BundleAnalyzerPlugin(),
   ]
 };
-  

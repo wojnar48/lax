@@ -23,10 +23,3 @@ export const logout = () => (
   })
 );
 
-export const loginGuest = () => (
-  ax({
-    method: 'POST',
-    url: 'api/session',
-    data: { user: { username: 'guest', password: 'password' } },
-  })
-);
