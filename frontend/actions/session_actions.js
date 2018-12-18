@@ -1,8 +1,5 @@
 import * as Api from '../util/session_api_util';
-
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const LOGOUT = 'LOGOUT';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+import * as actionTypes from '../actionTypes';
 
 export const signup = (user) =>
   async (dispatch) => {
@@ -39,15 +36,15 @@ export const logout = () =>
 };
 
 export const receiveCurrentUser = (currentUser) => ({
-  type: RECEIVE_CURRENT_USER,
+  type: actionTypes.RECEIVE_CURRENT_USER,
   currentUser
 });
 
 export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
+  type: actionTypes.RECEIVE_ERRORS,
   errors
 });
 
 export const receiveLogout = () => ({
-  type: LOGOUT
+  type: actionTypes.LOGOUT
 });

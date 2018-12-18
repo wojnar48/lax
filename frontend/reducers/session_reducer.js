@@ -1,8 +1,4 @@
-import {
-  RECEIVE_CURRENT_USER,
-  LOGOUT,
-  RECEIVE_ERRORS,
-} from '../actions/session_actions';
+import * as actionTypes from '../actionTypes';
 
 const nullUser = {
   currentUser: null,
@@ -11,12 +7,12 @@ const nullUser = {
 
 const SessionReducer = (state = nullUser, action) => {
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
+    case actionTypes.RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
       return Object.assign({}, nullUser, { currentUser });
-    case LOGOUT:
+    case actionTypes.LOGOUT:
       return nullUser;
-    case RECEIVE_ERRORS:
+    case actionTypes.RECEIVE_ERRORS:
       const errors = action.errors;
       return Object.assign({}, nullUser, { errors });
     default:
